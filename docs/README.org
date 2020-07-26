@@ -1,0 +1,3 @@
+#+TITLE: Coding Katas - documentation
+
+* Index

@@ -1,0 +1,10 @@
+#+TITLE: Coding Katas
+
+This repository is a sandbox that contains all my personal
+reference/training projects and their documentation.
+
+- The [[file:code/][code]] directory contains the software projects organized by
+  codename.
+
+- The [[file:docs/][docs]] directory contains documentation that references these
+  software projects under specific themes.
