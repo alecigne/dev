@@ -1,0 +1,5 @@
+#+TITLE: [CK0002] =python-pymysql=
+
+See the [[file:../code/ck0002_python-pymysql/][project]].
+
+Run =docker-compose up= in order to prepare the MySQL database.

@@ -1,0 +1,8 @@
+mysql:
+    host: localhost
+    port: 3308
+    user: root
+    passwd: pymysql
+    db: pymysql
+    cap_add:
+        - SYS_NICE
