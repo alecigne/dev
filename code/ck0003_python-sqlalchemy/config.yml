@@ -1,0 +1,7 @@
+dialect: mysql
+connector: pymysql
+host: localhost
+port: 3308
+user: root
+pwd: sqlalchemy
+db: sqlalchemy
