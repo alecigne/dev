@@ -1,3 +1,9 @@
 #+TITLE: Coding Katas - documentation
 
 * Index
+
+- [[[file:ck0001_spring-jdbc.org][CK0001]]] =spring-jdbc= :: A few common cases encountered while using
+  Spring JDBC
+
+- [[[file:ck0002_python-pymysql.org][CK0002]]] =python-mysql= :: How to do basic CRUD with Python and
+  PyMySQL (MySQL database provided by Docker)
