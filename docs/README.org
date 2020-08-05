@@ -3,9 +3,13 @@
 * Index
 
 - [[[file:ck0001_spring-jdbc.org][CK0001]]] =spring-jdbc= :: A few common cases encountered while using
-  Spring JDBC
+  Spring JDBC.
 
 - [[[file:ck0002_python-pymysql.org][CK0002]]] =python-mysql= :: How to do basic CRUD with Python and
-  PyMySQL (MySQL database provided by Docker)
+  PyMySQL (MySQL database provided by Docker).
 
-- [[[file:ck0003_python-sqlalchemy.org][CK0003]]] =python-sqlalchemy= :: Using ORM in Python with SQLAlchemy
+- [[[file:ck0003_python-sqlalchemy.org][CK0003]]] =python-sqlalchemy= :: Using ORM in Python with SQLAlchemy.
+
+- [[[file:ck0004_angular-spring-maven.org][CK0004]]] =angular-spring-maven= :: A multi-module Maven project with
+  an Angular front-end and a "dummy" Java back-end. The build process
+  is managed by Maven through =maven-exec-plugin=.
