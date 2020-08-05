@@ -1,0 +1,12 @@
+#+TITLE: [CK0006] =python-argparse=
+
+See [[file:../code/ck0006_python-argparse/][project]].
+
+#+begin_example
+  ❯ python main.py 2 2 -v 0
+  4
+  ❯ python main.py 2 2 -v 1
+  2^2 == 4
+  ❯ python main.py 2 2 -v 2
+  2 to the power 2 equals 4
+#+end_example

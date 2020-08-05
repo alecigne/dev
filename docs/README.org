@@ -17,3 +17,6 @@
   Java back-end. However, the build process is managed with
   =frontend-maven-plugin= and doesn't need a local installation of
   Node or npm.
+
+- [[[file:ck0006_python-argparse.org][CK0006]]] =python-argparse= :: Parsing command-line arguments in
+  Python.
