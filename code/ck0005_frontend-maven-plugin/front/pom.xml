@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>net.lecigne.codingkatas.ck0005</groupId>
+  <artifactId>front</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <parent>
+    <groupId>net.lecigne.codingkatas</groupId>
+    <artifactId>ck0005_frontend-maven-plugin</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <properties>
+    <!-- Build properties -->
+    <node.version>v8.12.0</node.version>
+    <npm.version>6.4.1</npm.version>
+    <!-- Plugin versions -->
+    <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+    <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
+  </properties>
+
+  <build>
+    <plugins>
+
+      <!-- mvn clean will clean the dist folders -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>${maven-clean-plugin.version}</version>
+        <configuration>
+          <failOnError>false</failOnError>
+          <filesets>
+            <fileset>
+              <directory>.</directory>
+              <includes>
+                <include>dist/**/*.*</include>
+              </includes>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+
+      <!-- Install node, npm then install and build -->
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <!-- NB! Set <version> to the latest released version of frontend-maven-plugin,
+          like in README.md -->
+        <version>${frontend-maven-plugin.version}</version>
+
+        <executions>
+          <execution>
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+            <configuration>
+              <!-- See https://nodejs.org/en/download/ for latest node and npm (lts)
+                versions -->
+              <nodeVersion>${node.version}</nodeVersion>
+              <npmVersion>${npm.version}</npmVersion>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <!-- Optional configuration which provides for running any npm command -->
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>npm run build</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <!-- base-href is taken care of in package.json -->
+              <arguments>run build</arguments>
+            </configuration>
+          </execution>
+
+          <!-- <execution> <id>javascript tests</id> <goals> <goal>karma</goal>
+            </goals> <configuration> <karmaConfPath>src/karma.conf.js</karmaConfPath>
+            </configuration> </execution> -->
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

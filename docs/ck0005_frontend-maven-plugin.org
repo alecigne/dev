@@ -1,0 +1,122 @@
+#+TITLE: [CK0005] =frontend-maven-plugin=
+
+See [[file:../code/ck0005_frontend-maven-plugin/][project]].
+
+The goal of the [[file:ck0004_angular-spring-maven.org][=angular-spring-maven=]] project was to use the
+[[https://www.mojohaus.org/exec-maven-plugin/][exec-maven-plugin]] in order to build an Angular front-end project
+(itself part of a multi-module Maven project) using Maven. The project
+was then included into the deployed =.war= file using the
+=maven-war-plugin=.
+
+The goal of this project is to do the same, but this time using
+[[https://github.com/eirslett/frontend-maven-plugin][frontend-maven-plugin]]. This plugin is a nice way to build an Angular
+front-end project without the need to install front-end, system-wide
+dependencies such as npm and Node.
+
+Keep that in mind, from the project's Github page:
+
+#+BEGIN_QUOTE
+Notice: This plugin does not support already installed Node or npm
+versions. Use the exec-maven-plugin instead.
+#+END_QUOTE
+
+* Project initialization
+
+See the [[file:ck0004_angular-spring-maven.org][=angular-spring-maven=]] for reference.
+
+1. =exec-maven-plugin= is replaced by =frontend-maven-plugin= in
+   =./front/pom.xml=, and the versions of NodeJS/npm are specified in
+   order to be installed locally - great for backend developers who
+   don't want to install them but still want to test the webapp:
+
+   #+BEGIN_SRC xml
+     <properties>
+       <!-- Build properties -->
+       <node.version>v8.12.0</node.version>
+       <npm.version>6.4.1</npm.version>
+       <!-- Plugin versions -->
+       <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+       <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
+     </properties>
+   #+END_SRC
+
+   ...and in the =plugins= section...
+
+   #+BEGIN_SRC xml
+     <plugin>
+       <groupId>com.github.eirslett</groupId>
+       <artifactId>frontend-maven-plugin</artifactId>
+       <!-- NB! Set <version> to the latest released version of frontend-maven-plugin, 
+            like in README.md -->
+       <version>${frontend-maven-plugin.version}</version>
+
+       <executions>
+         <execution>
+           <id>install node and npm</id>
+           <goals>
+             <goal>install-node-and-npm</goal>
+           </goals>
+           <configuration>
+             <!-- See https://nodejs.org/en/download/ for latest node and npm (lts) 
+                  versions -->
+             <nodeVersion>${node.version}</nodeVersion>
+             <npmVersion>${npm.version}</npmVersion>
+           </configuration>
+         </execution>
+
+         <execution>
+           <id>npm install</id>
+           <goals>
+             <goal>npm</goal>
+           </goals>
+           <!-- Optional configuration which provides for running any npm command -->
+           <configuration>
+             <arguments>install</arguments>
+           </configuration>
+         </execution>
+
+         <execution>
+           <id>npm run build</id>
+           <goals>
+             <goal>npm</goal>
+           </goals>
+           <configuration>
+             <!-- base-href is taken care of in package.json -->
+             <arguments>run build</arguments>
+           </configuration>
+         </execution>
+
+         <!-- <execution> <id>javascript tests</id> <goals> <goal>karma</goal> 
+              </goals> <configuration> <karmaConfPath>src/karma.conf.js</karmaConfPath> 
+              </configuration> </execution> -->
+       </executions>
+     </plugin>
+   #+END_SRC
+
+2. Gitignore the front-end dependencies by excluding =./front/node/=,
+   the directory where NodeJS and npm will be downloaded.
+
+3. Change the =build= npm command in =./front/package.json= so it will
+   run =ng build --base-href ./=. This is the alternative technique
+   mentioned in [[file:ck0004_angular-spring-maven.org][=angular-spring-maven=]].
+
+4. =mvn clean package= (the local Maven from Maven wrapper also works)
+   should download all dependencies and the generated =war= file
+   should be deployable.
+
+* Notes
+
+Quote are from the [[https://github.com/eirslett/frontend-maven-plugin][frontend-maven-plugin Github page]].
+
+#+BEGIN_QUOTE
+If you have configured proxy settings for Maven in your =settings.xml=
+file, the plugin will automatically use the proxy for downloading node
+and npm, as well as passing the proxy to npm commands.
+#+END_QUOTE
+
+A =node= folder will be created in the =front= folder:
+
+#+BEGIN_QUOTE
+Remember to gitignore the node folder, unless you actually want to
+commit it.
+#+END_QUOTE
