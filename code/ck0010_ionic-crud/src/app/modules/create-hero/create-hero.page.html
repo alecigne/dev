@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add a new hero</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="heroForm" (ngSubmit)="addHero()">
+    <ion-item>
+      <ion-input type="text" formControlName="name" placeholder="Hero name"></ion-input>
+    </ion-item>
+    <ion-button type="submit" [disabled]="!heroForm.valid">Submit</ion-button>
+  </form>
+</ion-content>

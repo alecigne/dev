@@ -28,3 +28,5 @@
 
 - [[[file:ck0009_etoh-api.org][CK0009]]] =etoh-api= :: A Spring Boot backend for the ETOH project
   above.
+
+- [[[file:ck0010_ionic-crud.org][CK0010]]] =ionic-crud= :: A Ionic version of the ETOH project above.
