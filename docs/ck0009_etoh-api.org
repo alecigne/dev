@@ -1,0 +1,12 @@
+#+TITLE: [CK0009] =etoh-api=
+
+This project capitalizes on [[file:ck0007_spring-boot-minimal.org][=spring-boot-minimal=]] to build a very
+simple backend for the [[file:ck0008_angular-extended-tour-of-heroes.org][Extended Tour of Heroes (ETOH) Angular
+frontend]].
+
+It uses an in-memory H2 database initialized automatically by Spring
+Boot, through a =data.sql= file in =src/main/resources/=.
+
+* TODOs
+
+- [ ] Fix bug: can't rename a hero

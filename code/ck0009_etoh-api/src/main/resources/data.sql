@@ -1,0 +1,10 @@
+insert into hero (id, name) values (11, 'Mr. Nice');
+insert into hero (id, name) values (12, 'Narco');
+insert into hero (id, name) values (13, 'Bombasto');
+insert into hero (id, name) values (14, 'Celeritas');
+insert into hero (id, name) values (15, 'Magneta');
+insert into hero (id, name) values (16, 'RubberMan');
+insert into hero (id, name) values (17, 'Dynama');
+insert into hero (id, name) values (18, 'Dr IQ');
+insert into hero (id, name) values (19, 'Magma');
+insert into hero (id, name) values (20, 'Tornado');

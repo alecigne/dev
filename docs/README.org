@@ -25,3 +25,6 @@
 
 - [[[file:ck0008_angular-extended-tour-of-heroes.org][CK0008]]] =angular-extended-tour-of-heroes= :: Using [[https://angular.io/tutorial][Tour of Heroes]]
   as a basis to document more advanced practices.
+
+- [[[file:ck0009_etoh-api.org][CK0009]]] =etoh-api= :: A Spring Boot backend for the ETOH project
+  above.
