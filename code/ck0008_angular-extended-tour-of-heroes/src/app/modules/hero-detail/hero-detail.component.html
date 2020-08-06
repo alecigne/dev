@@ -1,0 +1,15 @@
+<div *ngIf="hero">
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <form>
+    <div class="form-group">
+      <label>ID</label>
+      <input type="text" readonly class="form-control" [value]="hero.id">
+    </div>
+    <div class="form-group">
+      <label>Name</label>
+      <input [(ngModel)]="hero.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Enter hero's name">
+    </div>
+    <button type=submit class="btn btn-primary" (click)="saveHero()">save</button>
+    <button type=button class="btn btn-secondary" (click)="goBack()">go back</button>
+  </form>
+</div>

@@ -1,0 +1,448 @@
+#+TITLE: [CK0008] =angular-extended-tour-of-heroes=
+
+See [[file:../code/ck0008_angular-extended-tour-of-heroes/][project]].
+
+The goal of this project is to use the [[https://angular.io/tutorial][Tour of Heroes]] tutorial as a
+basis for documenting a few basic Angular good practices, such as an
+organization of the project in modules (in particular, a
+=SharedModule= and a =CoreModule=), lazy loading, clean imports and
+environments variables. Hence the name "Extended Tour Of Heroes"
+(ETOH).
+
+* Startup
+
+This project can be used with a Java backend or a mocked backend. To
+use the mocked backend:
+
+1. Start =json-server=:
+
+   #+begin_src sh
+     npm run api:start
+   #+end_src
+
+2. Start the application with a specific environment config:
+
+   #+begin_src sh
+     ng serve -c dev-json
+   #+end_src
+
+To use the Java backend, use =dev-java= instead.
+
+* Project initialization
+
+1. Create the project, with a flat routing module, SCSS and no tests
+   since this is just a demo:
+
+   #+BEGIN_SRC sh
+     ng new etoh-web-interface --routing --style=scss --skip-tests
+   #+END_SRC
+
+2. Install the dependencies:
+
+   - =bootstrap= and [[https://valor-software.com/ngx-bootstrap][=ngx-bootstrap=]]
+   - =json-server= as a development dependency
+
+   #+BEGIN_SRC sh
+     npm install bootstrap ngx-bootstrap --save
+     npm install json-server --save-dev
+   #+END_SRC
+
+3. Add Bootstrap's CSS in =styles.scss=.
+
+* Project structure
+
+There are a lot of resources about the structure of an Angular
+project:
+
+- [[https://itnext.io/choosing-a-highly-scalable-folder-structure-in-angular-d987de65ec7][Highly scalable folder structure for your Angular project]]
+- [[https://medium.com/@motcowley/angular-folder-structure-d1809be95542][Angular Folder Structure]]
+- [[https://medium.com/@tomastrajan/6-best-practices-pro-tips-for-angular-cli-better-developer-experience-7b328bc9db81][6 Best Practices & Pro Tips when using Angular CLI]]
+- [[https://angular.io/guide/styleguide#overall-structural-guidelines][Angular's Style Guide]]
+- etc.
+
+In order to understand these choices, it is important to read about
+modules and services:
+
+- [[https://medium.com/@michelestieven/organizing-angular-applications-f0510761d65a][Angular: Understanding Modules and Services]]
+- [[https://angular.io/guide/module-types][Types of Feature Modules]]
+- etc.
+
+** =SharedModule=
+
+=SharedModule= contains components, directives and pipes that are used
+across the entire application. It can also export utility modules such
+as =CommonModule= or =FormsModule=. This way you only have to import
+=SharedModule= to use them.
+
+A very important point if the components in =SharedModule= need
+services themselves:
+
+#+BEGIN_QUOTE
+Lazy modules have a strange behavior: since they have their own
+injector, if they import a module which provides some services,
+they’ll create their own instances of those services. [[https://medium.com/@michelestieven/organizing-angular-applications-f0510761d65a][Source]]
+([2018-10-19 ven.])
+#+END_QUOTE
+
+There is a solution to this problem (=ModuleWithProviders=), but here
+we simply won't put any services in =SharedModule=.
+
+To create it:
+
+#+BEGIN_SRC sh
+  ng g m shared
+#+END_SRC
+
+=SharedModule= will export these modules:
+
+- =CommonModule=
+- =FormsModule=
+
+We will put three (empty so far) subdirectories in there:
+=components=, =directives= and =pipes=.
+
+** =CoreModule=
+
+In =CoreModule=, we will put our global services (services used all
+across the application). Of course, this application is small by
+design, so our main business service (=HeroService=) will be in
+=CoreModule=. A more realistic project would probably provide the
+business services only in the modules that use them. =CoreModule=
+would then be limited to "real" global services, such as
+=AuthService=.
+
+This is an interesting read:
+
+#+BEGIN_QUOTE
+The answer to the question "Where should I put all my global
+services?" would be: AppModule. This is because services are
+app-scoped, which means that they can be accessed from every module.
+
+This means that if we provide a service in a child module, that
+service is still available in the parent module! How’s that even
+possible? That’s because they share the same injector! So you might
+think that if this is the case, you could provide the services
+wherever you want… Wrong!
+
+What I just said is true, but not if those children modules are lazy
+loaded: every lazy module has its own injector! What that means is
+that a service provided in a lazy module is only accessible in that
+module. But it can still access the services previously provided by
+non-lazy modules (such as AppModule)!
+
+Sooo… where should you put your services, such as AuthService,
+UserService, etc? Technically, in AppModule, since they’ll be
+available to everyone. However, we really don’t want our AppModule to
+be a complete mess… What Angular recommends is to put all of our
+global services in a separated module, called CoreModule, and import
+it ONLY in AppModule. This way is the same as providing the services
+in AppModule directly! [[https://medium.com/@michelestieven/organizing-angular-applications-f0510761d65a][Source]] ([2018-10-19 ven.])
+#+END_QUOTE
+
+So let's create =CoreModule=:
+
+#+BEGIN_SRC sh
+  ng g m core
+#+END_SRC
+
+...with 4 subdirectories:
+
+- =layout=
+- =mocks=
+- =models=
+- =services=
+
+We can [[https://angular.io/guide/singleton-services#prevent-reimport-of-the-coremodule][prevent reimport of the =CoreModule=]] by tweaking the
+constructor:
+
+#+BEGIN_SRC typescript
+  constructor (@Optional() @SkipSelf() parentModule: CoreModule) {
+    if (parentModule) {
+      throw new Error(
+        'CoreModule is already loaded. Import it in the AppModule only');
+    }
+  }
+#+END_SRC
+
+** Domain modules
+
+From [[https://angular.io/guide/module-types][here]]:
+
+#+BEGIN_QUOTE
+Domain feature modules deliver a user experience dedicated to a
+particular application domain like editing a customer or placing an
+order.
+#+END_QUOTE
+
+Our domain modules will sit in a =modules= subdirectory and will
+simply consist in a single, flat root component and a parallel routing
+module.
+
+There will be 3 such domain modules, to reflect Tour of Heroes's
+structure:
+
+- =dashboard=
+- =hero-detail=
+- =heroes=
+
+To create them:
+
+#+BEGIN_SRC sh
+  ng g m modules/dashboard --routing
+  ng g m modules/hero-detail --routing
+  ng g m modules/heroes --routing
+#+END_SRC
+
+Notice that every routing module is automatically imported in its
+corresponding main module.
+
+Every domain module will import =SharedModule= (no need to import
+=CommonModule= since it is exported by =SharedModule=).
+
+Now let's create the root component in every module:
+
+#+BEGIN_SRC sh
+  ng g c modules/dashboard/dashboard --flat --skip-tests --module=dashboard
+  ng g c modules/hero-detail/hero-detail --flat --skip-tests --module=hero-detail
+  ng g c modules/heroes/heroes --flat --skip-tests --module=heroes
+#+END_SRC
+
+Again, the component is automatically declared in its main module.
+
+* Project implementation
+
+Structurally-speaking, we have everything we need to develop the
+app. Delete everything but the router-outlet tag in
+=app.component.html=, start =ng serve=, and from here we will develop
+the app step by step.
+
+** Fixing imports
+
+In =tsconfig.json=, add:
+
+#+BEGIN_EXAMPLE
+  "paths": {
+    "@app/*": ["src/app/*"],
+    "@env/*": ["src/environments/*"]
+  }
+#+END_EXAMPLE
+
+This will facilitate our imports later, especially in combination with
+barrel files (see below for examples). You might need to restart =ng
+serve=.
+
+** Infrastructure
+
+*** Linking a database
+
+See this [[https://stackoverflow.com/a/50174679][post on StackOverflow]].
+
+**** =json-server=
+
+1. Create =db.json= in =app/core/mocks/=.
+
+2. Add the =api:start= command in =package.json=.
+
+3. Launch =json-server=: =npm run api:start= in another shell and
+   check the database availability at =http://localhost:3000/=.
+
+4. Add the API URL in =environments/environment.dev-json.ts=. See [[https://medium.com/@balramchavan/separating-production-and-development-http-urls-using-environment-ts-file-in-angular-4c2dd0c5a8b0][this link]].
+
+   #+BEGIN_SRC js
+     export const environment = {
+       production: false,
+       api: 'http://localhost:3000/heroes'
+     };
+   #+END_SRC
+
+5. Register this environment in =angular.json=:
+
+   #+BEGIN_SRC js
+     "build": {
+         ...
+         "configurations": {
+             "production": { ... },
+             "dev-json": {
+                 "fileReplacements": [
+                     {
+                         "replace": "src/environments/environment.ts",
+                         "with": "src/environments/environment.dev-json.ts"
+                     }
+                 ]
+             }
+         }
+     }
+   #+END_SRC
+
+6. Add the new environment in the =serve= section of =angular.json=:
+
+   #+BEGIN_SRC js
+     "serve": {
+         "builder": "@angular-devkit/build-angular:dev-server",
+         "options": {
+             "browserTarget": "etoh-web2:build"
+         },
+         "configurations": {
+             "production": {
+                 "browserTarget": "etoh-web2:build:production"
+             },
+             "dev-json": {
+                 "browserTarget": "etoh-web2:build:dev-json"
+             }
+         }
+     },
+   #+END_SRC
+
+You can now start the server like this: =ng serve -c dev-json=
+
+**** Java API
+
+The =json-server=-based API is handful when the backend is not ready
+yet but an API specification is available. The "real" backend will be
+a Spring-based Java application exposing a RESTful API. Thus, we will
+create a =dev-java= environment to switch easily. The steps are
+similar to the ones above:
+
+1. Add the API URL in =environments/environment.dev-java.ts=.
+
+   #+BEGIN_SRC js
+     export const environment = {
+         production: false,
+         api: 'http://localhost:8080/api/heroes'
+     };
+   #+END_SRC
+
+2. Register this environment in =angular.json=:
+
+   #+BEGIN_SRC js
+     "build": {
+         ...
+         "configurations": {
+             "production": { ... },
+             "dev-json": { ... },
+             "dev-java": {
+                 "fileReplacements": [
+                     {
+                         "replace": "src/environments/environment.ts",
+                         "with": "src/environments/environment.dev-java.ts"
+                     }
+                 ]
+             }
+         }
+     }
+
+   #+END_SRC
+
+3. Add the new environment in the =serve= section of =angular.json=:
+
+   #+BEGIN_SRC js
+     "serve": {
+         "builder": "@angular-devkit/build-angular:dev-server",
+         "options": {
+             "browserTarget": "etoh-web2:build"
+         },
+         "configurations": {
+             "production": {
+                 "browserTarget": "etoh-web2:build:production"
+             },
+             "dev-json": {
+                 "browserTarget": "etoh-web2:build:dev-json"
+             },
+             "dev-java": {
+                 "browserTarget": "etoh-web2:build:dev-java"
+             }
+         }
+     }
+   #+END_SRC
+
+You can now start the server like this: =ng serve -c dev-java=
+
+*** Hero Model
+
+Simply add the =Hero= class in =app/core/models/= and the barrel file
+=index.ts= - more about these barrel files below.
+
+*** =HeroService=
+
+Add a global =HeroService= in =app/core/services=. Remember that this
+singleton service will be imported by =AppModule= through
+=CoreModule=.
+
+#+BEGIN_SRC sh
+  ng g s core/services/hero --skip-tests
+#+END_SRC
+
+For clarity, we will register this service through
+=@NgModule.providers= in =CoreModule=, so we don't need =providedIn:
+'root'= in the service's =@Injectable()= decorator. However keep in
+mind that...
+
+#+BEGIN_QUOTE
+This method is preferred because it enables tree-shaking of the
+service if nothing injects it. [[https://angular.io/guide/providers#providedin-and-ngmodules][Source]] ([2018-10-24 mer.])
+#+END_QUOTE
+
+Implement =HeroService=. Look at the code. Important points:
+
+- =HttpClientModule= is imported in =CoreModule=.
+- The =Hero= import takes advantage of both the =paths= declared in
+  =tsconfig.json= and the barrel file:
+
+  #+BEGIN_SRC js
+    import { Hero } from '@app/core/models';
+  #+END_SRC
+
+  instead of
+
+  #+BEGIN_SRC js
+    import { Hero } from '../models/hero';
+  #+END_SRC
+
+  The =environment= import takes advantage of =tsconfig.json='s
+  =paths= as well.
+
+- The API URL is available through =environment.api=.
+
+- The service is provided in =CoreModule= and =CoreModule= is imported
+  in =AppModule=.
+
+** List of heroes
+
+Implement =HeroesComponent=. Don't forget the module-wide CSS. Things
+to take care of:
+
+- The module is lazy loaded in =AppRoutingModule=.
+- The root path relative to the module points to =HeroesComponent= in
+  =HeroesRoutingModule=.
+- The imports are short and absolute (like above).
+
+=http://localhost:4200/heroes= should work (you might need to restart
+=ng serve=). *Remember to start =json-server=!*
+
+** Hero details
+
+Implement =HeroDetailComponent=. The things to take care of are the
+same (lazy loading, module routing and imports).
+
+The hero links should now works (you might need to restart =ng
+serve=).
+
+** Dashboard
+
+Implement =DashboardComponent=. The things to take care of are the
+same (lazy loading, module routing and imports).
+
+=http://localhost:4200/dashboard= should work (you might need to restart
+=ng serve=).
+
+** Header
+
+Finally, add a =HeaderComponent= in =app/core/layout/=:
+
+#+BEGIN_SRC sh
+  ng g c core/layout/header --module=core --skip-tests
+#+END_SRC
+
+Export it in =CoreModule= (it will be declared already) and import
+=RouterModule= (for the links in the headers). Implement the component
+itself and add =<app-header></app-header>= in =app.component.html=.
