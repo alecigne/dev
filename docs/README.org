@@ -20,3 +20,5 @@
 
 - [[[file:ck0006_python-argparse.org][CK0006]]] =python-argparse= :: Parsing command-line arguments in
   Python.
+
+- [[[file:ck0007_spring-boot-minimal.org][CK0007]]] =spring-boot-minimal= :: My first contact with Spring Boot.
