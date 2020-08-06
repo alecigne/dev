@@ -1,6 +1,6 @@
 #+TITLE: [CK0006] =python-argparse=
 
-See [[file:../code/ck0006_python-argparse/][project]].
+[[file:../code/ck0006_python-argparse/][Project]] created on [2018-09-18 Tue].
 
 #+begin_example
   ❯ python main.py 2 2 -v 0

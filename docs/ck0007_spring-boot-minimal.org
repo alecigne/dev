@@ -1,6 +1,6 @@
 #+TITLE: [CK0007] =spring-boot-minimal=
 
-See [[file:../code/ck0007_spring-boot-minimal/][project]].
+[[file:../code/ck0007_spring-boot-minimal/][Project]] created on [2018-10-17 Wed].
 
 My first contact with Spring Boot, through a very simple Spring Boot
 project initialized with [[https://start.spring.io/][Spring Initializr]].

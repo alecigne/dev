@@ -1,6 +1,6 @@
 #+TITLE: [CK0005] =frontend-maven-plugin=
 
-See [[file:../code/ck0005_frontend-maven-plugin/][project]].
+[[file:../code/ck0005_frontend-maven-plugin/][Project]] created on [2018-09-17 Mon].
 
 The goal of the [[file:ck0004_angular-spring-maven.org][=angular-spring-maven=]] project was to use the
 [[https://www.mojohaus.org/exec-maven-plugin/][exec-maven-plugin]] in order to build an Angular front-end project
