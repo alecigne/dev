@@ -1,0 +1,135 @@
+#+TITLE: [CK0011] =cordova-helloworld=
+
+[[file:../code/ck0011_cordova-helloworld/][Project]] created on [2018-10-26 Fri].
+
+#+HTML: <p align="center"><img src="./files/ck0011.png" /></p>
+
+This is a minimal, preliminary project before building a deployable
+mobile application using Ionic (see [[file:ck0010_ionic-crud.org][=ionic-crud=]] for an exemple using
+=@ionic/lab=).
+
+* Startup
+
+1. Install Apache Cordova:
+
+   #+BEGIN_SRC sh
+     sudo npm install -g cordova
+   #+END_SRC
+
+2. Add a platform. I use Android:
+
+   #+begin_src sh
+     cordova platform add android@latest
+   #+end_src
+
+3. Check the requirements:
+
+   #+BEGIN_SRC sh
+     cordova requirements
+   #+END_SRC
+
+   Most of the requirements can be installed through [[https://developer.android.com/studio][Android
+   Studio]]. In case it doesn't find the Android SDK, you can prefix the
+   command with its path:
+
+   #+begin_src sh
+     ANDROID_SDK_ROOT=/home/alc/Android/Sdk cordova requirements
+   #+end_src
+
+   ...or simply export the environment variable for this terminal
+   session or more permanently if you wish:
+
+   #+begin_src sh
+     export ANDROID_SDK_ROOT=/home/alc/Android/Sdk
+   #+end_src
+
+   Output after doing what's necessary:
+
+   #+begin_example
+     Requirements check results for android:
+     Java JDK: installed 1.8.0
+     Android SDK: installed true
+     Android target: installed android-30,android-29
+     Gradle: installed /opt/gradle/bin/gradle
+   #+end_example
+
+   In case of an incompatibility between Java versions, just set up
+   alternatives:
+
+   #+begin_src sh
+     sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_201/bin/java 3
+     sudo update-alternatives --config java
+     sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_201/bin/javac 3
+     sudo update-alternatives --config javac
+   #+end_src
+
+** Testing on a Android emulator
+
+1. Add an Android emulator image using Android Studio and its AVD
+   manager.
+
+2. Emulate the application:
+
+   #+begin_src sh
+     cordova emulate android
+   #+end_src
+
+   I encountered this error message:
+
+   #+begin_example
+     emulator: ERROR: x86 emulation currently requires hardware acceleration!
+   #+end_example
+
+   To check whether the KVM is installed in the machine or not, I used
+   the ~cpu-checker~ package and its ~kvm-ok~ command:
+
+   #+begin_example
+     ❯ sudo kvm-ok
+     INFO: /dev/kvm does not exist
+     HINT:   sudo modprobe kvm_intel
+     INFO: Your CPU supports KVM extensions
+     INFO: KVM (vmx) is disabled by your BIOS
+     HINT: Enter your BIOS setup and enable Virtualization Technology (VT),
+           and then hard poweroff/poweron your system
+     KVM acceleration can NOT be used
+   #+end_example
+
+   After activating VT, ~kvm-ok~'s output was:
+
+   #+begin_example
+     ❯ sudo kvm-ok
+     INFO: /dev/kvm exists
+     KVM acceleration can be used
+   #+end_example
+
+   I also got this message on another computer:
+
+   #+begin_example
+     PANIC: Missing emulator engine program for 'x86' CPU
+   #+end_example
+
+   Adding the emulator to the PATH fixed it, as per [[https://stackoverflow.com/a/49511666][an SO answer]]:
+
+   #+begin_src sh
+     export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
+   #+end_src
+
+** Testing on a real device
+
+1. Activate USB debugging and install the ADB driver.
+
+2. Once your device plugged-in and USB debugging activated, check if
+   the Android debug bridge tool can detect your phone. On Windows it
+   is located in =~/AppData/Local/Android/Sdk/platform-tools=:
+
+   #+BEGIN_SRC sh
+     adb devices
+   #+END_SRC
+
+   It should find the device.
+
+3. Install the app on your device:
+
+   #+BEGIN_SRC sh
+     cordova run android --device
+   #+END_SRC

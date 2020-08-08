@@ -30,3 +30,6 @@
   above.
 
 - [[[file:ck0010_ionic-crud.org][CK0010]]] =ionic-crud= :: A Ionic version of the ETOH project above.
+
+- [[[file:ck0011_cordova-helloworld.org][CK0011]]] =cordova-helloworld= :: Running a Cordova application in an
+  Android emulator and on a physical device.
