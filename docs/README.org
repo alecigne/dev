@@ -33,3 +33,6 @@
 
 - [[[file:ck0011_cordova-helloworld.org][CK0011]]] =cordova-helloworld= :: Running a Cordova application in an
   Android emulator and on a physical device.
+
+- [[[file:ck0012_ionic-crud-android.org][CK0012]]] =ionic-crud-android= :: Using Cordova to build a
+  Ionic-based Android project.

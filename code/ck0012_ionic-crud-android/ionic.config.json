@@ -1,0 +1,7 @@
+{
+  "name": "ionic-crud-android",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

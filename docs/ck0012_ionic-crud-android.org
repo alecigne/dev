@@ -1,0 +1,40 @@
+#+TITLE: [CK0012] =ionic-crud-android=
+
+[[file:../code/ck0012_ionic-crud-android/][Project]] created on [2018-11-12 Mon].
+
+#+HTML: <p align="center"><img src="./files/ck0012.png" /></p>
+
+This is the continuation of three projects:
+
+- [[file:ck0008_angular-extended-tour-of-heroes.org][=angular-extended-tour-of-heroes=]] (ETOH), a slightly modified Tour
+  of Heroes application
+
+- [[file:ck0010_ionic-crud.org][=ionic-crud=]], the same application built with Ionic
+
+- [[file:ck0011_cordova-helloworld.org][=cordova-helloworld=]], a minimal Cordova application to illustrate
+  Android emulation
+
+The goal is now to emulate the Ionic version of ETOH on a virtual
+Android device.
+
+The database was switched from =json-server= to =in-memory-web-api=
+for practical reasons so nothing will be /really/ persistent.
+
+The app name and icon were edited in =config.xml= and
+=./resources/android/icon/= respectively.
+
+* Startup
+
+See [[file:ck0011_cordova-helloworld.org][=cordova-helloworld=]] first for reference and tips.
+
+#+BEGIN_SRC sh
+  # Use npx if Ionic is not installed globally
+  npx ionic cordova platform add android
+  export ANDROID_HOME=/home/alc/Android/Sdk
+  npx ionic cordova requirements
+  npm install native-run
+  # Fix the problem encountered also in CK0010
+  npm rebuild node-sass --force
+  npm install node-sass
+  npx ionic cordova emulate android
+#+END_SRC

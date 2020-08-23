@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ hero.name }} Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ hero.name }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod odio vitae tortor sodales, id
+        sodales ipsum laoreet. Suspendisse nibh magna, elementum eget justo id, convallis convallis nisi. Aliquam erat
+        volutpat. Cras suscipit, risus sit amet ornare imperdiet, tellus ipsum elementum odio, sit amet suscipit justo
+        mauris ac erat. Nulla in lacus sed orci hendrerit vulputate. Interdum et malesuada fames ac ante ipsum primis
+        in faucibus. Nulla congue in arcu consequat dignissim.</p>
+      <ion-buttons slot="primary">
+        <ion-button>
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
