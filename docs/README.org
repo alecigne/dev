@@ -1,5 +1,11 @@
 #+TITLE: Coding Katas - documentation
 
+* Series
+
+- [[file:series/algorithms.org][Algorithms]] :: Algorithms implemented in various languages
+
+* Projects
+
 - [[[file:ck0001_spring-jdbc.org][CK0001]]] =spring-jdbc= :: A few common cases encountered while using
   Spring JDBC.
 
