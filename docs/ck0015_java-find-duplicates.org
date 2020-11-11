@@ -1,0 +1,21 @@
+#+TITLE: [CK0015] =java-find-duplicates=
+
+* Timeline
+
+[[file:../code/ck0015_java-find-duplicates][Project]] created on [2019-02-02 Sat].
+
+* Notes
+* Resources
+
+https://stackoverflow.com/q/3951547
+
+* Tasks
+
+- [ ] Implement ~DuplicateFinder~, an implementation that returns the
+  duplicates
+
+- [ ] Measure the performance of the implementations
+
+* See also
+
+[[file:series/algorithms.org][Algorithms]]

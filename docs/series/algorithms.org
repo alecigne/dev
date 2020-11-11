@@ -3,3 +3,5 @@
 * Projects
 
 - [[[file:../ck0014_java-binary-search.org][CK0014]]] =java-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Java.
+
+- [[[file:../ck0015_java-find-duplicates.org][CK0015]]] =java-find-duplicates= :: Finding duplicates in Java.
