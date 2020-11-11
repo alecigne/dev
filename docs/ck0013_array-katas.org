@@ -1,6 +1,6 @@
 #+TITLE: [CK0013] =array-katas=
 
-[[file:../code/ck0013_array_katas][Project]] created on [2019-01-19 Sat.].
+[[file:../code/ck0013_array-katas][Project]] created on [2019-01-19 Sat.].
 
 Just a few basic operations on vanilla Java arrays. It was part of my
 old =coding-katas= repo where I had started to explore Java SE in a

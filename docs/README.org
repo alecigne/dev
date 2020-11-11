@@ -37,5 +37,5 @@
 - [[[file:ck0012_ionic-crud-android.org][CK0012]]] =ionic-crud-android= :: Using Cordova to build a
   Ionic-based Android project.
 
-- [[[file:ck0013_array_katas.org][CK0013]]] =array-katas= :: Just a few basic operations on vanilla Java
+- [[[file:ck0013_array-katas.org][CK0013]]] =array-katas= :: Just a few basic operations on vanilla Java
   arrays.
