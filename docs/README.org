@@ -39,3 +39,6 @@
 
 - [[[file:ck0013_array-katas.org][CK0013]]] =array-katas= :: Just a few basic operations on vanilla Java
   arrays.
+
+- [[[file:ck0014_java-binary-search.org][CK0014]]] =java-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Java. Part of a
+  [[file:series/algorithms.org][series on algorithms]].

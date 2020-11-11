@@ -1,0 +1,5 @@
+#+TITLE: Algorithms
+
+* Projects
+
+- [[[file:../ck0014_java-binary-search.org][CK0014]]] =java-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Java.
