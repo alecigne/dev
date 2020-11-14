@@ -1,0 +1,23 @@
+#+TITLE: [CK0019] =jdbc=
+
+* Timeline
+
+[[file:../../code/ck0019_jdbc/][Project]] created on [2019-03-06 Wed].
+
+* Usage
+
+The tests use H2. The main class uses a real database: run
+=docker-compose up= in order to prepare the MariaDB database in a
+Docker container. =docker-compose.yml= will take care of creating a
+database:
+
+#+begin_src yaml
+  MYSQL_DATABASE: jdbc
+#+end_src
+
+...and a schema:
+
+#+begin_src yaml
+  volumes:
+    - ./docker-data:/docker-entrypoint-initdb.d
+#+end_src

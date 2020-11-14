@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: jdbc
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker-data:/docker-entrypoint-initdb.d

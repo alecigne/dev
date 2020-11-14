@@ -58,3 +58,6 @@
 - [[[file:projects/ck0017_java-time.org][CK0017]]] =java-time= :: A first dive into the =java.time= API.
 
 - [[[file:projects/ck0018_jpa-simple-dao.org][CK0018]]] =jpa-simple-dao= :: A DAO using JPA.
+
+- [[[file:projects/ck0019_jdbc.org][CK0019]]] =jdbc= :: Using JDBC directly to access a database.
+
