@@ -8,6 +8,5 @@
 
 * Tasks
 
-- [ ] Implement a generic solution
 - [ ] Return theoretical index of a value if it's not found \\
   cf. ~Arrays.binarySearch~ and ~Collections.binarySearch~.

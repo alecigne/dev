@@ -14,7 +14,7 @@ https://stackoverflow.com/q/3951547
 - [ ] Implement ~DuplicateFinder~, an implementation that returns the
   duplicates
 
-- [ ] Measure the performance of the implementations
+cf. also [[file:series/algorithms.org::*Tasks][common tasks]] for algorithms.
 
 * See also
 

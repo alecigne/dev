@@ -5,3 +5,13 @@
 - [[[file:../ck0014_java-binary-search.org][CK0014]]] =java-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Java.
 
 - [[[file:../ck0015_java-find-duplicates.org][CK0015]]] =java-find-duplicates= :: Finding duplicates in Java.
+
+- [[[file:../ck0016_java-sort.org][CK0016]]] =ck0016_java-sort= :: Sorting in Java.
+
+* Tasks
+
+These tasks are common to most of the algorithms projects:
+
+- [ ] Measure performance
+
+- [ ] Implement generic solutions

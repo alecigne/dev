@@ -51,3 +51,6 @@
 
 - [[[file:ck0015_java-find-duplicates.org][CK0015]]] =java-find-duplicates= :: Finding duplicates in Java. Part
   of a [[file:series/algorithms.org][series on algorithms]].
+
+- [[[file:ck0016_java-sort.org][CK0016]]] =java-sort= :: Sorting in Java. Part of a [[file:series/algorithms.org][series on
+  algorithms]].
