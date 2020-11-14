@@ -1,8 +1,8 @@
 #+TITLE: [CK0011] =cordova-helloworld=
 
-[[file:../code/ck0011_cordova-helloworld/][Project]] created on [2018-10-26 Fri].
+[[file:../../code/ck0011_cordova-helloworld/][Project]] created on [2018-10-26 Fri].
 
-#+HTML: <p align="center"><img src="./files/ck0011.png" /></p>
+#+HTML: <p align="center"><img src="../.files/ck0011.png" /></p>
 
 This is a minimal, preliminary project before building a deployable
 mobile application using Ionic (see [[file:ck0010_ionic-crud.org][=ionic-crud=]] for an exemple using

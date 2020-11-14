@@ -6,53 +6,53 @@
 
 * Projects
 
-- [[[file:ck0001_spring-jdbc.org][CK0001]]] =spring-jdbc= :: A few common cases encountered while using
+- [[[file:projects/ck0001_spring-jdbc.org][CK0001]]] =spring-jdbc= :: A few common cases encountered while using
   Spring JDBC.
 
-- [[[file:ck0002_python-pymysql.org][CK0002]]] =python-mysql= :: How to do basic CRUD with Python and
+- [[[file:projects/ck0002_python-pymysql.org][CK0002]]] =python-mysql= :: How to do basic CRUD with Python and
   PyMySQL (MySQL database provided by Docker).
 
-- [[[file:ck0003_python-sqlalchemy.org][CK0003]]] =python-sqlalchemy= :: Using ORM in Python with SQLAlchemy.
+- [[[file:projects/ck0003_python-sqlalchemy.org][CK0003]]] =python-sqlalchemy= :: Using ORM in Python with SQLAlchemy.
 
-- [[[file:ck0004_angular-spring-maven.org][CK0004]]] =angular-spring-maven= :: A multi-module Maven project with
+- [[[file:projects/ck0004_angular-spring-maven.org][CK0004]]] =angular-spring-maven= :: A multi-module Maven project with
   an Angular front-end and a "dummy" Java back-end. The build process
   is managed by Maven through =maven-exec-plugin=.
 
-- [[[file:ck0005_frontend-maven-plugin.org][CK0005]]] =frontend-maven-plugin= :: Like the CK0004 project, this is
+- [[[file:projects/ck0005_frontend-maven-plugin.org][CK0005]]] =frontend-maven-plugin= :: Like the CK0004 project, this is
   a multi-module Maven project with an Angular front-end and a "dummy"
   Java back-end. However, the build process is managed with
   =frontend-maven-plugin= and doesn't need a local installation of
   Node or npm.
 
-- [[[file:ck0006_python-argparse.org][CK0006]]] =python-argparse= :: Parsing command-line arguments in
+- [[[file:projects/ck0006_python-argparse.org][CK0006]]] =python-argparse= :: Parsing command-line arguments in
   Python.
 
-- [[[file:ck0007_spring-boot-minimal.org][CK0007]]] =spring-boot-minimal= :: My first contact with Spring Boot.
+- [[[file:projects/ck0007_spring-boot-minimal.org][CK0007]]] =spring-boot-minimal= :: My first contact with Spring Boot.
 
-- [[[file:ck0008_angular-extended-tour-of-heroes.org][CK0008]]] =angular-extended-tour-of-heroes= :: Using [[https://angular.io/tutorial][Tour of Heroes]]
+- [[[file:projects/ck0008_angular-extended-tour-of-heroes.org][CK0008]]] =angular-extended-tour-of-heroes= :: Using [[https://angular.io/tutorial][Tour of Heroes]]
   as a basis to document more advanced practices.
 
-- [[[file:ck0009_etoh-api.org][CK0009]]] =etoh-api= :: A Spring Boot backend for the ETOH project
+- [[[file:projects/ck0009_etoh-api.org][CK0009]]] =etoh-api= :: A Spring Boot backend for the ETOH project
   above.
 
-- [[[file:ck0010_ionic-crud.org][CK0010]]] =ionic-crud= :: A Ionic version of the ETOH project above.
+- [[[file:projects/ck0010_ionic-crud.org][CK0010]]] =ionic-crud= :: A Ionic version of the ETOH project above.
 
-- [[[file:ck0011_cordova-helloworld.org][CK0011]]] =cordova-helloworld= :: Running a Cordova application in an
+- [[[file:projects/ck0011_cordova-helloworld.org][CK0011]]] =cordova-helloworld= :: Running a Cordova application in an
   Android emulator and on a physical device.
 
-- [[[file:ck0012_ionic-crud-android.org][CK0012]]] =ionic-crud-android= :: Using Cordova to build a
+- [[[file:projects/ck0012_ionic-crud-android.org][CK0012]]] =ionic-crud-android= :: Using Cordova to build a
   Ionic-based Android project.
 
-- [[[file:ck0013_array-katas.org][CK0013]]] =array-katas= :: Just a few basic operations on vanilla Java
+- [[[file:projects/ck0013_array-katas.org][CK0013]]] =array-katas= :: Just a few basic operations on vanilla Java
   arrays.
 
-- [[[file:ck0014_java-binary-search.org][CK0014]]] =java-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Java. Part of a
+- [[[file:projects/ck0014_java-binary-search.org][CK0014]]] =java-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Java. Part of a
   [[file:series/algorithms.org][series on algorithms]].
 
-- [[[file:ck0015_java-find-duplicates.org][CK0015]]] =java-find-duplicates= :: Finding duplicates in Java. Part
+- [[[file:projects/ck0015_java-find-duplicates.org][CK0015]]] =java-find-duplicates= :: Finding duplicates in Java. Part
   of a [[file:series/algorithms.org][series on algorithms]].
 
-- [[[file:ck0016_java-sort.org][CK0016]]] =java-sort= :: Sorting in Java. Part of a [[file:series/algorithms.org][series on
+- [[[file:projects/ck0016_java-sort.org][CK0016]]] =java-sort= :: Sorting in Java. Part of a [[file:series/algorithms.org][series on
   algorithms]].
 
-- [[[file:ck0017_java-time.org][CK0017]]] =java-time= :: A first dive into the =java.time= API.
+- [[[file:projects/ck0017_java-time.org][CK0017]]] =java-time= :: A first dive into the =java.time= API.

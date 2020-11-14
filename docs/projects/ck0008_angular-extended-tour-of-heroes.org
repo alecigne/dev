@@ -1,6 +1,6 @@
 #+TITLE: [CK0008] =angular-extended-tour-of-heroes=
 
-[[file:../code/ck0008_angular-extended-tour-of-heroes/][Project]] created on [2018-10-19 Fri].
+[[file:../../code/ck0008_angular-extended-tour-of-heroes/][Project]] created on [2018-10-19 Fri].
 
 The goal of this project is to use the [[https://angular.io/tutorial][Tour of Heroes]] tutorial as a
 basis for documenting a few basic Angular good practices, such as an

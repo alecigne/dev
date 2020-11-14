@@ -2,7 +2,7 @@
 
 * Timeline
 
-[[file:../code/ck0015_java-find-duplicates][Project]] created on [2019-02-02 Sat].
+[[file:../../code/ck0015_java-find-duplicates][Project]] created on [2019-02-02 Sat].
 
 * Notes
 * Resources

@@ -1,5 +1,5 @@
 #+TITLE: [CK0002] =python-pymysql=
 
-[[file:../code/ck0002_python-pymysql/][Project]] created on [2018-09-06 Thu].
+[[file:../../code/ck0002_python-pymysql/][Project]] created on [2018-09-06 Thu].
 
 Run =docker-compose up= in order to prepare the MySQL database.

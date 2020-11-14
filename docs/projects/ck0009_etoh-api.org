@@ -1,6 +1,6 @@
 #+TITLE: [CK0009] =etoh-api=
 
-[[file:../code/ck0009_etoh-api/][Project]] created on [2018-10-22 Mon].
+[[file:../../code/ck0009_etoh-api/][Project]] created on [2018-10-22 Mon].
 
 This project capitalizes on [[file:ck0007_spring-boot-minimal.org][=spring-boot-minimal=]] to build a very
 simple backend for the [[file:ck0008_angular-extended-tour-of-heroes.org][Extended Tour of Heroes (ETOH) Angular
