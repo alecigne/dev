@@ -1,0 +1,87 @@
+#+TITLE: [CK0018] =jpa-simple-dao=
+
+A basic DAO using JPA, with a configuration using =persistence.xml=.
+
+* Timeline
+
+[[file:../../code/ck0018_jpa-simple-dao/][Project]] created on [2019-03-05 Tue].
+
+* Usage
+
+The tests use H2. The main class uses a real database: run
+=docker-compose up= in order to prepare the MariaDB database in a
+Docker container.
+
+* Notes
+
+** Dependencies
+
+#+BEGIN_SRC xml
+  <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/javax.persistence -->
+  <dependency>
+    <groupId>org.eclipse.persistence</groupId>
+    <artifactId>javax.persistence</artifactId>
+    <version>2.2.1</version>
+  </dependency>
+#+END_SRC
+
+This will provide the JPA API.
+
+#+BEGIN_SRC xml
+  <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+  <dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.4.1.Final</version>
+  </dependency>
+#+END_SRC
+
+This will provide the actual JPA implementation (here, Hibernate).
+
+** =persistence.xml=
+
+#+BEGIN_QUOTE
+A JPA Persistence Unit is a logical grouping of user defined
+persistable classes (entity classes, embeddable classes and mapped
+superclasses) with related settings. Defining a persistence unit is
+optional when using ObjectDB, but required by JPA. ([[https://www.objectdb.com/java/jpa/entity/persistence-unit][Source]])
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+A persistence unit is defined by a persistence-unit XML element. The
+required name attribute ("my-pu" in the example) identifies the
+persistence unit when instantiating an =EntityManagerFactory=. It may
+also have optional sub elements:
+
+- The provider element indicates which JPA implementation should be
+  used. ObjectDB is represented by the com.objectdb.jpa.Provider
+  string. If not specified, the first JPA implementation that is found
+  is used.
+
+- The mapping-file elements specify XML mapping files that are added
+  to the default META-INF/orm.xml mapping file. Every annotation that
+  is described in this manual can be replaced by equivalent XML in the
+  mapping files (as explained below).
+
+- The jar-file elements specify JAR files that should be searched for
+  managed persistable classes.
+
+- The class elements specify names of managed persistable classes (see
+  below).
+
+- The property elements specify general properties. JPA 2 defines
+  standard properties for specifying database url, username and
+  password, as demonstrated above.
+
+([[https://www.objectdb.com/java/jpa/entity/persistence-unit][Source]])
+#+END_QUOTE
+
+About =transaction-type=: [[https://stackoverflow.com/a/17331863][here]].
+
+About mappings with XML: [[http://webdev.jhuep.com/~jcs/ejava-javaee/coursedocs/605-784-site/docs/content/html/hibernate-migration-orm.html][here]].
+
+* Tasks
+
+- [ ] Fix problem with JUnit
+- [ ] Understand why the =class= tag is needed for tests
+- [ ] Finish tests

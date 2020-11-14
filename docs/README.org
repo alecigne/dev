@@ -56,3 +56,5 @@
   algorithms]].
 
 - [[[file:projects/ck0017_java-time.org][CK0017]]] =java-time= :: A first dive into the =java.time= API.
+
+- [[[file:projects/ck0018_jpa-simple-dao.org][CK0018]]] =jpa-simple-dao= :: A DAO using JPA.
