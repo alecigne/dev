@@ -4,6 +4,8 @@
 
 - [[file:series/algorithms.org][Algorithms]] :: Algorithms implemented in various languages
 
+- [[file:series/design-patterns.org][Design patterns]] :: Design patterns in various languages
+
 * Project index
 
 - [[[file:projects/ck0001_spring-jdbc.org][CK0001]]] =spring-jdbc= :: A few common cases encountered while using
@@ -61,3 +63,5 @@
 
 - [[[file:projects/ck0019_jdbc.org][CK0019]]] =jdbc= :: Using JDBC directly to access a database.
 
+- [[[file:projects/ck0020_java-singleton.org][CK0020]]] =java-singleton= :: A first dive into the [[https://en.wikipedia.org/wiki/Singleton_pattern][Singleton design
+  pattern]] in Java. Part of a [[file:series/design-patterns.org][series on design patterns]].
