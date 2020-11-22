@@ -1,0 +1,5 @@
+#+TITLE: Design patterns
+
+* Projects
+
+- [[[file:projects/ck0020_java-singleton.org][CK0020]]] =java-singleton= :: The Singleton design pattern in Java.

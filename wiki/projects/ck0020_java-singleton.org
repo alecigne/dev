@@ -1,0 +1,47 @@
+#+TITLE: [CK0020] =java-singleton=
+
+The [[https://en.wikipedia.org/wiki/Singleton_pattern][Singleton]] design pattern (or [[https://stackoverflow.com/questions/12755539/why-is-singleton-considered-an-anti-pattern][antipattern]]!).
+
+* Timeline
+
+[[file:../../code/ck0020_singleton/][Project]] created on [2019-03-27 Wed].
+
+* Notes
+
+** Eager singleton
+
+~EagerSingletonField~ is the simplest singleton:
+
+- Private constructor
+- Hence, a static method to access the instance
+- The static instance itself
+- The class is final, although the constructor is private (somewhat
+  redundant but it is better to be explicit)
+
+~EagerSingletonStaticBlock~ takes advantage of a static block to
+handle exceptions.
+
+In both "eager" singletons, the instance is created at class loading,
+which might not be what we want. Here, when the static method
+~isInstantiated~ is called, the class will be loaded and the instance
+created. See unit tests.
+
+Both of these approaches are apparently thread-safe (guaranteed by the
+JVM). See this [[https://stackoverflow.com/questions/52687983/is-java-eager-singleton-creation-thread-safe][SO discussion]].
+
+** Lazy singleton
+
+~LazySingletonNotThreadSafe~ will instantiate the singleton when you
+ask for it. It is not thread-safe since multiple threads can do the
+test at the same time and instantiate twice.
+
+* Resources
+
+- http://thecodersbreakfast.net/index.php?post/2008/02/25/26-de-la-bonne-implementation-du-singleton-en-java
+- https://medium.com/@kevalpatel2106/how-to-make-the-perfect-singleton-de6b951dfdb0
+- https://stackoverflow.com/questions/7790185/singleton-lazy-vs-eager-instantiation
+- https://medium.com/@sinethneranjana/5-ways-to-write-a-singleton-and-why-you-shouldnt-1cf078562376
+- https://medium.com/swlh/a-complete-guide-on-singleton-design-pattern-in-java-846c2f8df5fc
+- https://medium.com/@cancerian0684/singleton-design-pattern-and-how-to-make-it-thread-safe-b207c0e7e368
+- http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html
+- [[https://stackoverflow.com/questions/48772068/unit-test-the-thread-safety-of-a-singleton-class-in-java][Unit testing the thread-safety problem]]
