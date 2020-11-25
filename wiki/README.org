@@ -1,3 +1,4 @@
+
 #+TITLE: Coding Katas - wiki
 
 * Series
@@ -65,3 +66,6 @@
 
 - [[[file:projects/ck0020_java-singleton.org][CK0020]]] =java-singleton= :: A first dive into the [[https://en.wikipedia.org/wiki/Singleton_pattern][Singleton design
   pattern]] in Java. Part of a [[file:series/design-patterns.org][series on design patterns]].
+
+- [[[file:projects/ck0021_bloch-builder.org][CK0021]]] =bloch-builder= :: Joshua Bloch's Builder design pattern
+  and alternatives. Part of a [[file:series/design-patterns.org][series on design patterns]].

@@ -1,0 +1,199 @@
+#+TITLE: [CK0021] =bloch-builder=
+
+[[file:../../code/ck0021_bloch-builder/][Project]] created on [2019-03-27 Wed].
+
+Bloch's Builder pattern, found in the Effective Java book (see [[https://web.archive.org/web/20201125213714/https://www.informit.com/articles/article.aspx?p=1216151&seqNum=2][this
+link]]). It is not to be confused with GoF's Builder, although there are
+some similarities. It is an alternative to the Telescoping Constructor
+and JavaBeans patterns.
+
+* Context
+
+Take this example from Effective Java:
+
+#+begin_quote
+Consider the case of a class representing the Nutrition Facts label
+that appears on packaged foods. These labels have a few required
+fields — serving size, servings per container, and calories per
+serving — and over twenty optional fields — total fat, saturated fat,
+trans fat, cholesterol, sodium, and so on. Most products have nonzero
+values for only a few of these optional fields.
+#+end_quote
+
+We want to create such an object in the most flexible way possible by
+initializing the required fields and choosing one or multiple optional
+fields.
+
+Our main criterion for a solution will be:
+
+- Readability/writability/fallibility of the class itself
+
+- Readability/writability/fallibility of instantiation
+
+- Immutability of the created object
+
+Check the unit tests for examples of instantiation.
+
+* Patterns
+
+** Telescoping constructor
+
+See ~NutritionFactsTelescoping.java~ and its associated unit test.
+
+The class offers multiple constructors, each one taking a different
+number of parameters, so the class can be instantiated with different
+combinations of parameters.
+
+Right from the beginning, and although that would be highly
+unreadable, we know we can't create /all/ combinations of constructors
+since the field types are identical (~int~).
+
+So we create all possible constructors, from two ~int~ args (for the
+two required fields) to six ~int~ args (maximum number of fields in
+our example).
+
+Now if we want a ~NutritionFacts~ object with the two required
+parameters and the ~carbohydrate~ field, we need to write this:
+
+#+begin_src java
+  NutritionFactsTelescoping nf = new NutritionFactsTelescoping(10, 10, 0, 0, 0, 54);
+#+end_src
+
+- The class is difficult to read (imagine 20 fields). It is difficult
+  and error-prone to write, although the IDE can assist you. With
+  fields of different types, you could write an very large number of
+  combinations (see [[*Factory methods][Factory methods]] below in which these combinations
+  are indeed possible).
+
+  Lombok doesn't generate all combinations of constructors.
+
+- In most cases the shortest possible constructor is not adapted: in
+  the example above, we had to set the ~calories~, ~fat~ and ~sodium~
+  fields to initialize the ~carbohydrate~ field. Instantiation is
+  difficult and error-prone to write (this could lead to runtime
+  bugs). Instantiation is difficult to read.
+
+  Note that the IDE can help identifying fields.
+
+- The object can be immutable.
+
+- The required fields can be asked explicitely to the developer:
+  ~servingSize~ and ~servings~ will always be explicitely
+  provided. This does not dispense from the need to perform a
+  validation at runtime.
+
+** Factory methods
+
+See ~NutritionFactsFactoryMethods.java~ and its associated unit test.
+
+Instantiation:
+
+#+begin_src java
+  NutritionFactsFactoryMethods nf = NutritionFactsFactoryMethods.withCarbohydrates(10, 10, 54);
+#+end_src
+
+- The class is extremely difficult to read and write if you want total
+  flexibility (all possible combinations - I stopped at 10
+  constructors...). The IDE can't really assist you.
+
+- Instantiation is okay to write, still somewhat difficult to read.
+
+- The object can be immutable.
+
+- The required fields can be asked explicitely to the developer:
+  ~servingSize~ and ~servings~ will always be explicitely provided in
+  the factory methods.
+
+*** See also
+
+[[https://web.archive.org/web/20201128160735/https://www.informit.com/articles/article.aspx?p=1398606][Refactoring to Patterns: Creation]]
+
+** JavaBeans
+
+See ~NutritionFactsJavaBeans.java~ and its associated unit test.
+
+Instantiation:
+
+#+begin_src java
+  NutritionFactsJavaBeans nf = new NutritionFactsJavaBeans();
+  nf.setServingSize(servingSize);
+  nf.setServings(servings);
+  nf.setCarbohydrates(carbohydrates);
+#+end_src
+
+- The class is quite easy to read but with a lot of boilerplate code
+  (getters and setters). It is easy to write with an IDE.
+
+  With Lombok, the class becomes extremely easy to read and write -
+  see ~NutritionFactsJavaBeansLombok~.
+
+- Instantiation is quite easy to write and read.
+
+- The object is mutable and can be in an inconsistent state. In the
+  strict Java Bean specification, you can't force the developer to
+  explicitely pass the required values since there is only a noarg
+  constructor. This is not true with a looser definition (a
+  constructor with required parameters, getters and setters).
+
+*** See also
+
+https://www.informit.com/articles/article.aspx?p=1398606
+
+** Method chaining
+
+See ~NutritionFactsMethodChaining~ and its associated unit test.
+
+Instantiation:
+
+#+begin_src java
+  NutritionFactsMethodChaining nf = new NutritionFactsMethodChaining(servingSize, servings).withCarbohydrate(carbohydrates);
+#+end_src
+
+- The class is quite easy to read but with a lot of boilerplate
+  code. Your IDE can't generate the ~with...~ methods.
+
+- Instantiation is easy to write and read.
+
+- The object is mutable (~with...~ methods are basically setters) and
+  can still be in an inconsistent state. See [[https://web.archive.org/web/20201111165753/https://softwareengineering.stackexchange.com/questions/309068/why-is-chaining-setters-unconventional][here]] for other reasons
+  not to use this pattern (misleading return value, problems with
+  inheritance...).
+
+  The developer can be forced to provide required parameters through a
+  constructor, but this would be true also in a looser version of the
+  JavaBean pattern.
+
+  The only advantage here is readability, with many downsides.
+
+** Builder
+
+See ~NutritionFactsBuilder~ and its associated unit test.
+
+Instantiation:
+
+#+begin_src java
+  NutritionFactsBuilder nf = new NutritionFactsBuilder.Builder(servingSize, servings)
+          .carbohydrates(carbohydrates)
+          .build();
+#+end_src
+
+- The class is moderately easy to read, easier if you already know the
+  pattern. Very easy with Lombok (cf. ~NutritionFactsBuilderLombok~).
+
+- Instantiation is easy to write and read.
+
+- The object can be immutable.
+
+- The developer can be forced to provide required parameters. This can
+  [[https://web.archive.org/web/20201128161240/https://blog.jayway.com/2012/02/07/builder-pattern-with-a-twist/][go even further]].
+
+  This is not really feasible with the ~@Builder~ Lombok annotation -
+  see these links:
+
+  + https://github.com/rzwitserloot/lombok/wiki/FEATURE-IDEA:-%22Mandatory%22-fields-with-@Builder
+  + https://github.com/rzwitserloot/lombok/issues/1043
+  + https://stackoverflow.com/questions/29885428/required-arguments-with-a-lombok-builder
+
+** Reversible builder
+
+See [[https://github.com/fge/btf/wiki/The-freeze-thaw-pattern][here]].
