@@ -7,3 +7,6 @@
 
 - [[[file:../projects/ck0021_bloch-builder.org][CK0021]]] =bloch-builder= :: Joshua Bloch's Builder design pattern
   and alternatives.
+
+- [[[file:../projects/ck0022_strategy.org][CK0022]]] =strategy= :: A simple example of the strategy
+  pattern.
