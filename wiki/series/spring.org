@@ -1,0 +1,35 @@
+#+TITLE: Spring
+
+* Dependency injection (DI)
+
+- The "rawest" and oldest form of Spring DI configuration is the "full
+  XML" path. Everything is managed using one or more XML files.
+
+  Projects:
+
+  + [[https://github.com/alecigne/gtm-projects/tree/master/df_PrestiBanque_TP1_setter][=gtm-df=]] (setter injection)
+  + [[https://github.com/alecigne/gtm-projects/tree/master/dg_PrestiBanque_TP1_constructeur][=gtm-dg=]] (constructor injection)
+
+- Starting from Spring 2.5, it became possible to use annotations to
+  configure DI. You still had to enable it in an XML file:
+
+  #+begin_src xml
+    <context:annotation-config/>
+    <context:component-scan base-package="package"/>
+  #+end_src
+
+  The XML file takes precedence over annotations in case of a
+  conflict.
+
+  Projects:
+
+  + [[https://github.com/alecigne/gtm-projects/tree/master/dq_PrestiBanque_TP5][=gtm-dq=]]
+
+- Starting from Spring 3.0 and "JavaConfig", you can replace the XML
+  file with a Java class.
+
+  Projects:
+
+  + [[file:../projects/ck0023_spring-di-java-config.org][CK0023]] (JavaConfig without annotation-based injection)
+  + [[https://github.com/alecigne/gtm-projects/tree/master/dl_SpringVehicleAnnotations][=gtm-dl=]] (idem)
+  + [[https://github.com/alecigne/gtm-projects/tree/master/dr_TP5-Config_Morane][=gtm-dr=]] (JavaConfig with annotation-based injection)
