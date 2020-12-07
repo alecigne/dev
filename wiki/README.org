@@ -1,4 +1,3 @@
-
 #+TITLE: Coding Katas - wiki
 
 * Series
@@ -77,3 +76,6 @@
 
 - [[[file:projects/ck0023_spring-di-java-config.org][CK0023]]] =spring-di-java-config= :: Spring dependency injection
   using a Java-based configuration. Part of a [[file:series/spring.org][series on Spring]].
+
+- [[[file:projects/ck0024_spring-di-xml-config.org][CK0024]]] =spring-di-xml-config= :: Spring dependency injection using
+  a XML-based configuration. Part of a [[file:series/spring.org][series on Spring]].

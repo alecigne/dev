@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="electricMotor" class="net.lecigne.codingkatas.springdixmlconfig.motor.ElectricMotor"/>
+    <bean id="gasEngine" class="net.lecigne.codingkatas.springdixmlconfig.motor.GasEngine"/>
+    <bean id="crazyDriver" class="net.lecigne.codingkatas.springdixmlconfig.driver.CrazyDriver"/>
+    <bean id="grandMother" class="net.lecigne.codingkatas.springdixmlconfig.driver.GrandMother"/>
+
+    <!-- Defining a bean using a factory method (from string) -->
+    <bean id="electricMotorFromStringFactory" class="net.lecigne.codingkatas.springdixmlconfig.motor.MotorFactoryString"
+          factory-method="getMotor">
+        <constructor-arg value="electric"/>
+    </bean>
+
+    <!-- Defining a bean using a factory method (from enum) -->
+    <bean id="gasEngineEnum" class="net.lecigne.codingkatas.springdixmlconfig.motor.MotorFactoryEnum.MotorEnum"
+          factory-method="valueOf">
+        <constructor-arg value="GAS_ENGINE"/>
+    </bean>
+
+    <bean id="gasEngineFromEnumFactory" class="net.lecigne.codingkatas.springdixmlconfig.motor.MotorFactoryEnum"
+          factory-method="getMotor">
+        <constructor-arg ref="gasEngineEnum"/>
+    </bean>
+
+    <!-- Constructor injection -->
+    <bean id="vehicleWithConstructorInjection" class="net.lecigne.codingkatas.springdixmlconfig.vehicle.Vehicle">
+        <constructor-arg name="motor" ref="gasEngine"/>
+        <constructor-arg name="driver" ref="grandMother"/>
+    </bean>
+
+    <!-- Setter injection -->
+    <bean id="vehicleWithSetterInjection" class="net.lecigne.codingkatas.springdixmlconfig.vehicle.Vehicle">
+        <property name="motor" ref="electricMotor"/>
+        <property name="driver" ref="crazyDriver"/>
+    </bean>
+
+    <!-- Constructor injection (with bean from "string" factory method) -->
+    <bean id="vehicleFactoryString" class="net.lecigne.codingkatas.springdixmlconfig.vehicle.Vehicle">
+        <constructor-arg name="motor" ref="electricMotorFromStringFactory"/>
+        <constructor-arg name="driver" ref="grandMother"/>
+    </bean>
+
+    <!-- Constructor injection (with bean from "enum" factory method) -->
+    <bean id="vehicleFactoryEnum" class="net.lecigne.codingkatas.springdixmlconfig.vehicle.Vehicle">
+        <constructor-arg name="motor" ref="gasEngineFromEnumFactory"/>
+        <constructor-arg name="driver" ref="grandMother"/>
+    </bean>
+
+</beans>
