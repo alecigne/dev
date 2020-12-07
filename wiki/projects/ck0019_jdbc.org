@@ -21,3 +21,8 @@ database:
   volumes:
     - ./docker-data:/docker-entrypoint-initdb.d
 #+end_src
+
+* Notes
+
+Check this [[https://stackoverflow.com/questions/17581310/using-enum-for-factory-in-java-a-best-practice][SO thread]] for a nice implementation of a factory using
+enums.
