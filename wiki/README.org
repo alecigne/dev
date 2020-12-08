@@ -79,3 +79,5 @@
 
 - [[[file:projects/ck0024_spring-di-xml-config.org][CK0024]]] =spring-di-xml-config= :: Spring dependency injection using
   a XML-based configuration. Part of a [[file:series/spring.org][series on Spring]].
+
+- [[[file:projects/ck0025_java-optional-basics.org][CK0025]]] =java-optional-basics= :: Basics of Java's [[https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html][Optional]].
