@@ -1,0 +1,13 @@
+#+TITLE: Python
+
+* Projects
+
+- [[[file:../projects/ck0002_python-pymysql.org][CK0002]]] =python-mysql= :: How to do basic CRUD with Python and
+  PyMySQL (MySQL database provided by Docker).
+
+- [[[file:../projects/ck0003_python-sqlalchemy.org][CK0003]]] =python-sqlalchemy= :: Using ORM in Python with SQLAlchemy.
+
+- [[[file:../projects/ck0006_python-argparse.org][CK0006]]] =python-argparse= :: Parsing command-line arguments in
+  Python.
+
+- [[[file:../projects/ck0026_python-binary-search.org][CK0026]]] =python-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Python.
