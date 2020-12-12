@@ -81,3 +81,6 @@
   a XML-based configuration. Part of a [[file:series/spring.org][series on Spring]].
 
 - [[[file:projects/ck0025_java-optional-basics.org][CK0025]]] =java-optional-basics= :: Basics of Java's [[https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html][Optional]].
+
+- [[[file:projects/ck0026_python-binary-search.org][CK0026]]] =python-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Python. Part of
+  a [[file:series/algorithms.org][series on algorithms]].

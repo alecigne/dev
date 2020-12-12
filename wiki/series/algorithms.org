@@ -8,6 +8,8 @@
 
 - [[[file:../projects/ck0016_java-sort.org][CK0016]]] =ck0016_java-sort= :: Sorting in Java.
 
+- [[[file:../projects/ck0026_python-binary-search.org][CK0026]]] =python-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Python.
+
 * Tasks
 
 These tasks are common to most of the algorithms projects:
