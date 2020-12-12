@@ -6,6 +6,8 @@
 
 - [[file:series/design-patterns.org][Design patterns]] :: Design patterns in various languages
 
+- [[file:series/python.org][Python]] :: Python projects :)
+
 - [[file:series/spring.org][Spring]] :: Notes on the famous Java framework
 
 * Tasks
@@ -54,14 +56,11 @@ cf. [[file:tasks.org][task file]]
 - [[[file:projects/ck0013_array-katas.org][CK0013]]] =array-katas= :: Just a few basic operations on vanilla Java
   arrays.
 
-- [[[file:projects/ck0014_java-binary-search.org][CK0014]]] =java-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Java. Part of a
-  [[file:series/algorithms.org][series on algorithms]].
+- [[[file:projects/ck0014_java-binary-search.org][CK0014]]] =java-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Java.
 
-- [[[file:projects/ck0015_java-find-duplicates.org][CK0015]]] =java-find-duplicates= :: Finding duplicates in Java. Part
-  of a [[file:series/algorithms.org][series on algorithms]].
+- [[[file:projects/ck0015_java-find-duplicates.org][CK0015]]] =java-find-duplicates= :: Finding duplicates in Java.
 
-- [[[file:projects/ck0016_java-sort.org][CK0016]]] =java-sort= :: Sorting in Java. Part of a [[file:series/algorithms.org][series on
-  algorithms]].
+- [[[file:projects/ck0016_java-sort.org][CK0016]]] =java-sort= :: Sorting in Java.
 
 - [[[file:projects/ck0017_java-time.org][CK0017]]] =java-time= :: A first dive into the =java.time= API.
 
@@ -70,21 +69,20 @@ cf. [[file:tasks.org][task file]]
 - [[[file:projects/ck0019_jdbc.org][CK0019]]] =jdbc= :: Using JDBC directly to access a database.
 
 - [[[file:projects/ck0020_java-singleton.org][CK0020]]] =java-singleton= :: A first dive into the [[https://en.wikipedia.org/wiki/Singleton_pattern][Singleton design
-  pattern]] in Java. Part of a [[file:series/design-patterns.org][series on design patterns]].
+  pattern]] in Java.
 
 - [[[file:projects/ck0021_bloch-builder.org][CK0021]]] =bloch-builder= :: Joshua Bloch's Builder design pattern
-  and alternatives. Part of a [[file:series/design-patterns.org][series on design patterns]].
+  and alternatives.
 
 - [[[file:projects/ck0022_strategy.org][CK0022]]] =strategy= :: A simple example of the strategy
-  pattern. Part of a [[file:series/design-patterns.org][series on design patterns]].
+  pattern.
 
 - [[[file:projects/ck0023_spring-di-java-config.org][CK0023]]] =spring-di-java-config= :: Spring dependency injection
-  using a Java-based configuration. Part of a [[file:series/spring.org][series on Spring]].
+  using a Java-based configuration.
 
 - [[[file:projects/ck0024_spring-di-xml-config.org][CK0024]]] =spring-di-xml-config= :: Spring dependency injection using
-  a XML-based configuration. Part of a [[file:series/spring.org][series on Spring]].
+  a XML-based configuration.
 
 - [[[file:projects/ck0025_java-optional-basics.org][CK0025]]] =java-optional-basics= :: Basics of Java's [[https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html][Optional]].
 
-- [[[file:projects/ck0026_python-binary-search.org][CK0026]]] =python-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Python. Part of
-  a [[file:series/algorithms.org][series on algorithms]].
+- [[[file:projects/ck0026_python-binary-search.org][CK0026]]] =python-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Python.
