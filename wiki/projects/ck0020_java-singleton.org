@@ -45,24 +45,4 @@ test at the same time and instantiate twice.
 6. https://medium.com/@cancerian0684/singleton-design-pattern-and-how-to-make-it-thread-safe-b207c0e7e368
 7. http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html
 8. [[https://stackoverflow.com/questions/48772068/unit-test-the-thread-safety-of-a-singleton-class-in-java][Unit testing the thread-safety problem]]
-9. <<thread-safety>> https://parserdigital.com/demystifying-thread-safety-2/
-
-* Tasks
-
-- [ ] Find reliable way to test thread safety
-
-  This is an idea:
-
-  #+begin_src java
-    @Test
-    void testMySingleton() throws ExecutionException, InterruptedException {
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
-        CountDownLatch latch = new CountDownLatch(1);
-        Future<LazySingletonNotThreadSafe> singleton1 = executorService.submit(new MyThread(latch));
-        Future<LazySingletonNotThreadSafe> singleton2 = executorService.submit(new MyThread(latch));
-        latch.countDown();
-        assertThat(singleton1.get().hashCode()).isNotEqualTo(singleton2.get().hashCode());
-    }
-  #+end_src
-
-  See resource [[thread-safety]].
+9. https://parserdigital.com/demystifying-thread-safety-2/

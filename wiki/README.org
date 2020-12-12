@@ -8,6 +8,10 @@
 
 - [[file:series/spring.org][Spring]] :: Notes on the famous Java framework
 
+* Tasks
+
+cf. [[file:tasks.org][task file]]
+
 * Project index
 
 - [[[file:projects/ck0001_spring-jdbc.org][CK0001]]] =spring-jdbc= :: A few common cases encountered while using

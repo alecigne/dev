@@ -9,13 +9,6 @@
 
 https://stackoverflow.com/q/3951547
 
-* Tasks
-
-- [ ] Implement ~DuplicateFinder~, an implementation that returns the
-  duplicates
-
-cf. also [[file:series/algorithms.org::*Tasks][common tasks]] for algorithms.
-
 * See also
 
 [[file:series/algorithms.org][Algorithms]]

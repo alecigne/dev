@@ -21,8 +21,3 @@ Quite readable (cf. the ~SortTest~ interface):
 #+end_src
 
 * Resources
-* Tasks
-
-- [ ] Clean the project
-
-- [ ] Implement ~SelectionSort~

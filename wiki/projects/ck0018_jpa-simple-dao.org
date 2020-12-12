@@ -79,9 +79,3 @@ also have optional sub elements:
 About =transaction-type=: [[https://stackoverflow.com/a/17331863][here]].
 
 About mappings with XML: [[http://webdev.jhuep.com/~jcs/ejava-javaee/coursedocs/605-784-site/docs/content/html/hibernate-migration-orm.html][here]].
-
-* Tasks
-
-- [ ] Fix problem with JUnit
-- [ ] Understand why the =class= tag is needed for tests
-- [ ] Finish tests

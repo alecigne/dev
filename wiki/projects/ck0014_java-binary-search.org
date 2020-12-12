@@ -5,8 +5,3 @@
 * Resources
 
 - https://www.baeldung.com/java-binary-search
-
-* Tasks
-
-- [ ] Return theoretical index of a value if it's not found \\
-  cf. ~Arrays.binarySearch~ and ~Collections.binarySearch~.
