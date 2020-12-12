@@ -38,3 +38,6 @@
 - [ ] [[[file:projects/ck0018_jpa-simple-dao.org][ck0018]]] Understand why the =class= tag is needed for tests
 
 - [ ] [[[file:projects/ck0018_jpa-simple-dao.org][ck0018]]] Finish tests
+
+- [ ] Build tutorials from a few katas and integrate them to my
+  [[https://lecigne.net][website]]
