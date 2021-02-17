@@ -86,3 +86,6 @@ cf. [[file:tasks.org][task file]]
 - [[[file:projects/ck0025_java-optional-basics.org][CK0025]]] =java-optional-basics= :: Basics of Java's [[https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html][Optional]].
 
 - [[[file:projects/ck0026_python-binary-search.org][CK0026]]] =python-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Python.
+
+- [[[file:projects/ck0027_feign-cat-facts.org][CK0027]]] =feign-cat-facts= :: A very simple kata (retrieving [[https://github.com/alexwohlbruck/cat-facts][cat
+  facts]]) introducing Feign.
