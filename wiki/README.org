@@ -16,76 +16,86 @@ cf. [[file:tasks.org][task file]]
 
 * Project index
 
-- [[[file:projects/ck0001_spring-jdbc.org][CK0001]]] =spring-jdbc= :: A few common cases encountered while using
-  Spring JDBC.
+- [[[file:projects/ck0001_spring-jdbc.org][CK0001]]] =spring-jdbc= :: [2018-09-05 Wed]: a few common cases
+  encountered while using Spring JDBC.
 
-- [[[file:projects/ck0002_python-pymysql.org][CK0002]]] =python-mysql= :: How to do basic CRUD with Python and
-  PyMySQL (MySQL database provided by Docker).
+- [[[file:projects/ck0002_python-pymysql.org][CK0002]]] =python-mysql= :: [2018-09-06 Thu]: how to do basic CRUD
+  with Python and PyMySQL (MySQL database provided by Docker).
 
-- [[[file:projects/ck0003_python-sqlalchemy.org][CK0003]]] =python-sqlalchemy= :: Using ORM in Python with SQLAlchemy.
+- [[[file:projects/ck0003_python-sqlalchemy.org][CK0003]]] =python-sqlalchemy= :: [2018-09-11 Tue]: using ORM in
+  Python with SQLAlchemy.
 
-- [[[file:projects/ck0004_angular-spring-maven.org][CK0004]]] =angular-spring-maven= :: A multi-module Maven project with
-  an Angular front-end and a "dummy" Java back-end. The build process
-  is managed by Maven through =maven-exec-plugin=.
+- [[[file:projects/ck0004_angular-spring-maven.org][CK0004]]] =angular-spring-maven= :: [2018-09-14 Fri]: a multi-module
+  Maven project with an Angular front-end and a "dummy" Java
+  back-end. The build process is managed by Maven through
+  =maven-exec-plugin=.
 
-- [[[file:projects/ck0005_frontend-maven-plugin.org][CK0005]]] =frontend-maven-plugin= :: Like the CK0004 project, this is
-  a multi-module Maven project with an Angular front-end and a "dummy"
-  Java back-end. However, the build process is managed with
-  =frontend-maven-plugin= and doesn't need a local installation of
-  Node or npm.
+- [[[file:projects/ck0005_frontend-maven-plugin.org][CK0005]]] =frontend-maven-plugin= :: [2018-09-17 Mon]: like the
+  CK0004 project, this is a multi-module Maven project with an Angular
+  front-end and a "dummy" Java back-end. However, the build process is
+  managed with =frontend-maven-plugin= and doesn't need a local
+  installation of Node or npm.
 
-- [[[file:projects/ck0006_python-argparse.org][CK0006]]] =python-argparse= :: Parsing command-line arguments in
-  Python.
+- [[[file:projects/ck0006_python-argparse.org][CK0006]]] =python-argparse= :: [2018-09-18 Tue]: parsing command-line
+  arguments in Python.
 
-- [[[file:projects/ck0007_spring-boot-minimal.org][CK0007]]] =spring-boot-minimal= :: My first contact with Spring Boot.
+- [[[file:projects/ck0007_spring-boot-minimal.org][CK0007]]] =spring-boot-minimal= :: [2018-10-17 Wed]: my first contact
+  with Spring Boot.
 
-- [[[file:projects/ck0008_angular-extended-tour-of-heroes.org][CK0008]]] =angular-extended-tour-of-heroes= :: Using [[https://angular.io/tutorial][Tour of Heroes]]
-  as a basis to document more advanced practices.
+- [[[file:projects/ck0008_angular-extended-tour-of-heroes.org][CK0008]]] =angular-extended-tour-of-heroes= :: [2018-10-19 Fri]:
+  using [[https://angular.io/tutorial][Tour of Heroes]] as a basis to document more advanced practices.
 
-- [[[file:projects/ck0009_etoh-api.org][CK0009]]] =etoh-api= :: A Spring Boot backend for the ETOH project
-  above.
+- [[[file:projects/ck0009_etoh-api.org][CK0009]]] =etoh-api= :: [2018-10-22 Mon]: a Spring Boot backend for
+  the ETOH project above.
 
-- [[[file:projects/ck0010_ionic-crud.org][CK0010]]] =ionic-crud= :: A Ionic version of the ETOH project above.
+- [[[file:projects/ck0010_ionic-crud.org][CK0010]]] =ionic-crud= :: [2018-10-24 Wed]: a Ionic version of the
+  ETOH project above.
 
-- [[[file:projects/ck0011_cordova-helloworld.org][CK0011]]] =cordova-helloworld= :: Running a Cordova application in an
-  Android emulator and on a physical device.
+- [[[file:projects/ck0011_cordova-helloworld.org][CK0011]]] =cordova-helloworld= :: [2018-10-26 Fri]: running a Cordova
+  application in an Android emulator and on a physical device.
 
-- [[[file:projects/ck0012_ionic-crud-android.org][CK0012]]] =ionic-crud-android= :: Using Cordova to build a
-  Ionic-based Android project.
+- [[[file:projects/ck0012_ionic-crud-android.org][CK0012]]] =ionic-crud-android= :: [2018-11-12 Mon]: using Cordova to
+  build a Ionic-based Android project.
 
-- [[[file:projects/ck0013_array-katas.org][CK0013]]] =array-katas= :: Just a few basic operations on vanilla Java
-  arrays.
+- [[[file:projects/ck0013_array-katas.org][CK0013]]] =array-katas= :: [2019-01-19 Sat]: just a few basic
+  operations on vanilla Java arrays.
 
-- [[[file:projects/ck0014_java-binary-search.org][CK0014]]] =java-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Java.
+- [[[file:projects/ck0014_java-binary-search.org][CK0014]]] =java-binary-search= :: [2019-02-02 Sat]: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][binary search]] in
+  Java.
 
-- [[[file:projects/ck0015_java-find-duplicates.org][CK0015]]] =java-find-duplicates= :: Finding duplicates in Java.
+- [[[file:projects/ck0015_java-find-duplicates.org][CK0015]]] =java-find-duplicates= :: [2019-02-02 Sat]: finding
+  duplicates in Java.
 
-- [[[file:projects/ck0016_java-sort.org][CK0016]]] =java-sort= :: Sorting in Java.
+- [[[file:projects/ck0016_java-sort.org][CK0016]]] =java-sort= :: [2019-02-02 Sat]: sorting in Java.
 
-- [[[file:projects/ck0017_java-time.org][CK0017]]] =java-time= :: A first dive into the =java.time= API.
+- [[[file:projects/ck0017_java-time.org][CK0017]]] =java-time= :: [2019-02-26 Tue]: a first dive into the
+  =java.time= API.
 
-- [[[file:projects/ck0018_jpa-simple-dao.org][CK0018]]] =jpa-simple-dao= :: A DAO using JPA.
+- [[[file:projects/ck0018_jpa-simple-dao.org][CK0018]]] =jpa-simple-dao= :: [2019-03-05 Tue]: a DAO using JPA.
 
-- [[[file:projects/ck0019_jdbc.org][CK0019]]] =jdbc= :: Using JDBC directly to access a database.
+- [[[file:projects/ck0019_jdbc.org][CK0019]]] =jdbc= :: [2019-03-06 Wed]: using JDBC directly to access a
+  database.
 
-- [[[file:projects/ck0020_java-singleton.org][CK0020]]] =java-singleton= :: A first dive into the [[https://en.wikipedia.org/wiki/Singleton_pattern][Singleton design
-  pattern]] in Java.
+- [[[file:projects/ck0020_java-singleton.org][CK0020]]] =java-singleton= :: [2019-03-27 Wed]: a first dive into the
+  [[https://en.wikipedia.org/wiki/Singleton_pattern][Singleton design pattern]] in Java.
 
-- [[[file:projects/ck0021_bloch-builder.org][CK0021]]] =bloch-builder= :: Joshua Bloch's Builder design pattern
-  and alternatives.
+- [[[file:projects/ck0021_bloch-builder.org][CK0021]]] =bloch-builder= :: [2019-03-27 Wed]: joshua Bloch's Builder
+  design pattern and alternatives.
 
-- [[[file:projects/ck0022_strategy.org][CK0022]]] =strategy= :: A simple example of the strategy
-  pattern.
+- [[[file:projects/ck0022_strategy.org][CK0022]]] =strategy= :: [2019-03-27 Wed]: a simple example of the
+  strategy pattern.
 
-- [[[file:projects/ck0023_spring-di-java-config.org][CK0023]]] =spring-di-java-config= :: Spring dependency injection
-  using a Java-based configuration.
+- [[[file:projects/ck0023_spring-di-java-config.org][CK0023]]] =spring-di-java-config= :: [2019-03-27 Wed]: spring
+  dependency injection using a Java-based configuration.
 
-- [[[file:projects/ck0024_spring-di-xml-config.org][CK0024]]] =spring-di-xml-config= :: Spring dependency injection using
-  a XML-based configuration.
+- [[[file:projects/ck0024_spring-di-xml-config.org][CK0024]]] =spring-di-xml-config= :: [2019-03-27 Wed]: spring
+  dependency injection using a XML-based configuration.
 
-- [[[file:projects/ck0025_java-optional-basics.org][CK0025]]] =java-optional-basics= :: Basics of Java's [[https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html][Optional]].
+- [[[file:projects/ck0025_java-optional-basics.org][CK0025]]] =java-optional-basics= :: [2019-05-28 Tue]: basics of
+  Java's [[https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html][Optional]].
 
-- [[[file:projects/ck0026_python-binary-search.org][CK0026]]] =python-binary-search= :: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Python.
+- [[[file:projects/ck0026_python-binary-search.org][CK0026]]] =python-binary-search= :: [2019-06-17 Mon]: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][binary search]]
+  in Python.
 
-- [[[file:projects/ck0027_feign-cat-facts.org][CK0027]]] =feign-cat-facts= :: A very simple kata (retrieving [[https://github.com/alexwohlbruck/cat-facts][cat
-  facts]]) introducing Feign.
+- [[[file:projects/ck0027_feign-cat-facts.org][CK0027]]] =feign-cat-facts= :: [2019-12-05 Thu]: a very simple kata
+  (retrieving [[https://github.com/alexwohlbruck/cat-facts][cat facts]]) introducing Feign.
