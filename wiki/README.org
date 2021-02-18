@@ -99,3 +99,7 @@ cf. [[file:tasks.org][task file]]
 
 - [[[file:projects/ck0027_feign-cat-facts.org][CK0027]]] =feign-cat-facts= :: [2019-12-05 Thu]: a very simple kata
   (retrieving [[https://github.com/alexwohlbruck/cat-facts][cat facts]]) introducing Feign.
+
+- [[[file:projects/ck0028_spring-webmvc-resttemplate.org][CK0028]]] =spring-webmvc-resttemplate= :: [2020-02-08 Sat]: a very
+  simple kata introducing Spring MVC's [[https://docs.spring.io/spring-framework/docs/4.3.x/spring-framework-reference/html/remoting.html#rest-client-access][RestTemplate]]. Deprecated in
+  Spring 5 - see [[https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-client][WebClient]] instead.
