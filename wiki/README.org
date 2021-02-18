@@ -103,3 +103,7 @@ cf. [[file:tasks.org][task file]]
 - [[[file:projects/ck0028_spring-webmvc-resttemplate.org][CK0028]]] =spring-webmvc-resttemplate= :: [2020-02-08 Sat]: a very
   simple kata introducing Spring MVC's [[https://docs.spring.io/spring-framework/docs/4.3.x/spring-framework-reference/html/remoting.html#rest-client-access][RestTemplate]]. Deprecated in
   Spring 5 - see [[https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-client][WebClient]] instead.
+
+- [[[file:projects/ck0029_cat-facts-spring-boot.org][CK0029]]] =cat-facts-spring-boot= :: [2020-03-30 Mon]: just a few
+  tests in a Spring Boot project using [[https://spring.io/projects/spring-cloud-openfeign][Spring Boot OpenFeign]]. Inspired
+  from [[http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][this blog article]] ([[https://web.archive.org/web/20210218105617/http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][archive]]).
