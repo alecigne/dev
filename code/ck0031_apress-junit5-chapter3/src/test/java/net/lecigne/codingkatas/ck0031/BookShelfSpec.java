@@ -63,4 +63,13 @@ class BookShelfSpec {
         assertEquals(expectedBooks, books, "Books should be sorted by title");
     }
 
+    @Test
+    void booksAreInInsertionOrderAfterArranging() {
+        shelf.add("Effective Java", "Code Complete", "The Mythical Man Month");
+        shelf.arrange();
+        List<String> books = shelf.books();
+        List<String> expectedBooks = Arrays.asList("Effective Java", "Code Complete", "The Mythical Man Month");
+        assertEquals(expectedBooks, books, "Books should be left in insertion order.");
+    }
+
 }
