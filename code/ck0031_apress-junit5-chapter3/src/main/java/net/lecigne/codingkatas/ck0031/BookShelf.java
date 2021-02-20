@@ -1,6 +1,7 @@
 package net.lecigne.codingkatas.ck0031;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BookShelf {
@@ -11,7 +12,7 @@ public class BookShelf {
         return books;
     }
 
-    public void add(String bookToAdd) {
-        books.add(bookToAdd);
+    public void add(String... bookToAdd) {
+        books.addAll(Arrays.asList(bookToAdd));
     }
 }
