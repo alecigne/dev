@@ -3,6 +3,7 @@ package net.lecigne.codingkatas.ck0031;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class BookShelf {
@@ -15,5 +16,10 @@ public class BookShelf {
 
     public void add(String... bookToAdd) {
         books.addAll(Arrays.asList(bookToAdd));
+    }
+
+    public List<String> arrange() {
+        books.sort(Comparator.naturalOrder());
+        return books;
     }
 }

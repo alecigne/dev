@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -52,6 +53,14 @@ class BookShelfSpec {
             assertTrue(e instanceof UnsupportedOperationException, "Bookshelf should throw " +
                     "UnsupportedOperationException");
         }
+    }
+
+    @Test
+    void shelfArrangedByBookTitle() {
+        shelf.add("Effective Java", "Code Complete", "The Mythical Man Month");
+        List<String> books = shelf.arrange();
+        List<String> expectedBooks = Arrays.asList("Code Complete", "Effective Java", "The Mythical Man Month");
+        assertEquals(expectedBooks, books, "Books should be sorted by title");
     }
 
 }
