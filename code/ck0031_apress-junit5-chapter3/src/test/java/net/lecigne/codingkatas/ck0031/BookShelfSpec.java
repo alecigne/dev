@@ -1,5 +1,6 @@
 package net.lecigne.codingkatas.ck0031;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,17 +13,22 @@ import static org.junit.jupiter.api.Assertions.fail;
 @DisplayName("A bookshelf")
 class BookShelfSpec {
 
+    private BookShelf shelf;
+
+    @BeforeEach
+    void setUp() {
+        shelf = new BookShelf();
+    }
+
     @Test
     @DisplayName("is empty when no book is added to it")
     void shelfEmptyWhenNoBookAdded() {
-        BookShelf shelf = new BookShelf();
         List<String> books = shelf.books();
         assertTrue(books.isEmpty(), "BookShelf should be empty.");
     }
 
     @Test
     void shelfContainsTwoBooksWhenTwoBooksAdded() {
-        BookShelf shelf = new BookShelf();
         shelf.add("Effective Java", "Code Complete");
         List<String> books = shelf.books();
         assertEquals(2, books.size(), "Bookshelf should have two books.");
@@ -30,7 +36,6 @@ class BookShelfSpec {
 
     @Test
     void shelfEmptyWhenEmptyContentIsAdded() {
-        BookShelf shelf = new BookShelf();
         shelf.add();
         List<String> books = shelf.books();
         assertTrue(books.isEmpty(), "Bookshelf should be empty when adding empty content");
@@ -38,7 +43,6 @@ class BookShelfSpec {
 
     @Test
     void collectionReturnedFromShelfIsImmutableForClient() {
-        BookShelf shelf = new BookShelf();
         shelf.add("Effective Java", "Code Complete");
         List<String> books = shelf.books();
         try {
