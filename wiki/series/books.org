@@ -1,0 +1,16 @@
+#+TITLE: Books
+
+This page is a list of books I studied in the form of katas, organized
+by title.
+
+* Java Unit Testing with JUnit 5
+
+[[https://isbnsearch.org/isbn/9781484230152][ISBN]]
+
+- Chapter 1 :: "Building Software the Correct Way"
+
+  [[[file:../projects/ck0030_apress-junit5-chapter1-2.org][CK0030]]] =apress-junit5-chapter-1-2=
+
+- Chapter 2 :: "Understanding Core JUnit 5"
+
+  [[[file:../projects/ck0030_apress-junit5-chapter1-2.org][CK0030]]] =apress-junit5-chapter-1-2=

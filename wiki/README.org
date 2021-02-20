@@ -4,6 +4,8 @@
 
 - [[file:series/algorithms.org][Algorithms]] :: Algorithms implemented in various languages
 
+- [[file:series/books.org][Books]] :: Katas from books
+
 - [[file:series/design-patterns.org][Design patterns]] :: Design patterns in various languages
 
 - [[file:series/python.org][Python]] :: Python projects :)
@@ -107,3 +109,6 @@ cf. [[file:tasks.org][task file]]
 - [[[file:projects/ck0029_cat-facts-spring-boot.org][CK0029]]] =cat-facts-spring-boot= :: [2020-03-30 Mon]: just a few
   tests in a Spring Boot project using [[https://spring.io/projects/spring-cloud-openfeign][Spring Boot OpenFeign]]. Inspired
   from [[http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][this blog article]] ([[https://web.archive.org/web/20210218105617/http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][archive]]).
+
+- [[[file:projects/ck0030_apress-junit5-chapter1-2.org][CK0030]]] =apress-junit5-chapter-1-2= :: [2020-05-31 Sun]: chapter 1
+  and 2 from the book [[file:series/books.org::*Java Unit Testing with JUnit 5][Java Unit Testing with JUnit 5]] (Apress).

@@ -1,0 +1,56 @@
+#+TITLE: [CK0030] =apress-junit5-chapter1-2=
+
+[[file:../../code/ck0030_apress-junit5-chapter1-2/][Project]] created on [2020-05-31 Sun].
+
+Chapter 1 and 2 from the book Java Unit Testing with JUnit 5
+(Apress). Check the relevant book section in the [[file:../series/books.org::*Java Unit Testing with JUnit 5][books]] page.
+
+* Chapter 1
+
+- 1976: [[https://dl.acm.org/doi/10.5555/800253.807721][Test procedures: A new approach to software verification]], by
+  David J. Panzl (not /Panzal/ as the book says). According to the
+  authors, this is the birth of unit testing (UT).
+
+- JUnit was originally based on [[http://sunit.sourceforge.net/][SUnit]] (the Smalltalk UT framework).
+
+- JUnit 5 = JUnit Platform, JUnit Jupiter, JUnit Vintage
+
+* Chapter 2
+
+With JUnit 5:
+
+- Tests classes and test methods are no longer required to be public
+  since JUnit uses reflection to find test classes and methods. Thus
+  they can be package-private.
+
+- Instead of a public no-arg constructor, a constructor in the test
+  class can have parameters and other access modifiers. A
+  ~ParameterResolver~ will resolve the parameters and inject them. In
+  the =bookstoread= project, to illustrate this, we added a ~TestInfo~
+  parameter to a private constructor. The ~TestInfoParameterResolver~
+  is provided by JUnit 5.
+
+- We can use ~@DisplayName~ to customize the test class name. I had to
+  go in the IntelliJ settings to display the test name in the IntelliJ
+  runner: =File > Settings > Build, Execution, Deployment > Build
+  Tools > Gradle= and then =Run tests with: IntelliJ IDEA= ([[https://medium.com/@sorravitbunjongpean/fix-junit5-display-name-did-not-show-in-run-tab-intellij-a00c94f39679][source]]).
+
+- Methods can take parameters as well (such as ~TestInfo~). See
+  ~shelfEmptyWhenNoBookAdded~.
+
+- JUnit <4 required the method name to start with ~test~ since there
+  was no ~@Test~ annotation. This habit stayed with some
+  programmers.
+
+  ~@DisplayName~ can be used for methods as well to give them clearer
+  names. Again, check ~shelfEmptyWhenNoBookAdded~.
+
+- Fewer assertions in JUnit 5 (delegated to third party librairies
+  such as AssertJ). For example, ~assertThat~ is gone from plain
+  JUnit 5.
+
+- ~assertAll~ is useful when there are multiple assertions in a single
+  test. It will display only the failing assertions and won't display
+  the entire test as failed.
+
+- Tests lifecycle and steps of execution.
