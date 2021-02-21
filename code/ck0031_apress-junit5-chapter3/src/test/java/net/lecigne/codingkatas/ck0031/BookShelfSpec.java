@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -96,17 +97,23 @@ class BookShelfSpec {
     @Test
     void shelfArrangedByReverseAlphabeticalOrder() {
         shelf.add(effectiveJava, codeComplete, mythicalManMonth);
-        List<Book> actualBooks = shelf.arrange(Comparator.<Book>naturalOrder().reversed());
-        List<Book> expectedBooks = Arrays.asList(mythicalManMonth, effectiveJava, codeComplete);
-        assertEquals(expectedBooks, actualBooks, "Books should be arranged in reverse alphabetical order");
+        Comparator<Book> comparator = Comparator.<Book>naturalOrder().reversed();
+        List<Book> actualBooks = shelf.arrange(comparator);
+        then(actualBooks)
+                .as("Books should be sorted by reverse alphabetical order")
+                .isNotEmpty()
+                .isSortedAccordingTo(comparator);
     }
 
     @Test
     void shelfArrangedByPublicationDate() {
         shelf.add(codeComplete, effectiveJava, mythicalManMonth);
-        List<Book> actualBooks = shelf.arrange(Comparator.comparing(Book::getPublishedOn));
-        List<Book> expectedBooks = Arrays.asList(mythicalManMonth, codeComplete, effectiveJava);
-        assertEquals(expectedBooks, actualBooks, "Books should be arranged in chronological order");
+        Comparator<Book> comparator = Comparator.comparing(Book::getPublishedOn);
+        List<Book> actualBooks = shelf.arrange(comparator);
+        then(actualBooks)
+                .as("Books should be arranged in chronological order")
+                .isNotEmpty()
+                .isSortedAccordingTo(comparator);
     }
 
 }
