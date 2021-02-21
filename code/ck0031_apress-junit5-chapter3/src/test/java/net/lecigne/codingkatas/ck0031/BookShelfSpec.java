@@ -44,28 +44,31 @@ class BookShelfSpec {
     }
 
     @Test
-    @DisplayName("is empty when no book is added to it")
-    void shelfEmptyWhenNoBookAdded() {
+    @DisplayName("when no book is added should be empty")
+    void bookshelf_whenNoBookAdded_shouldBeEmpty() {
         List<Book> books = shelf.books();
         assertTrue(books.isEmpty(), "BookShelf should be empty.");
     }
 
     @Test
-    void shelfContainsTwoBooksWhenTwoBooksAdded() {
+    @DisplayName("when n books are added should contain n books")
+    void bookshelf_whenNBooksAdded_shouldContainNBooks() {
         shelf.add(effectiveJava, codeComplete);
         List<Book> books = shelf.books();
         assertEquals(2, books.size(), "Bookshelf should have two books.");
     }
 
     @Test
-    void shelfEmptyWhenEmptyContentIsAdded() {
+    @DisplayName("when an empty list of books is added should be empty")
+    void bookshelf_whenEmptyListAdded_shouldBeEmpty() {
         shelf.add();
         List<Book> books = shelf.books();
         assertTrue(books.isEmpty(), "Bookshelf should be empty when adding empty content");
     }
 
     @Test
-    void collectionReturnedFromShelfIsImmutableForClient() {
+    @DisplayName("when modified in place should throw UnsupportedOperationException")
+    void bookshelf_whenModifiedInPlace_shouldThrowUnsupportedOperationException() {
         shelf.add(effectiveJava, codeComplete);
         List<Book> books = shelf.books();
         try {
@@ -78,7 +81,8 @@ class BookShelfSpec {
     }
 
     @Test
-    void shelfArrangedByBookTitle() {
+    @DisplayName("when fetched with default sorting should be sorted by title")
+    void bookshelf_whenFetchedWithDefaultSorting_shouldBeSortedByTitle() {
         shelf.add(effectiveJava, codeComplete, mythicalManMonth);
         List<Book> books = shelf.arrange();
         List<Book> expectedBooks = Arrays.asList(codeComplete, effectiveJava, mythicalManMonth);
@@ -86,7 +90,8 @@ class BookShelfSpec {
     }
 
     @Test
-    void booksAreInInsertionOrderAfterArranging() {
+    @DisplayName("when fetched with any sorting should stay in insertion order")
+    void bookshelf_whenFetchedWithAnySorting_shouldStayInInsertionOrder() {
         shelf.add(effectiveJava, codeComplete, mythicalManMonth);
         shelf.arrange();
         List<Book> books = shelf.books();
@@ -95,7 +100,8 @@ class BookShelfSpec {
     }
 
     @Test
-    void shelfArrangedByReverseAlphabeticalOrder() {
+    @DisplayName("when fetched with reverse alphabetical sorting should be sorted correctly")
+    void bookshelf_whenFetchedWithReverseAlphabeticalSorting_shouldBeSortedCorrectly() {
         shelf.add(effectiveJava, codeComplete, mythicalManMonth);
         Comparator<Book> comparator = Comparator.<Book>naturalOrder().reversed();
         List<Book> actualBooks = shelf.arrange(comparator);
@@ -106,7 +112,8 @@ class BookShelfSpec {
     }
 
     @Test
-    void shelfArrangedByPublicationDate() {
+    @DisplayName("when fetched with sorting by publication date should be sorted correctly")
+    void bookshelf_whenFetchedWithSortingByPublicationDate_shouldBeSortedCorrectly() {
         shelf.add(codeComplete, effectiveJava, mythicalManMonth);
         Comparator<Book> comparator = Comparator.comparing(Book::getPublishedOn);
         List<Book> actualBooks = shelf.arrange(comparator);
