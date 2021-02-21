@@ -6,9 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.Year;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,6 +25,7 @@ class BookShelfSpec {
     private Book effectiveJava;
     private Book codeComplete;
     private Book mythicalManMonth;
+    private Book cleanCode;
 
     @BeforeEach
     void setUp() {
@@ -40,6 +44,11 @@ class BookShelfSpec {
                 .title("The Mythical Man-Month")
                 .author("Frederick Phillips Brooks")
                 .publishedOn(LocalDate.of(1975, Month.JANUARY, 1))
+                .build();
+        cleanCode = new Book.Builder()
+                .title("Clean Code")
+                .author("Robert Cecil Martin")
+                .publishedOn(LocalDate.of(2008, Month.AUGUST, 1))
                 .build();
     }
 
@@ -121,6 +130,18 @@ class BookShelfSpec {
                 .as("Books should be arranged in chronological order")
                 .isNotEmpty()
                 .isSortedAccordingTo(comparator);
+    }
+
+    @Test
+    @DisplayName("when fetched with default grouping should group correctly")
+    void bookshelf_whenFetchedWithDefaultGrouping_shouldGroupCorrectly() {
+        shelf.add(effectiveJava, codeComplete, mythicalManMonth, cleanCode);
+        Map<Year, List<Book>> booksByYear = shelf.groupByPublicationYear();
+        then(booksByYear).as("Books should be grouped correctly by year")
+                .isNotEmpty().hasSize(3)
+                .containsEntry(Year.of(2008), Arrays.asList(effectiveJava, cleanCode))
+                .containsEntry(Year.of(2004), Collections.singletonList(codeComplete))
+                .containsEntry(Year.of(1975), Collections.singletonList(mythicalManMonth));
     }
 
 }
