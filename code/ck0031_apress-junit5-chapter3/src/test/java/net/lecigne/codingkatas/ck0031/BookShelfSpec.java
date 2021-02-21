@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -90,6 +91,22 @@ class BookShelfSpec {
         List<Book> books = shelf.books();
         List<Book> expectedBooks = Arrays.asList(effectiveJava, codeComplete, mythicalManMonth);
         assertEquals(expectedBooks, books, "Books should be left in insertion order.");
+    }
+
+    @Test
+    void shelfArrangedByReverseAlphabeticalOrder() {
+        shelf.add(effectiveJava, codeComplete, mythicalManMonth);
+        List<Book> actualBooks = shelf.arrange(Comparator.<Book>naturalOrder().reversed());
+        List<Book> expectedBooks = Arrays.asList(mythicalManMonth, effectiveJava, codeComplete);
+        assertEquals(expectedBooks, actualBooks, "Books should be arranged in reverse alphabetical order");
+    }
+
+    @Test
+    void shelfArrangedByPublicationDate() {
+        shelf.add(codeComplete, effectiveJava, mythicalManMonth);
+        List<Book> actualBooks = shelf.arrange(Comparator.comparing(Book::getPublishedOn));
+        List<Book> expectedBooks = Arrays.asList(mythicalManMonth, codeComplete, effectiveJava);
+        assertEquals(expectedBooks, actualBooks, "Books should be arranged in chronological order");
     }
 
 }
