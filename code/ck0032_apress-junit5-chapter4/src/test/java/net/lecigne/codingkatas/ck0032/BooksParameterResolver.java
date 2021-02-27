@@ -22,6 +22,11 @@ public class BooksParameterResolver implements ParameterResolver {
 
     @Override
     public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) {
+        ExtensionContext.Store store = extensionContext.getStore(ExtensionContext.Namespace.create(Book.class));
+        return store.getOrComputeIfAbsent("books", k -> getBooks());
+    }
+
+    private Map<String, Book> getBooks() {
         Map<String, Book> books = new HashMap<>();
         Book effectiveJava = new Book.Builder()
                 .author("Joshua Bloch").title("Effective Java")
