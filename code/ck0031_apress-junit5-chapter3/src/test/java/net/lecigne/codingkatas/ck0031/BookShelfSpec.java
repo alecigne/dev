@@ -8,11 +8,11 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Collections.singletonList;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -140,8 +140,21 @@ class BookShelfSpec {
         then(booksByYear).as("Books should be grouped correctly by year")
                 .isNotEmpty().hasSize(3)
                 .containsEntry(Year.of(2008), Arrays.asList(effectiveJava, cleanCode))
-                .containsEntry(Year.of(2004), Collections.singletonList(codeComplete))
-                .containsEntry(Year.of(1975), Collections.singletonList(mythicalManMonth));
+                .containsEntry(Year.of(2004), singletonList(codeComplete))
+                .containsEntry(Year.of(1975), singletonList(mythicalManMonth));
+    }
+
+    @Test
+    @DisplayName("when fetched with user defined grouping should group correctly")
+    void bookshelf_whenFetchedWithUserDefinedGrouping_shouldGroupCorrectly() {
+        shelf.add(effectiveJava, codeComplete, mythicalManMonth, cleanCode);
+        Map<String, List<Book>> booksByAuthor = shelf.groupBy(Book::getAuthor);
+        then(booksByAuthor).as("Books should be grouped by author")
+                .isNotEmpty().hasSize(4)
+                .containsEntry("Joshua Bloch", singletonList(effectiveJava))
+                .containsEntry("Steve McConnel", singletonList(codeComplete))
+                .containsEntry("Frederick Phillips Brooks", singletonList(mythicalManMonth))
+                .containsEntry("Robert Cecil Martin", singletonList(cleanCode));
     }
 
 }
