@@ -4,11 +4,14 @@ A /coding kata/ is a practice session focused on a specific objective:
 a chapter from a book, a tutorial, a reference project illustrating a
 particular point of software development...
 
-This repository is a collection of my personal katas. It is organized
-as follows:
+This repository is a collection of personal katas. It is organized as
+follows:
 
 - The [[file:code/][code]] directory contains the katas organized in chronological
   order, by codename (=CK= = Coding Kata).
 
 - The [[file:wiki/][wiki]] directory brings order to the katas by referencing them
   from specific points of view.
+
+If you think katas are a good idea and would like to make your own
+repo, check my [[file:wiki/rules.org][personal rules]] for inspiration.
