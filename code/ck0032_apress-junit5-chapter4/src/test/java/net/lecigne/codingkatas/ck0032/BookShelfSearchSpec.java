@@ -8,7 +8,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 
 import static java.time.Month.AUGUST;
 import static org.assertj.core.api.BDDAssertions.then;
@@ -35,7 +34,7 @@ class BookShelfSearchSpec {
     @Test
     @DisplayName("when searching by title and hint should return the correct books")
     void bookshelfSearch_whenSearchingByTitleAndHint_shouldReturnCorrectBooks() {
-        Predicate<Book> predicate = book -> book.getPublishedOn().isBefore(LocalDate.of(2004, AUGUST, 1));
+        BookFilter predicate = book -> book.getPublishedOn().isBefore(LocalDate.of(2004, AUGUST, 1));
         List<Book> actualBooks = shelf.findBooksByTitle("code", predicate);
         then(actualBooks).as("Books should contain titles containing \"code\"")
                 .hasSize(2);

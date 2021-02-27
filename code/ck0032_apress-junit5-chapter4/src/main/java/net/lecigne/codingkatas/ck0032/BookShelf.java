@@ -53,10 +53,10 @@ public class BookShelf {
         return findBooksByTitle(title, book -> true);
     }
 
-    public List<Book> findBooksByTitle(String title, Predicate<Book> predicate) {
+    public List<Book> findBooksByTitle(String title, BookFilter bookFilter) {
         return books.stream()
                 .filter(book -> book.getTitle().toLowerCase().contains(title.toLowerCase()))
-                .filter(predicate)
+                .filter(bookFilter)
                 .collect(Collectors.toList());
     }
 }
