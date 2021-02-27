@@ -4,9 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.time.Year;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -20,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 @DisplayName("A bookshelf")
+@ExtendWith(BooksParameterResolver.class)
 class BookShelfSpec {
 
     private BookShelf shelf;
@@ -29,28 +29,12 @@ class BookShelfSpec {
     private Book cleanCode;
 
     @BeforeEach
-    void setUp() {
+    void setUp(Map<String, Book> books) {
         shelf = new BookShelf();
-        effectiveJava = new Book.Builder()
-                .title("Effective Java")
-                .author("Joshua Bloch")
-                .publishedOn(LocalDate.of(2008, Month.MAY, 8))
-                .build();
-        codeComplete = new Book.Builder()
-                .title("Code Complete")
-                .author("Steve McConnel")
-                .publishedOn(LocalDate.of(2004, Month.JUNE, 9))
-                .build();
-        mythicalManMonth = new Book.Builder()
-                .title("The Mythical Man-Month")
-                .author("Frederick Phillips Brooks")
-                .publishedOn(LocalDate.of(1975, Month.JANUARY, 1))
-                .build();
-        cleanCode = new Book.Builder()
-                .title("Clean Code")
-                .author("Robert Cecil Martin")
-                .publishedOn(LocalDate.of(2008, Month.AUGUST, 1))
-                .build();
+        effectiveJava = books.get("Effective Java");
+        codeComplete = books.get("Code Complete");
+        mythicalManMonth = books.get("The Mythical Man-Month");
+        cleanCode = books.get("Clean Code");
     }
 
     @Nested
@@ -164,7 +148,7 @@ class BookShelfSpec {
             then(booksByAuthor).as("Books should be grouped by author")
                     .isNotEmpty().hasSize(4)
                     .containsEntry("Joshua Bloch", singletonList(effectiveJava))
-                    .containsEntry("Steve McConnel", singletonList(codeComplete))
+                    .containsEntry("Steve McConnell", singletonList(codeComplete))
                     .containsEntry("Frederick Phillips Brooks", singletonList(mythicalManMonth))
                     .containsEntry("Robert Cecil Martin", singletonList(cleanCode));
         }
