@@ -18,6 +18,7 @@ dependencies {
     testCompile 'org.junit.jupiter:junit-jupiter-api:' + junitVersion
     testCompile 'org.junit.jupiter:junit-jupiter-engine:' + junitVersion
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.19.0'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.8.0'
 }
 
 test {
