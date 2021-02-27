@@ -37,4 +37,8 @@ public class BookShelf {
     public <K> Map<K, List<Book>> groupBy(Function<Book, K> function) {
         return books.stream().collect(Collectors.groupingBy(function));
     }
+
+    public Progress progress() {
+        return new Progress(100, 0, 0);
+    }
 }
