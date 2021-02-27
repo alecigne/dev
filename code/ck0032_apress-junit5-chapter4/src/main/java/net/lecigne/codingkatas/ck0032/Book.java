@@ -6,6 +6,8 @@ public class Book implements Comparable<Book> {
     private final String title;
     private final String author;
     private final LocalDate publishedOn;
+    private LocalDate startedReadingOn;
+    private LocalDate finishedReadingOn;
 
     private Book(Builder builder) {
         this.title = builder.title;
@@ -48,6 +50,22 @@ public class Book implements Comparable<Book> {
 
     public LocalDate getPublishedOn() {
         return publishedOn;
+    }
+
+    public void startedReadingOn(LocalDate startedReadingOn) {
+        this.startedReadingOn = startedReadingOn;
+    }
+
+    public void finishedReadingOn(LocalDate finishedOn) {
+        this.finishedReadingOn = finishedOn;
+    }
+
+    public boolean isRead() {
+        return startedReadingOn != null && finishedReadingOn != null;
+    }
+
+    public boolean isInProgress() {
+        return startedReadingOn != null && finishedReadingOn == null;
     }
 
     @Override

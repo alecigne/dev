@@ -39,6 +39,12 @@ public class BookShelf {
     }
 
     public Progress progress() {
-        return new Progress(100, 0, 0);
+        int booksRead = Math.toIntExact(books.stream().filter(Book::isRead).count());
+        int booksInProgress = Math.toIntExact(books.stream().filter(Book::isInProgress).count());
+        int booksToRead = books.size() - booksRead - booksInProgress;
+        int percentageCompleted = booksRead * 100 / books.size();
+        int percentageInProgress = booksInProgress * 100 / books.size();
+        int percentageToRead = booksToRead * 100 / books.size();
+        return new Progress(percentageToRead, percentageInProgress, percentageCompleted);
     }
 }

@@ -5,8 +5,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import java.time.LocalDate;
 import java.util.Map;
 
+import static java.time.Month.AUGUST;
+import static java.time.Month.JULY;
 import static org.assertj.core.api.BDDAssertions.then;
 
 @DisplayName("A bookshelf progress")
@@ -41,4 +44,36 @@ class BookShelfProgressSpec {
         then(progress.completed()).as("No book should be completed")
                 .isZero();
     }
+
+    @Test
+    @DisplayName("when a few books have been completed should be correct")
+    void bookshelfProgress_whenAFewBooksCompleted_shouldBeCorrect() {
+        effectiveJava.startedReadingOn(LocalDate.of(2016, JULY, 1));
+        effectiveJava.finishedReadingOn(LocalDate.of(2016, JULY, 31));
+        cleanCode.startedReadingOn(LocalDate.of(2016, AUGUST, 1));
+        cleanCode.finishedReadingOn(LocalDate.of(2016, AUGUST, 31));
+        Progress progress = shelf.progress();
+        then(progress.toRead()).as("60% of books should have the To-Do progress state")
+                .isEqualTo(60);
+        then(progress.inProgress()).as("No book should be started")
+                .isZero();
+        then(progress.completed()).as("40% of books should be completed")
+                .isEqualTo(40);
+    }
+
+    @Test
+    @DisplayName("when books are in all progress states should be correct")
+    void bookshelfProgress_whenBooksInAllProgressStates_shouldBeCorrect() {
+        effectiveJava.startedReadingOn(LocalDate.of(2016, JULY, 1));
+        effectiveJava.finishedReadingOn(LocalDate.of(2016, JULY, 31));
+        cleanCode.startedReadingOn(LocalDate.of(2016, AUGUST, 1));
+        Progress progress = shelf.progress();
+        then(progress.toRead()).as("60% of books should have the To-Do progress state")
+                .isEqualTo(60);
+        then(progress.inProgress()).as("20% of books should be started")
+                .isEqualTo(20);
+        then(progress.completed()).as("20% of books should be completed")
+                .isEqualTo(20);
+    }
+
 }
