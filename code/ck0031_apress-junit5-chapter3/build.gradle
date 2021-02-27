@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group 'net.lecigne.codingkatas'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def junitVersion = '5.0.1'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:' + junitVersion
+    testCompile 'org.junit.jupiter:junit-jupiter-engine:' + junitVersion
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.19.0'
+}
+
+test {
+    useJUnitPlatform()
+}

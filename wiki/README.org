@@ -112,3 +112,6 @@ cf. [[file:tasks.org][task file]]
 
 - [[[file:projects/ck0030_apress-junit5-chapter1-2.org][CK0030]]] =apress-junit5-chapter-1-2= :: [2020-05-31 Sun]: chapter 1
   and 2 from the book [[file:series/books.org::*Java Unit Testing with JUnit 5][Java Unit Testing with JUnit 5]] (Apress).
+
+- [[[file:projects/ck0031_apress-junit5-chapter3.org][CK0031]]] =apress-junit5-chapter3= :: [2020-06-01 Mon]: chapter 3
+  from the book [[file:series/books.org::*Java Unit Testing with JUnit 5][Java Unit Testing with JUnit 5]] (Apress).
