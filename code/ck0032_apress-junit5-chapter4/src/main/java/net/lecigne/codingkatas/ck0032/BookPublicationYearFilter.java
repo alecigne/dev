@@ -26,7 +26,7 @@ public final class BookPublicationYearFilter implements BookFilter {
 
     @Override
     public boolean test(Book book) {
-        return yearPredicate.test(Year.of(book.getPublishedOn().getYear()));
+        return book != null && yearPredicate.test(Year.of(book.getPublishedOn().getYear()));
     }
 
 }
