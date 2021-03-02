@@ -18,3 +18,8 @@ by title.
 - Chapter 3 :: "Developing an Application with JUnit 5"
 
   [[[file:../projects/ck0031_apress-junit5-chapter3.org][CK0031]]] =apress-junit5-chapter3=
+
+- Chapter 4 :: "Dependency Injection, Mocking, Testing Traits, and
+  Grouping Tests"
+
+  [[[file:../projects/ck0032_apress-junit5-chapter4.org][CK0032]]] =apress-junit5-chapter4=

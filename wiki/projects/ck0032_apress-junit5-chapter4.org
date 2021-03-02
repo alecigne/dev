@@ -1,0 +1,169 @@
+#+TITLE: [CK0032] =apress-junit5-chapter4=
+
+[[file:../../code/ck0032_apress-junit5-chapter4/][Project]] created on [2020-06-04 Thu].
+
+* Dependency Injection
+
+- [[https://github.com/alecigne/coding-katas/commit/61208d][61208d]] :: dependency injection (DI) is also important for test data:
+  by injecting it, we can reuse the data and change what is injected
+  in the tests. It also improves readability.
+
+  With JUnit 5 we can inject in constructors or test methods. In this
+  commit we clean our test class by using DI: we inject test data by
+  implementing JUnit 5's ~ParameterResolver~ interface.
+
+  The test class needs to be annotated (~ExtendWith~) to make it aware
+  of the custom resolver. The resolver validates if the implementation
+  can provide the resolution for the asked parameter
+  (~supportsParameter~ method) and returns the value for the asked
+  parameter (~resolveParameter~ method).
+
+* Feature: Track Bookshelf Progress
+
+#+begin_quote
+As a user, I want to track the progress of my bookshelf based on the
+books I have read.
+#+end_quote
+
+3 metrics at the bookshelf level expressed as a percentage of all
+books:
+
+- To-Do (the user has not started reading these books)
+- In Progress (the user has started reading these books)
+- Completed (the user has finished reading these books)
+
+Let's start.
+
+- [[https://github.com/alecigne/coding-katas/commit/47abea][47abea]] :: In this commit we add a new test spec for this feature,
+  ~BookShelfProgressSpec~, and a basic test case to check that when no
+  book has been started, progress should be at 0%.
+
+- [[https://github.com/alecigne/coding-katas/commit/8df00b][8df00b]] :: Other test cases, with a few books finished and a few
+  books in progress. I used ~Math.toIntExact~ this time in the
+  ~progress~ method.
+
+- [[https://github.com/alecigne/coding-katas/commit/519914][519914]] :: Use ~ExtensionContext.Store~ to inject the same map in the
+  ~setUp~ method and the test methods. I struggled to understand since
+  this section is terse.
+
+  Before each test, the books are injected in the ~setUp~ method. To
+  have access to the same objects in the tests (for example, to alter
+  them), we use the instance variables of the test class. The book
+  proposes to do it without instance variables, by injecting the same
+  books in the ~setUp~ and the test methods. There are two incorrect
+  ways of doing it:
+
+  + Just add the books as a parameter to the tests:
+
+    #+begin_src java
+      @BeforeEach
+      void setUp(Map<String, Book> books) {
+          shelf = new BookShelf();
+          effectiveJava = books.get("Effective Java");
+          codeComplete = books.get("Code Complete");
+          mythicalManMonth = books.get("The Mythical Man-Month");
+          cleanCode = books.get("Clean Code");
+          refactoring = books.get("Refactoring: Improving the Design of Existing Code");
+          shelf.add(effectiveJava, codeComplete, mythicalManMonth, cleanCode, refactoring);
+      }
+
+      @Test
+      @DisplayName("when a few books have been completed should be correct")
+      void bookshelfProgress_whenAFewBooksCompleted_shouldBeCorrect(Map<String, Book> books) {
+          books.get("Effective Java").startedReadingOn(LocalDate.of(2016, JULY, 1));
+          books.get("Effective Java").finishedReadingOn(LocalDate.of(2016, JULY, 31));
+          books.get("Clean Code").startedReadingOn(LocalDate.of(2016, AUGUST, 1));
+          books.get("Clean Code").finishedReadingOn(LocalDate.of(2016, AUGUST, 31));
+          Progress progress = shelf.progress();
+          then(progress.toRead()).as("60% of books should have the To-Do progress state")
+                  .isEqualTo(60);
+          then(progress.inProgress()).as("No book should be started")
+                  .isZero();
+          then(progress.completed()).as("40% of books should be completed")
+                  .isEqualTo(40);
+      }
+    #+end_src
+
+    This will not work since ~resolveParameter~ will be called twice
+    (during the ~setUp~ injection and the test method injection) and
+    instantiate two different maps of books. The books altered in the
+    test won't be the books that are in the shelf.
+
+  + Instantiate the map in the constructor and store the reference in
+    an instance variable in ~BooksParameterResolver~. This way,
+    ~resolveParameter~ would return that reference every time and we
+    would inject the same books.
+
+    However, *the tests will fail* since we have created a global
+    state. The authors call this mistake the "chain-gang antipattern"
+    (the tests now have to be executed in some particular order to
+    work, since a global state is changed). There is a reference to
+    this name [[https://www.digitaltapestry.net/testify/manual/AntiPatterns.html][here]] ([[https://web.archive.org/web/20210227151930/https://www.digitaltapestry.net/testify/manual/AntiPatterns.html][archive]]).
+
+  The authors propose the use of ~ExtensionContext.Store~ as a viable
+  alternative:
+
+  #+begin_src java
+    @Override
+    public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) {
+        ExtensionContext.Store store = extensionContext.getStore(ExtensionContext.Namespace.create(Book.class));
+        return store.getOrComputeIfAbsent("books", k -> getBooks());
+    }
+  #+end_src
+
+  The store is created during the first call to ~resolveParameter~
+  (~setUp~) and the second call (test method) will reuse the same
+  map. So by alterning the books in the test, we'll be altering the
+  shelf itself.
+
+* Feature: Search BookShelf
+
+#+begin_quote
+As a user, I want to search my bookshelf.
+#+end_quote
+
+- [[https://github.com/alecigne/coding-katas/commit/f834f2][f834f2]] :: Let's start by a basic search feature. I opted for an
+  external test class. The book uses a nested class. Here we implement
+  the search by title and the search by title and "hint" (filter).
+
+- [[https://github.com/alecigne/coding-katas/commit/abeedd][abeedd]] :: The goal here is to fix the "primitive obsession" in the
+  ~findBooksByTitle~ method. The API is too low-level and we should
+  make things more abstract.
+
+  A few notes first. Their ~BookPublishedYearFilter~ is weird. The
+  ~apply~ method should be a ~test~ method because this is a predicate
+  (actually their ~BookFilter~ should simply extends
+  ~Predicate<Book>~). There should be a private constructor, otherwise
+  you can instantiate a filter and test things with an empty
+  comparison. ~Before~ and ~After~ shouldn't be cased this way. This
+  is Java, not C#. Also, since we're testing the year, no need to
+  instantiate a dummy ~LocalDate~...
+
+  This commit creates a ~BookPublicationYearFilter~ as a predicate and
+  adds some tests for it. I tried to follow the same architecture with
+  my preferences.
+
+- [[https://github.com/alecigne/coding-katas/commit/1a5f35][1a5f35]] :: The authors add a ~CompositeFilter~ class. This is useless
+  with my filters implementing the ~Predicate~ interface: I could just
+  use ~and~. However I'll go with the flow here to not deviate from
+  the book too much. I don't go through the steps using a map and a
+  "fake" class to keep trace of the invocation. My implementation
+  doesn't execute every filter since I use ~allMatch~, which is
+  better.
+
+- [[https://github.com/alecigne/coding-katas/commit/c6e87f][c6e87f]] :: "Testing traits" - testing common behaviour such as
+  passing a ~null~ book to a filter. Here we're just going to create
+  an interface with a default test. The implementation will be
+  provided by an abstract method, to be implemented by the class under
+  test. In my case, I used different filters in the same class
+  (~before~ and ~after~). To illustrate the point of the book I'll
+  just follow the example with the ~after~ filter.
+
+- [[https://github.com/alecigne/coding-katas/commit/0af0fe][0af0fe]] :: Grouping tests by tags. Examples in the book: slow/fast
+  tests, environment-specific tests, nightly tests. Tags are
+  ~java.lang.annotation.Repeatable~ annotations so we can add them
+  multiple times to a test method/class.
+
+  In IntelliJ we can add a configuration that will use /tag
+  expressions/. However I couldn't use the [[https://junit.org/junit5/docs/current/user-guide/#running-tests-tag-expressions][JUnit boolean operators]]
+  ([[https://web.archive.org/web/20210216085811/https://junit.org/junit5/docs/current/user-guide/#running-tests-tag-expressions][archive]]), only a single tag name.
