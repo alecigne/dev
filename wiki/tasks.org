@@ -41,3 +41,7 @@
 
 - [ ] Build tutorials from a few katas and integrate them to my
   [[https://lecigne.net][website]]
+
+- [ ] [[[file:projects/ck0032_apress-junit5-chapter4.org][CK0032]]] Explore the possibilities of JUnit tags.
+  + Gradle usage
+  + Maven usage
