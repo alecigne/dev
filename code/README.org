@@ -1,0 +1,4 @@
+#+TITLE: Coding Katas: code
+
+This directory contains the software projects themselves. It is *not*
+meant to be organized: for a more structured approach, check the [[file:../wiki/README.org][wiki]].

@@ -5,7 +5,7 @@ strings.
 
 * Timeline
 
-[[file:../../code/ck0016_java-sort][Project]] created on [2019-02-02 Sat].
+[[file:../../code/java-sort][Project]] created on [2019-02-02 Sat].
 
 * Notes
 

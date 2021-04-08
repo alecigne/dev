@@ -1,6 +1,6 @@
 #+TITLE: [CK0010] =ionic-crud=
 
-[[file:../../code/ck0010_ionic-crud/][Project]] created on [2018-10-24 Wed].
+[[file:../../code/ionic-crud/][Project]] created on [2018-10-24 Wed].
 
 An Ionic version of the [[file:ck0008_angular-extended-tour-of-heroes.org][Extended Tour of Heroes]] interface. Inspired by
 [[https://www.djamware.com/post/5b5cffaf80aca707dd4f65aa/building-crud-mobile-app-using-ionic-4-angular-6-and-cordova][this tutorial]] (or [[file:../.files/ck0010.pdf][see pdf backup]]).

@@ -2,7 +2,7 @@
 
 * Timeline
 
-[[file:../../code/ck0019_jdbc/][Project]] created on [2019-03-06 Wed].
+[[file:../../code/jdbc/][Project]] created on [2019-03-06 Wed].
 
 * Usage
 

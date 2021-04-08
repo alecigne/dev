@@ -1,6 +1,6 @@
 #+TITLE: [CK0031] =apress-junit5-chapter3=
 
-[[file:../../code/ck0031_apress-junit5-chapter3/][Project]] created on [2020-06-01 Mon].
+[[file:../../code/apress-junit5-chapter3/][Project]] created on [2020-06-01 Mon].
 
 * Notes
 

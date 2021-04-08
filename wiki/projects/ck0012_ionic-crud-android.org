@@ -1,6 +1,6 @@
 #+TITLE: [CK0012] =ionic-crud-android=
 
-[[file:../../code/ck0012_ionic-crud-android/][Project]] created on [2018-11-12 Mon].
+[[file:../../code/ionic-crud-android/][Project]] created on [2018-11-12 Mon].
 
 #+HTML: <p align="center"><img src="../.files/ck0012.png" /></p>
 

@@ -1,6 +1,6 @@
 #+TITLE: [CK0021] =bloch-builder=
 
-[[file:../../code/ck0021_bloch-builder/][Project]] created on [2019-03-27 Wed].
+[[file:../../code/bloch-builder/][Project]] created on [2019-03-27 Wed].
 
 Bloch's Builder pattern, found in the Effective Java book (see [[https://web.archive.org/web/20201125213714/https://www.informit.com/articles/article.aspx?p=1216151&seqNum=2][this
 link]]). It is not to be confused with GoF's Builder, although there are

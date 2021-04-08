@@ -1,6 +1,6 @@
 #+TITLE: [CK0001] =spring-jdbc=
 
-[[file:../../code/ck0001_spring-jdbc/][Project]] created on [2018-09-05 Wed].
+[[file:../../code/spring-jdbc/][Project]] created on [2018-09-05 Wed].
 
 The most interesting classes are:
 

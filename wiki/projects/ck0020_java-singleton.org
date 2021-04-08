@@ -4,7 +4,7 @@ A first dive into the [[https://en.wikipedia.org/wiki/Singleton_pattern][Singlet
 
 * Timeline
 
-[[file:../../code/ck0020_java-singleton/][Project]] created on [2019-03-27 Wed].
+[[file:../../code/java-singleton/][Project]] created on [2019-03-27 Wed].
 
 * Notes
 

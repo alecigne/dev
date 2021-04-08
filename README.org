@@ -7,11 +7,12 @@ particular point of software development...
 This repository is a collection of personal katas. It is organized as
 follows:
 
-- The [[file:code/][code]] directory contains the katas organized in chronological
-  order, by codename (=CK= = Coding Kata).
+- The [[file:code/][code]] directory contains the projects in no particular order
+  other than alphabetical.
 
-- The [[file:wiki/][wiki]] directory brings order to the katas by referencing them
-  from specific points of view.
+- The [[file:wiki/][wiki]] directory brings structure by linking these projects to
+  specific katas. Every kata has a codename starting with =CK= (for
+  Coding Kata).
 
 If you think katas are a good idea and would like to make your own
 repo, check my [[file:wiki/rules.org][personal rules]] for inspiration.

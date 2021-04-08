@@ -1,6 +1,6 @@
 #+TITLE: [CK0029] =cat-facts-spring-boot=
 
-[[file:../../code/ck0029_cat-facts-spring-boot/][Project]] created on [2020-03-30 Mon].
+[[file:../../code/cat-facts-spring-boot/][Project]] created on [2020-03-30 Mon].
 
 Just a few tests in a Spring Boot project using [[https://spring.io/projects/spring-cloud-openfeign][Spring Boot
 OpenFeign]]. Inspired from [[http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][this blog article]] ([[https://web.archive.org/web/20210218105617/http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][archive]]).

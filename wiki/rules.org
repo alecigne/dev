@@ -2,37 +2,39 @@
 
 These are /rules of thumb/, not absolute laws :)
 
-- A kata is *short*: it should take at most a few hours to complete.
+- A kata is *short*: it should take from a few minutes to at most a
+  few hours to complete.
 
   In case I'm studying a long document such as a book, I will treat
-  every chapter or section as a new kata. If the document uses a
-  single project and builds on it chapter after chapter, I will copy
-  the previous step to make a new kata. See [[file:series/books.org][the book page]] for
-  examples.
-
-- A kata is *immutable*: it should be left alone after completion. The
-  only exceptions are small fixes, such as typos. Mention updates in
-  the documentation.
+  every chapter or section as a new kata.
 
 - A kata is *documented*: it should at least have its own [[https://github.com/alecigne/coding-katas/tree/master/wiki/projects][project page]]
   with an initialization date. It can also, and probably should, be
-  part of a [[file:series/][series]] sooner or later to bring structure to the wiki.
+  part of a [[file:series/][series]] sooner or later to bring even more structure to the
+  wiki.
 
   Sometimes, the building steps of a kata are of pedagogical
   importance: we might make a mistake /deliberately/ and fix it
   later. In that case, the documentation will reference the individual
-  commits from the kata's branch, that will be kept in the repo. See
-  an example in [[file:projects/ck0031_apress-junit5-chapter3.org][this kata]] taken from a book.
+  commits from the kata's branch. See an example in [[file:projects/ck0031_apress-junit5-chapter3.org][this kata]] taken
+  from a book.
 
   Every article in the documentation should be [[https://web.archive.org/][archived]] to avoid [[https://en.wikipedia.org/wiki/Link_rot][link
   rot]].
+
+- A kata is *immutable*: it should be left alone after completion
+  except for small fixes. The only exceptions are small fixes, such as
+  typos. The documentation for a kata can be changed more freely.
 
 - A kata is *useful*: it should, sooner or later, be referenced or
   used somewhere else. Use it as...
 
   + ...an inspiration for a project, or as an improvement to a
-    project. Mention it in the documentation.
+    project. Mention the project in the documentation.
+
   + ...a source for [[https://apps.ankiweb.net/][Anki cards]] if some key concepts should be
     remembered.
+
   + ...an answer to somebody's question.
+
   + Etc.

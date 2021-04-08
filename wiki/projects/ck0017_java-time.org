@@ -2,4 +2,4 @@
 
 * Timeline
 
-[[file:../../code/ck0017_java-time/][Project]] created on [2019-02-26 Tue].
+[[file:../../code/java-time/][Project]] created on [2019-02-26 Tue].
