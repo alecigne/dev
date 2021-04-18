@@ -11,15 +11,17 @@ import org.apache.commons.lang3.StringUtils;
 public class MainView extends VerticalLayout {
     private final CustomerRepository repo;
     final Grid<Customer> grid;
+    private final CustomerEditor editor;
 
-    public MainView(CustomerRepository repo) {
+    public MainView(CustomerRepository repo, CustomerEditor editor) {
         this.repo = repo;
+        this.editor = editor;
         this.grid = new Grid<>(Customer.class);
         TextField filter = new TextField();
         filter.setPlaceholder("Filter by last name");
         filter.setValueChangeMode(ValueChangeMode.EAGER);
         filter.addValueChangeListener(e -> listCustomers(e.getValue()));
-        add(filter, grid);
+        add(filter, grid, editor);
         listCustomers("");
     }
 
