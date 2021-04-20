@@ -25,6 +25,8 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
     Button delete = new Button("Delete", VaadinIcon.TRASH.create());
     HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
 
+    private ChangeHandler changeHandler;
+
     @Autowired
     public CustomerEditor(CustomerRepository repository) {
         this.repository = repository;
@@ -34,5 +36,34 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
         setSpacing(true);
         save.getElement().getThemeList().add("primary");
         delete.getElement().getThemeList().add("error");
+
+        // Wire actions
+        save.addClickListener(e -> saveCustomer());
+        cancel.addClickListener(e -> setVisible(false));
+        delete.addClickListener(e -> deleteCustomer());
+
+        // Invisible initially
+        setVisible(false);
+    }
+
+    void saveCustomer() {
+        changeHandler.onChange();
+    }
+
+    public final void editCustomer() {
+        setVisible(true);
+    }
+
+    void deleteCustomer() {
+        changeHandler.onChange();
+    }
+
+    @FunctionalInterface
+    public interface ChangeHandler {
+        void onChange();
+    }
+
+    public void setChangeHandler(ChangeHandler changeHandler) {
+        this.changeHandler = changeHandler;
     }
 }
