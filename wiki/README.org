@@ -117,6 +117,9 @@
 - [[[file:projects/ck0032_apress-junit5-chapter4.org][CK0032]]] =apress-junit5-chapter4= :: Init. [2020-06-04 Thu]: chapter
   4 from the book [[file:series/books.org::*Java Unit Testing with JUnit 5][Java Unit Testing with JUnit 5]] (Apress).
 
+- [[[file:projects/ck0033_crud-with-vaadin.org][CK0033]]] =crud-with-vaadin= :: Init. [2021-03-02 Tue]: the tutorial
+  "[[https://spring.io/guides/gs/crud-with-vaadin/][Creating CRUD UI with Vaadin]]" from the Spring website.
+
 * Tasks
 
 cf. [[file:tasks.org][task file]]
