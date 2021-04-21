@@ -1,18 +1,20 @@
 #+TITLE: Coding Katas
 
-A /coding kata/ is a practice session focused on a specific objective:
-a chapter from a book, a tutorial, a reference project illustrating a
-particular point of software development...
+A /coding kata/ is a practice session focused on a specific objective.
+
+It can be a chapter from a book, an online tutorial, an exercice from
+LeetCode/HackerRank/etc., or simply a personal reference project
+illustrating a particular point of software development.
 
 This repository is a collection of personal katas. It is organized as
 follows:
 
-- The [[file:code/][code]] directory contains the projects in no particular order
+- The [[file:code/][code]] directory contains software projects in no particular order
   other than alphabetical.
 
-- The [[file:wiki/][wiki]] directory brings structure by linking these projects to
-  specific katas. Every kata has a codename starting with =CK= (for
-  Coding Kata).
+- The [[file:wiki/][wiki]] directory brings structure by linking the katas to their
+  respective project. Every kata has a codename starting with =CK=
+  (for Coding Kata).
 
 If you think katas are a good idea and would like to make your own
-repo, check my [[file:wiki/rules.org][personal rules]] for inspiration.
+repo, check the [[file:wiki/about.org][about page]] for inspiration.

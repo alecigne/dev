@@ -4,15 +4,15 @@
 
 - [ ] [algorithms] Implement generic solutions
 
-- [ ] [[[file:projects/ck0014_java-binary-search.org][ck0014]]] Return theoretical index of a value if it's not found
+- [ ] [[[file:katas/ck0014_java-binary-search.org][ck0014]]] Return theoretical index of a value if it's not found
 
   cf. ~Arrays.binarySearch~ and ~Collections.binarySearch~.
 
-- [ ] [[[file:projects/ck0016_java-sort.org][ck0016]]] Clean the project
+- [ ] [[[file:katas/ck0016_java-sort.org][ck0016]]] Clean the project
 
-- [ ] [[[file:projects/ck0016_java-sort.org][ck0016]]] Implement ~SelectionSort~
+- [ ] [[[file:katas/ck0016_java-sort.org][ck0016]]] Implement ~SelectionSort~
 
-- [ ] [[[file:projects/ck0020_java-singleton.org][ck0020]]] Find reliable way to test thread safety
+- [ ] [[[file:katas/ck0020_java-singleton.org][ck0020]]] Find reliable way to test thread safety
 
   This is a draft:
 
@@ -30,18 +30,18 @@
 
   See https://parserdigital.com/demystifying-thread-safety-2/
 
-- [ ] [[[file:projects/ck0015_java-find-duplicates.org][ck0015]]] Implement ~DuplicateFinder~, an implementation that
+- [ ] [[[file:katas/ck0015_java-find-duplicates.org][ck0015]]] Implement ~DuplicateFinder~, an implementation that
   returns the duplicates
 
-- [ ] [[[file:projects/ck0018_jpa-simple-dao.org][ck0018]]] Fix problem with JUnit
+- [ ] [[[file:katas/ck0018_jpa-simple-dao.org][ck0018]]] Fix problem with JUnit
 
-- [ ] [[[file:projects/ck0018_jpa-simple-dao.org][ck0018]]] Understand why the =class= tag is needed for tests
+- [ ] [[[file:katas/ck0018_jpa-simple-dao.org][ck0018]]] Understand why the =class= tag is needed for tests
 
-- [ ] [[[file:projects/ck0018_jpa-simple-dao.org][ck0018]]] Finish tests
+- [ ] [[[file:katas/ck0018_jpa-simple-dao.org][ck0018]]] Finish tests
 
 - [ ] Build tutorials from a few katas and integrate them to my
   [[https://lecigne.net][website]]
 
-- [ ] [[[file:projects/ck0032_apress-junit5-chapter4.org][CK0032]]] Explore the possibilities of JUnit tags.
+- [ ] [[[file:katas/ck0032_apress-junit5-chapter4.org][CK0032]]] Explore the possibilities of JUnit tags.
   + Gradle usage
   + Maven usage

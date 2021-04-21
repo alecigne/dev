@@ -5,7 +5,7 @@
 - The "rawest" and oldest form of Spring DI configuration is the "full
   XML" path. Everything is managed using one or more XML files.
 
-  See project [[file:../../code/spring-di-xml-config/][spring-di-xml-config]] from kata [[file:../projects/ck0024_spring-di-xml-config.org][CK0024]] (XML bean
+  See project [[file:../../code/spring-di-xml-config/][spring-di-xml-config]] from kata [[file:../katas/ck0024_spring-di-xml-config.org][CK0024]] (XML bean
   declaration and injection).
 
 - Starting from Spring 2.5, it became possible to use annotations to
@@ -27,6 +27,6 @@
   Of course, from this point on, you can either use the JavaConfig
   style without or with annotation-based injection.
 
-  See kata [[file:../projects/ck0023_spring-di-java-config.org][CK0023]] (JavaConfig bean declaration and injection - no
+  See kata [[file:../katas/ck0023_spring-di-java-config.org][CK0023]] (JavaConfig bean declaration and injection - no
   annotation-based injection) and project [TODO] (JavaConfig with
   annotation-based injection).
