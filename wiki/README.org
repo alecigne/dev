@@ -125,6 +125,9 @@
 - [[[file:katas/ck0033_crud-with-vaadin.org][CK0033]]] =crud-with-vaadin= :: Init. [2021-03-02 Tue]: the tutorial
   "[[https://spring.io/guides/gs/crud-with-vaadin/][Creating CRUD UI with Vaadin]]" from the Spring website.
 
+- [[[file:katas/ck0034_spring-lifecycle.org][CK0034]]] =spring-lifecycle= :: Init. [2021-04-22 Thu]: highlighting
+  different steps of a Spring bean lifecycle.
+
 * Tasks
 
 cf. [[file:tasks.org][task file]]

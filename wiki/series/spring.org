@@ -1,6 +1,17 @@
 #+TITLE: Spring
 
-* Dependency injection (DI)
+/!\ Work in progress /!\
+
+* Spring Framework
+:PROPERTIES:
+:CREATED:  [2021-04-22 jeu. 22:53]
+:END:
+
+** Lifecycle of a bean
+
+Check kata [[file:../katas/ck0034_spring-lifecycle.org][CK0034]].
+
+** Configuring a Spring project
 
 - The "rawest" and oldest form of Spring DI configuration is the "full
   XML" path. Everything is managed using one or more XML files.
@@ -30,3 +41,11 @@
   See kata [[file:../katas/ck0023_spring-di-java-config.org][CK0023]] (JavaConfig bean declaration and injection - no
   annotation-based injection) and project [TODO] (JavaConfig with
   annotation-based injection).
+
+** Spring JDBC
+
+[[file:../katas/ck0001_spring-jdbc.org][CK0001]].
+
+* Spring Boot
+
+First contact: [[file:../katas/ck0007_spring-boot-minimal.org][CK0007]].
