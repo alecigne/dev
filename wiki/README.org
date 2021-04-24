@@ -128,6 +128,9 @@
 - [[[file:katas/ck0034_spring-lifecycle.org][CK0034]]] =spring-lifecycle= :: Init. [2021-04-22 Thu]: highlighting
   different steps of a Spring bean lifecycle.
 
+- [[[file:katas/ck0035_leetcode-two-sum.org][CK0035]]] =leetcode-two-sum= :: Init. [2021-04-24 Sat]: LeetCode
+  problem #1: [[https://leetcode.com/problems/two-sum/][Two Sum]].
+
 * Tasks
 
 cf. [[file:tasks.org][task file]]
