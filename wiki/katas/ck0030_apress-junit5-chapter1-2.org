@@ -3,7 +3,7 @@
 [[file:../../code/apress-junit5-chapter1-2/][Project]] created on [2020-05-31 Sun].
 
 Chapter 1 and 2 from the book Java Unit Testing with JUnit 5
-(Apress). Check the relevant book section in the [[file:../series/books.org::*Java Unit Testing with JUnit 5][books]] page.
+(Apress). Check the relevant book section in the [[file:../sources/books.org::*Java Unit Testing with JUnit 5][books]] page.
 
 * Chapter 1
 

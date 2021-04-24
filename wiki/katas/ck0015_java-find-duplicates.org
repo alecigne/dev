@@ -11,4 +11,4 @@ https://stackoverflow.com/q/3951547
 
 * See also
 
-[[file:series/algorithms.org][Algorithms]]
+[[file:themes/algorithms.org][Algorithms]]

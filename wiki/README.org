@@ -1,21 +1,23 @@
 #+TITLE: Coding Katas: wiki
 
-* Series
+* Themes
 
-- [[file:series/algorithms.org][Algorithms]] :: Algorithms implemented in various languages
+- [[file:themes/algorithms.org][Algorithms]] :: Algorithms implemented in various languages
 
-- [[file:series/design-patterns.org][Design patterns]] :: Design patterns in various languages
+- [[file:themes/design-patterns.org][Design patterns]] :: Design patterns in various languages
 
-- [[file:series/python.org][Python]] :: Python projects :)
+- [[file:themes/python.org][Python]] :: Python projects :)
 
-- [[file:series/spring.org][Spring]] :: Notes on the famous Java framework
+- [[file:themes/spring.org][Spring]] :: Notes on the famous Java framework
 
 * Sources
 :PROPERTIES:
 :CREATED:  [2021-04-21 mer. 21:59]
 :END:
 
-- [[file:series/books.org][Books]] :: Katas from books
+- [[file:sources/books.org][Books]] :: Katas from books
+
+- [[file:sources/websites.org][Websites]] :: Katas from coding websites (LeetCode, etc.)
 
 * Index
 
@@ -113,14 +115,14 @@
   OpenFeign]]. Inspired from [[http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][this blog article]] ([[https://web.archive.org/web/20210218105617/http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][archive]]).
 
 - [[[file:katas/ck0030_apress-junit5-chapter1-2.org][CK0030]]] =apress-junit5-chapter-1-2= :: Init. [2020-05-31 Sun]:
-  chapter 1 and 2 from the book [[file:series/books.org::*Java Unit Testing with JUnit 5][Java Unit Testing with JUnit 5]]
+  chapter 1 and 2 from the book [[file:sources/books.org::*Java Unit Testing with JUnit 5][Java Unit Testing with JUnit 5]]
   (Apress).
 
 - [[[file:katas/ck0031_apress-junit5-chapter3.org][CK0031]]] =apress-junit5-chapter3= :: Init. [2020-06-01 Mon]: chapter
-  3 from the book [[file:series/books.org::*Java Unit Testing with JUnit 5][Java Unit Testing with JUnit 5]] (Apress).
+  3 from the book [[file:sources/books.org::*Java Unit Testing with JUnit 5][Java Unit Testing with JUnit 5]] (Apress).
 
 - [[[file:katas/ck0032_apress-junit5-chapter4.org][CK0032]]] =apress-junit5-chapter4= :: Init. [2020-06-04 Thu]: chapter
-  4 from the book [[file:series/books.org::*Java Unit Testing with JUnit 5][Java Unit Testing with JUnit 5]] (Apress).
+  4 from the book [[file:sources/books.org::*Java Unit Testing with JUnit 5][Java Unit Testing with JUnit 5]] (Apress).
 
 - [[[file:katas/ck0033_crud-with-vaadin.org][CK0033]]] =crud-with-vaadin= :: Init. [2021-03-02 Tue]: the tutorial
   "[[https://spring.io/guides/gs/crud-with-vaadin/][Creating CRUD UI with Vaadin]]" from the Spring website.

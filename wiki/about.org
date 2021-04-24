@@ -10,14 +10,14 @@ Here a few rules of thumb I use for katas:
   builds on the previous one.
 
 - A kata is *documented*: it should have its own [[file:katas/][kata page]]. It can
-  also, and probably should, be part of a [[file:series/][series]] sooner or later to
+  also, and probably should, be part of a [[file:themes/][theme]] sooner or later to
   bring even more structure to the wiki.
 
   Articles in the documentation should be [[https://web.archive.org/][archived]] to avoid [[https://en.wikipedia.org/wiki/Link_rot][link rot]].
 
-- A kata is *immutable*: it should be left alone after completion
-  except for small fixes. The only exceptions are small fixes, such as
-  typos. The documentation for a kata can be changed more freely.
+- A kata is *immutable*: it should be left alone after completion. The
+  only exceptions are small fixes, such as typos. The documentation
+  for a kata can be updated more freely.
 
 - A kata is *useful*: it should, sooner or later, be referenced or
   used somewhere else. Use it as...
