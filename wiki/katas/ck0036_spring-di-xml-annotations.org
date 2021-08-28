@@ -1,0 +1,41 @@
+#+TITLE: [CK0036] =spring-di-xml-annotations=
+
+* Kata
+
+- Start date :: [2021-08-28 Sat]
+
+- Content :: Using Spring's annotations for DI and bean definition
+  along with an XML file.
+
+- Project :: This kata created the [[file:../../code/spring-di-xml-annotations/][spring-di-xml-annotations]]
+  project. Check a snapshot of the project's state at the end of the
+  kata [[https://github.com/alecigne/coding-katas/tree/ck0036/code/spring-di-xml-annotations][here]].
+
+- Branch :: [[https://github.com/alecigne/coding-katas/commits/ck0036][ck0036]]
+
+* Notes
+
+[[https://docs.spring.io/spring-framework/docs/5.1.5.RELEASE/spring-framework-reference/core.html#beans-annotation-config][This]] and the following section of the Spring documentation is a good
+read before starting (this is for Spring 5.1.5, as used in this
+project).
+
+- [[https://github.com/alecigne/coding-katas/commit/a8f18e60fc158f12dc4494523d3d0462482333c0][a8f18e6]] :: Init. The tests won't pass since the "vehicle" instances
+  are not even defined as Spring beans.
+
+- [[https://github.com/alecigne/coding-katas/commit/bfc8da2da7a17235ef43f837a38832bd67171976][bfc8da2]] :: Compared to the [[file:ck0024_spring-di-xml-config.org][spring-di-xml-config]] kata/project, in
+  this commit we introduce the DI annotations =@Autowired= and
+  =@Qualifier=. Other annotations include =@PostConstruct=,
+  =@PreDestroy=, =@Resource=...
+
+  These annotation are detected with the following XML line:
+
+  #+begin_src xml
+    <context:annotation-config/>
+  #+end_src
+
+  The beans still have to be defined manually in =beans.xml=.
+
+- [[https://github.com/alecigne/coding-katas/commit/a82d7365ae3bf3c43a47b4ea178b8ba274662269][a82d736]] :: Here we introduce the bean definition annotations
+  (=@Component=, see also the other stereotype annotations). We also
+  activate component scanning in =beans.xml=, otherwise the tests
+  can't pass (it won't find the beans).
