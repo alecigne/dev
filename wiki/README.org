@@ -114,6 +114,10 @@
 - [[[file:katas/ck0035_leetcode-two-sum.org][CK0035]]] =leetcode-two-sum= :: Init. [2021-04-24 Sat]: LeetCode
   problem #1: [[https://leetcode.com/problems/two-sum/][Two Sum]].
 
+- [[[file:katas/ck0036_spring-di-xml-annotations.org][CK0036]]] =spring-di-xml-annotations= :: Init. [2021-08-28 Sat]:
+  Using Spring's annotations for DI and bean definition along with an
+  XML file.
+
 * Perspectives
 :PROPERTIES:
 :CREATED:  [2021-08-28 Sat 15:43]
