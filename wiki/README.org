@@ -1,24 +1,5 @@
 #+TITLE: Coding Katas: wiki
 
-* Themes
-
-- [[file:themes/algorithms.org][Algorithms]] :: Algorithms implemented in various languages
-
-- [[file:themes/design-patterns.org][Design patterns]] :: Design patterns in various languages
-
-- [[file:themes/python.org][Python]] :: Python projects :)
-
-- [[file:themes/spring.org][Spring]] :: Notes on the famous Java framework
-
-* Sources
-:PROPERTIES:
-:CREATED:  [2021-04-21 mer. 21:59]
-:END:
-
-- [[file:sources/books.org][Books]] :: Katas from books
-
-- [[file:sources/websites.org][Websites]] :: Katas from coding websites (LeetCode, etc.)
-
 * Index
 
 - [[[file:katas/ck0001_spring-jdbc.org][CK0001]]] =spring-jdbc= :: Init. [2018-09-05 Wed]: a few common cases
@@ -132,6 +113,30 @@
 
 - [[[file:katas/ck0035_leetcode-two-sum.org][CK0035]]] =leetcode-two-sum= :: Init. [2021-04-24 Sat]: LeetCode
   problem #1: [[https://leetcode.com/problems/two-sum/][Two Sum]].
+
+* Perspectives
+:PROPERTIES:
+:CREATED:  [2021-08-28 Sat 15:43]
+:END:
+
+** Themes
+
+- [[file:themes/algorithms.org][Algorithms]] :: Algorithms implemented in various languages
+
+- [[file:themes/design-patterns.org][Design patterns]] :: Design patterns in various languages
+
+- [[file:themes/python.org][Python]] :: Python projects :)
+
+- [[file:themes/spring.org][Spring]] :: Notes on the famous Java framework
+
+** Sources
+:PROPERTIES:
+:CREATED:  [2021-04-21 mer. 21:59]
+:END:
+
+- [[file:sources/books.org][Books]] :: Katas from books
+
+- [[file:sources/websites.org][Websites]] :: Katas from coding websites (LeetCode, etc.)
 
 * Tasks
 
