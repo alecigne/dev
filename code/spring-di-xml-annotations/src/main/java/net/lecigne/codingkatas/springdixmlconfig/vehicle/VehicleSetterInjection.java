@@ -4,8 +4,9 @@ import net.lecigne.codingkatas.springdixmlconfig.driver.Driver;
 import net.lecigne.codingkatas.springdixmlconfig.motor.Motor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-// Bean definition in beans.xml
+@Component
 public class VehicleSetterInjection {
 
     private Motor motor;
