@@ -30,13 +30,14 @@ Check kata [[file:../katas/ck0034_spring-lifecycle.org][CK0034]].
   The XML file takes precedence over annotations in case of a
   conflict.
 
-  See project [TODO] (annotation-based bean definition and injection).
+  See kata [[file:../katas/ck0036_spring-di-xml-annotations.org][CK0036]].
 
 - Starting from Spring 3.0 and "JavaConfig", you can replace the XML
   file with a Java class.
 
   Of course, from this point on, you can either use the JavaConfig
-  style without or with annotation-based injection.
+  style /with or without/ annotation-based injection and bean
+  definition.
 
   See kata [[file:../katas/ck0023_spring-di-java-config.org][CK0023]] (JavaConfig bean declaration and injection - no
   annotation-based injection) and project [TODO] (JavaConfig with
