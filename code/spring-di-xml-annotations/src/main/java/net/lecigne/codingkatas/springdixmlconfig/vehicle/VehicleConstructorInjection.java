@@ -2,13 +2,18 @@ package net.lecigne.codingkatas.springdixmlconfig.vehicle;
 
 import net.lecigne.codingkatas.springdixmlconfig.driver.Driver;
 import net.lecigne.codingkatas.springdixmlconfig.motor.Motor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
+// Bean definition in beans.xml
 public class VehicleConstructorInjection {
 
     private final Motor motor;
     private final Driver driver;
 
-    public VehicleConstructorInjection(Motor motor, Driver driver) {
+    @Autowired
+    public VehicleConstructorInjection(@Qualifier("gasEngine") Motor motor,
+                                       @Qualifier("grandMother") Driver driver) {
         this.motor = motor;
         this.driver = driver;
     }

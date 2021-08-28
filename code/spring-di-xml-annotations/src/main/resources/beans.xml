@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans.xsd">
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
 
     <!-- Definition of motor + driver beans -->
     <bean id="electricMotor" class="net.lecigne.codingkatas.springdixmlconfig.motor.ElectricMotor"/>
     <bean id="gasEngine" class="net.lecigne.codingkatas.springdixmlconfig.motor.GasEngine"/>
     <bean id="crazyDriver" class="net.lecigne.codingkatas.springdixmlconfig.driver.CrazyDriver"/>
     <bean id="grandMother" class="net.lecigne.codingkatas.springdixmlconfig.driver.GrandMother"/>
+
+    <!-- Definition of the vehicle bean -->
+    <bean id="vehicleConstructorInjection" class="net.lecigne.codingkatas.springdixmlconfig.vehicle.VehicleConstructorInjection"/>
+    <bean id="vehicleSetterInjection" class="net.lecigne.codingkatas.springdixmlconfig.vehicle.VehicleSetterInjection"/>
+    <bean id="vehicleFieldInjection" class="net.lecigne.codingkatas.springdixmlconfig.vehicle.VehicleFieldInjection"/>
 
 </beans>
