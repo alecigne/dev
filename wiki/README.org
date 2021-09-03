@@ -129,9 +129,9 @@
 
 - [[file:themes/design-patterns.org][Design patterns]] :: Design patterns in various languages
 
-- [[file:themes/python.org][Python]] :: Python projects :)
+- [[file:themes/java.org][Java]] :: A "road to Java proficiency" in the form of katas.
 
-- [[file:themes/spring.org][Spring]] :: Notes on the famous Java framework
+- [[file:themes/python.org][Python]] :: Python projects :)
 
 ** Sources
 :PROPERTIES:
