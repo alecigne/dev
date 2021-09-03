@@ -118,6 +118,9 @@
   Using Spring's annotations for DI and bean definition along with an
   XML file.
 
+- [[[file:katas/ck0037_java-jaxb.org][CK0037]]] =java-jaxb= :: Init. [2021-09-03 Fri]: Marshalling and
+  unmarshalling using JAXB.
+
 * Perspectives
 :PROPERTIES:
 :CREATED:  [2021-08-28 Sat 15:43]

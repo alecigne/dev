@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+    <element name="individual">
+        <complexType>
+            <sequence>
+                <element name="givenName" type="string"/>
+                <element name="surname" type="string"/>
+                <element name="children" type="int"/>
+                <element name="birthDate" type="string"/>
+            </sequence>
+            <attribute name="sex">
+                <simpleType>
+                    <restriction base="string">
+                        <pattern value="[MF]"/>
+                    </restriction>
+                </simpleType>
+            </attribute>
+        </complexType>
+    </element>
+</schema>
