@@ -52,5 +52,7 @@ start learning immediately.
 - The [[file:code/][code]] directory contains the software projects born from the
   katas, in no particular order other than alphabetical.
 
+A new kata can be created with this quick-and-dirty [[file:new-kata.bash][Bash script]].
+
 If you think katas are a good idea and would like to make your own
 repo, check the [[file:wiki/about.org][about page]] for inspiration.
