@@ -1,0 +1,152 @@
+#+TITLE: =java-jaxb=
+
+* Kata
+
+- Start date :: [2021-09-03 Fri]
+
+- Content :: Marshalling and unmarshalling using JAXB.
+
+- Project :: This kata created the [[file:../../code/java-jaxb/][java-jaxb]] project. Check a snapshot
+  of the project's state at the end of the kata [[https://github.com/alecigne/learning/tree/ck0037/code/java-jaxb][here]].
+
+- Branch :: [[https://github.com/alecigne/learning/commits/ck0037][ck0037]]
+
+* Notes
+:PROPERTIES:
+:CREATED:  [2021-09-04 Sat 00:02]
+:END:
+
+** Dependencies
+:PROPERTIES:
+:CREATED:  [2021-09-04 Sat 16:45]
+:END:
+
+JAXB and an implementation:
+
+#+begin_src xml
+  <dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>${jaxb.version}</version>
+  </dependency>
+  <dependency>
+    <groupId>org.glassfish.jaxb</groupId>
+    <artifactId>jaxb-runtime</artifactId>
+    <version>${jaxb.version}</version>
+    <scope>runtime</scope>
+  </dependency>
+#+end_src
+
+For tests:
+
+#+begin_src xml
+  <dependency>
+    <groupId>org.xmlunit</groupId>
+    <artifactId>xmlunit-core</artifactId>
+    <version>${xmlunit.version}</version>
+  </dependency>
+#+end_src
+
+[[https://www.xmlunit.org/][XMLUnit]] is a library that helps testing XML content.
+
+** Generating XML from a Java class: marshalling
+:PROPERTIES:
+:CREATED:  [2021-09-04 Sat 16:53]
+:END:
+
+In these "marshalling" cases, JAXB annotations in the =Person= and
+=PersonBis= classes help us control the generation of XML to fit the
+=individual.xsd= schema. Note that the differences in nomenclature
+between the class itself and the associated schema are voluntary to
+illustrate how JAXB works: for example, the class name is different
+from the root element name, field names are different... Don't do that
+in real life :)
+
+- =@XmlRootElement(name = "individual")=: the class is an XML root
+  element with the name "individual".
+
+- =@XmlType(propOrder = {"firstName", "lastName", "children",
+  "birthDate", "sex"})=: maps a Java class to a schema type. It
+  defines the type name and order of its children.
+
+  In the schema, we have this order:
+
+  #+begin_src xml
+    <element name="givenName" type="string"/>
+    <element name="surname" type="string"/>
+    <element name="children" type="int"/>
+    <element name="birthDate" type="string"/>
+  #+end_src
+
+  So =propOrder= has to respect this order (although with different
+  names since the Java field names are different - see =@XmlElement=
+  below). Otherwise the order will be alphabetical.
+
+  =PersonBis= doesn't respect this order.
+
+- =@XmlAccessorType=: defines the fields and properties of the Java
+  class that the JAXB engine will use for binding.
+
+  #+begin_quote
+  By default JAXB impls will treat properties (get/set pairs), public
+  fields (instance variables), and annotated non-public fields as
+  mapped. If you just annotate a field you will get a duplicate mapped
+  property exception.
+  #+end_quote
+
+  ([[https://stackoverflow.com/a/22196362][source]])
+
+  Here we just choose =NONE= so we have to explicitely annotate our
+  fields with the JAXB annotations =@XmlElement= and
+  =@XmlAttribute=. We also change their XML name when necessary to
+  match the names in the schema.
+
+- =@XmlAttribute=: maps a field or property to an XML attribute.
+
+  This will give something like this:
+
+  #+begin_src xml
+    <individual sex="M">
+    </individual>
+  #+end_src
+
+- =@XmlTransient=: prevents mapping a field or property to the XML
+  Schema.
+
+  =salary= is transient and is not in the final XML output.
+
+- =@XmlJavaTypeAdapter(LocalDateAdapter.class)=: custom marshalling
+  for =LocalDate=.
+
+See the corresponding tests:
+
+- =marshal_givenInstanceOfCorrectlyAnnotatedClass_shouldGenerateValidXml=
+- =marshal_givenInstanceOfIncorrectlyAnnotatedClass_shouldGenerateInvalidXml=
+- =marshal_givenInstanceOfAnnotatedClassAndSchema_shouldWork=
+- =marshal_givenInstanceOfAnnotatedClassAndSchemaWithMismatch_shouldThrowException=
+
+In the first two tests we use a marshaller that doesn't know about the
+schema. We then use XMLUnit to validate the produced XML against a
+schema (=individual.xsd=): only the correctly-annotated class,
+=Person=, produces XML that matches the schema. Since =PersonBis=
+defines an alternative order for the elements, the XML won't be valid.
+
+In the last two tests, we do the same thing but the validation is done
+by the marshaller itself (with an exception in case of a mismatch).
+
+** Generating Java instances from XML: unmarshalling
+:PROPERTIES:
+:CREATED:  [2021-09-04 Sat 18:43]
+:END:
+
+See the unmarshalling tests:
+
+- =unmarshall_givenXmlWithNecessaryElements_shouldGenerateInstance=
+- =unmarshal_givenIncorrectXmlAndSchema_shouldThrowException=
+
+In the first one, we check that unmarshalling without a schema works
+as long as the necessary elements are present (in any order, even if
+there are extra elements).
+
+In the second one, we check that an exception will be thrown if the
+XML doesn't match with a provided schema during unmarshalling.

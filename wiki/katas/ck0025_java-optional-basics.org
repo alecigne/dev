@@ -1,6 +1,0 @@
-#+TITLE: [CK0025] =java-optional-basics=
-
-[[file:../../code/java-optional-basics/][Project]] created on [2019-05-28 Tue].
-
-This was just a first contact with Java's Optional, with extremely
-simple TUs for educational purpose.

@@ -1,0 +1,46 @@
+#+TITLE: =leetcode-two-sum=
+
+* Kata
+
+- Start date :: [2021-04-24 Sat]
+
+- Content :: LeetCode problem #1: [[https://leetcode.com/problems/two-sum/][Two Sum]], with multiple
+  implementations.
+
+- Project :: This kata is part of the [[file:../../code/leetcode/][leetcode]] project. Check a
+  snapshot of the project's state at the end of the kata [[https://github.com/alecigne/learning/tree/ck0035/code/leetcode][here]].
+
+- Branch :: [[https://github.com/alecigne/learning/commits/ck0035][ck0035]]
+
+* Notes
+
+- [[https://github.com/alecigne/learning/commit/fac68fc39f6eb5d2bb84b3f2cb02b4fc40035904][fac68fc]] :: Initialization.
+
+- [[https://github.com/alecigne/learning/commit/26b1df60a7362406945ae0fe2ef389af9d8b4927][26b1df6]] :: A brute force solution. O(n²) in time, O(1) in space.
+
+  We use a TDD approach, so we also include a test for all
+  implementation using a JUnit 5 test interface.
+
+- [[https://github.com/alecigne/learning/commit/b538bfd32e75f69c16c47f1e8c365a608b75189a][b538bfd]] :: A two-pass hashtable solution. O(n) in time, O(n) in
+  space.
+
+  We can see in the first solution that the only role of the inner
+  iteration is data access. We can speed up that access by first
+  adding all the array elements in a HashMap (O(1) time for accessing
+  data).
+
+- [[https://github.com/alecigne/learning/commit/9b8be114b9509504218311486f01661a103c33b6][9b8be11]] :: A one-pass hashtable solution. Same complexity.
+
+  We can build the map while we iterate on the array: if we miss a
+  match because the complement (target - currentValue) is not in the
+  map, there will be a second match when we reach the other member of
+  the addition. Example:
+
+  [1, 2, 7] with 9 as a target -> when we reach 2, 7 is not in the
+  map. When we reach 7, 2 is in the map => match.
+
+  This approach has another benefit: we don't have to check if the
+  complement is the current value itself. Example:
+
+  [4, 3, 3] with 6 as a target -> 3 is checked against the map but
+  can't find itself since it will be added right after.

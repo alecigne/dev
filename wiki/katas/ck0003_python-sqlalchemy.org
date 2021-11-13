@@ -1,5 +1,0 @@
-#+TITLE: [CK0003] =python-sqlalchemy=
-
-[[file:../../code/python-sqlalchemy/][Project]] created on [2018-09-11 Tue].
-
-A Python ORM project inspired by [[https://auth0.com/blog/sqlalchemy-orm-tutorial-for-python-developers/][this tutorial]].

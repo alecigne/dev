@@ -1,0 +1,125 @@
+#+TITLE: =crud-with-vaadin=
+
+* Kata
+
+- Start date :: [2021-03-02 Tue]
+
+- Content :: This kata is the tutorial "[[https://spring.io/guides/gs/crud-with-vaadin/][Creating CRUD UI with Vaadin]]"
+  from the Spring website.
+
+- Project :: This kata created the [[https://github.com/alecigne/learning/tree/master/code/crud-with-vaadin][crud-with-vaadin]] project. Check a
+  snapshot of the project's state at the end of the kata [[https://github.com/alecigne/learning/tree/ck0033/code/crud-with-vaadin][here]].
+
+- Branch :: [[https://github.com/alecigne/learning/commits/ck0033][ck0033]]
+
+* Notes
+
+- [[https://github.com/alecigne/learning/commit/acb4c38][acb4c38]] :: Initialization: Spring Boot, Vaadin, and a basic view
+  with a button. From the [[https://vaadin.com/docs/v14/flow/v14-migration/v14-migration-guide.html#6-build-and-maintain-the-v14-project][Vaadin documentation]]:
+
+  #+begin_quote
+  The following files/folders have been generated in the root of your
+  project:
+
+  - package.json and pnpm-lock.yaml/package-lock.json: These files
+    keep track of frontend packages and pin their versions. You may
+    want to add these to version control, in particular, if you added
+    any local package directly with pnpm/npm commands.
+
+  - node_modules directory: pnpm/npm package cache, do not add this to
+    version control!
+
+  - webpack.config.js: webpack configuration. Include in version
+    control. You can add custom webpack configuration to this file.
+
+  - webpack.generated.js: Auto-generated webpack configuration
+    imported by webpack.config.js. Do not add to version control, as
+    it is always overwritten by vaadin-maven-plugin during execution
+    of the prepare-frontend goal.
+  #+end_quote
+
+  I am changing my ~.gitignore~ file accordingly.
+
+- [[https://github.com/alecigne/learning/commit/e0ec525][e0ec525]] :: List entities in a data grid.
+
+  #+begin_quote
+  Although Vaadin Grid lazy loads the data from the server to the
+  browser, the preceding approach keeps the whole list of data in the
+  server memory. To save some memory, you could show only the topmost
+  results by employing paging or providing a lazy loading data
+  provider by using the setDataProvider(DataProvider) method.
+  #+end_quote
+
+- [[https://github.com/alecigne/learning/commit/8bb8388][8bb8388]] :: Filtering the data.
+
+  + ~listCustomers~ will take an argument to filter the customers
+
+  + We add a ~TextField~ with a listener that calls the method with
+    the current value every time the user types
+    (~ValueChangeMode.EAGER~).
+
+- [[https://github.com/alecigne/learning/commit/6afaed2][6afaed2]] :: Define a new editor component, step 1.
+
+  This editor will have the capability to create, edit or delete a
+  customer. First we create a class ~CustomerEditor~. This will be a
+  component with a vertical layout so we extend the ~VerticalLayout~
+  component. The component will support adding key event listeners to
+  its their root elements (~addKeyPressListener~) so we also implement
+  ~KeyNotifier~.
+
+  Annotations : ~@SpringComponent~ and ~@UIScope~. ~@SpringComponent~
+  is just an alias for ~@Component~ and ~@UIScope~ is a stereotype
+  annotation for Spring's ~@Scope("vaadin-ui")~.
+
+  Then we add a constructor with a few things we need:
+
+  - ~CustomerRepository~ so we can interact with it through the
+    editor. It is a Spring bean and will be injected.
+
+  - Text fields and buttons. We add them to the component with the
+    ~add~ method: ~add(firstName, lastName, actions);~. This method
+    comes from the extension of the ~VerticalLayout~ class.
+
+  - A configuration for our components.
+
+  Let's link the proto-editor to the main view. Obviously it doesn't
+  do anything yet:
+
+  [[file:../.files/crud-with-vaadin_1.png]]
+
+- [[https://github.com/alecigne/learning/commit/31c6d42][31c6d42]] :: Define a new editor component, step 2.
+
+  We will now make the editor appear and disappar from the main view
+  through buttons. We make it invisible initially and we create a
+  draft of the ~editCustomer~ method that will just make the editor
+  visible at the moment.
+
+  We call this method from a button in the main view and from every
+  line in the table. Check the changes in ~MainView~.
+
+  Finally, everytime we make a change with the editor, it has to
+  disappear. So we add a ~ChangeHandler~ to the editor (an interface
+  with an ~onChange~ method). In the main view, we implement it with a
+  lambda that will make the editor invisible. This handler will be
+  call by the methods linked to the component's buttons, ~save~ and
+  ~delete~. This could be done directly from ~save~ and ~delete~ but
+  later we will need to affect the view itself from the component.
+
+- [[https://github.com/alecigne/learning/commit/bd79aea][bd79aea]] :: Define a new editor component, step 3.
+
+  Now we will wire real actions into the editor. Check the commit: we
+  pass a real customer to the ~editCustomer~ method (or a new
+  instance). This instance becomes the current customer instance
+  inside the editor component, and we can access it from all the class
+  methods.
+
+  We also need a "binder": this is used to match the component fields
+  to the current object's fields (here, ~firstName~ and
+  ~lastName~). We need to "declare" (I think) the component's fields
+  to the binder with the ~bindInstanceFields~ method:
+
+  #+begin_quote
+  Binds member fields found in the given object. This method processes
+  all (Java) member fields whose type extends HasValue and that can be
+  mapped to a property id.
+  #+end_quote

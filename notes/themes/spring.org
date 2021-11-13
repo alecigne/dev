@@ -1,0 +1,52 @@
+#+TITLE: Spring
+
+/!\ Work in progress /!\
+
+* Spring Framework
+:PROPERTIES:
+:CREATED:  [2021-04-22 jeu. 22:53]
+:END:
+
+** Lifecycle of a bean
+
+Check kata [[file:../katas/spring-lifecycle.org][spring-lifecycle]].
+
+** Configuring a Spring project
+
+- The "rawest" and oldest form of Spring DI configuration is the "full
+  XML" path. Everything is managed using one or more XML files.
+
+  See project [[file:../../code/spring-di-xml-config/][spring-di-xml-config]] from kata [[file:../katas/spring-di-xml-config.org][spring-di-xml-config]] (XML
+  bean declaration and injection).
+
+- Starting from Spring 2.5, it became possible to use annotations to
+  configure DI. You still had to enable it in an XML file:
+
+  #+begin_src xml
+    <context:annotation-config/>
+    <context:component-scan base-package="package"/>
+  #+end_src
+
+  The XML file takes precedence over annotations in case of a
+  conflict.
+
+  See kata [[file:../katas/spring-di-xml-annotations.org][spring-di-xml-annotations]].
+
+- Starting from Spring 3.0 and "JavaConfig", you can replace the XML
+  file with a Java class.
+
+  Of course, from this point on, you can either use the JavaConfig
+  style /with or without/ annotation-based injection and bean
+  definition.
+
+  See kata [[file:../katas/spring-di-java-config.org][spring-di-java-config]] (JavaConfig bean declaration and
+  injection - no annotation-based injection) and project [TODO]
+  (JavaConfig with annotation-based injection).
+
+** Spring JDBC
+
+[[file:../katas/spring-jdbc.org][spring-jdbc]].
+
+* Spring Boot
+
+First contact: [[file:../katas/spring-boot-minimal.org][spring-boot-minimal]].

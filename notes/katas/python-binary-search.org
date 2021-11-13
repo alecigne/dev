@@ -1,0 +1,3 @@
+#+TITLE: =python-binary-search=
+
+[[file:../../code/python-binary-search][Project]] created on [2019-06-17 Mon].

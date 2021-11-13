@@ -1,0 +1,9 @@
+#+TITLE: Themes
+
+- [[file:algorithms.org][Algorithms]] :: Algorithms implemented in various languages
+
+- [[file:design-patterns.org][Design patterns]] :: Design patterns in various languages
+
+- [[file:java.org][Java]] :: A "road to Java proficiency" in the form of katas.
+
+- [[file:python.org][Python]] :: Python projects :)

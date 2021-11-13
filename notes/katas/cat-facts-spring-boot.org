@@ -1,0 +1,8 @@
+#+TITLE: =cat-facts-spring-boot=
+
+[[file:../../code/cat-facts-spring-boot/][Project]] created on [2020-03-30 Mon].
+
+Just a few tests in a Spring Boot project using [[https://spring.io/projects/spring-cloud-openfeign][Spring Boot
+OpenFeign]]. Inspired from [[http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][this blog article]] ([[https://web.archive.org/web/20210218105617/http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][archive]]).
+
+I tried to use [[https://javadoc.io/static/org.mockito/mockito-core/3.7.7/org/mockito/Mockito.html#bdd_mockito][BDDMockito]] to add variation.

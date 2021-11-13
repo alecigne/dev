@@ -1,0 +1,7 @@
+#+TITLE: =strategy=
+
+Just a simple (boring) implementation of the [[https://en.wikipedia.org/wiki/Strategy_pattern][strategy pattern]].
+
+- [[file:../../code/strategy/][Project]] created on [2019-03-27 Wed]
+- Modified on [2020-11-28 Sat] for the new version of the kata
+  repository, but the idea is the same.

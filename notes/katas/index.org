@@ -1,0 +1,112 @@
+#+TITLE: Projects
+
+- [[[file:spring-jdbc.org][spring-jdbc]]] :: Init. [2018-09-05 Wed]: a few common cases
+  encountered while using Spring JDBC.
+
+- [[[file:python-pymysql.org][python-pymysql]]] :: Init. [2018-09-06 Thu]: how to do basic CRUD
+  with Python and PyMySQL (MySQL database provided by Docker).
+
+- [[[file:python-sqlalchemy.org][python-sqlalchemy]]] :: Init. [2018-09-11 Tue]: using ORM in Python
+  with SQLAlchemy.
+
+- [[[file:angular-spring-maven.org][angular-spring-maven]]] :: Init. [2018-09-14 Fri]: a multi-module
+  Maven project with an Angular front-end and a "dummy" Java
+  back-end. The build process is managed by Maven through
+  =maven-exec-plugin=.
+
+- [[[file:frontend-maven-plugin.org][frontend-maven-plugin]]] :: Init. [2018-09-17 Mon]: like the
+  =angular-spring-maven= project, this is a multi-module Maven project
+  with an Angular front-end and a "dummy" Java back-end. However, the
+  build process is managed with =frontend-maven-plugin= and doesn't
+  need a local installation of Node or npm.
+
+- [[[file:python-argparse.org][python-argparse]]] :: Init. [2018-09-18 Tue]: parsing command-line
+  arguments in Python.
+
+- [[[file:spring-boot-minimal.org][spring-boot-minimal]]] :: Init. [2018-10-17 Wed]: my first contact
+  with Spring Boot.
+
+- [[[file:angular-extended-tour-of-heroes.org][angular-extended-tour-of-heroes]]] :: Init. [2018-10-19 Fri]: using
+  [[https://angular.io/tutorial][Tour of Heroes]] as a basis to document more advanced practices.
+
+- [[[file:etoh-api.org][etoh-api]]] :: Init. [2018-10-22 Mon]: a Spring Boot backend for the
+  ETOH project above.
+
+- [[[file:ionic-crud.org][ionic-crud]]] :: Init. [2018-10-24 Wed]: a Ionic version of the ETOH
+  project above.
+
+- [[[file:cordova-helloworld.org][cordova-helloworld]]] :: Init. [2018-10-26 Fri]: running a Cordova
+  application in an Android emulator and on a physical device.
+
+- [[[file:ionic-crud-android.org][ionic-crud-android]]] :: Init. [2018-11-12 Mon]: using Cordova to
+  build a Ionic-based Android project.
+
+- [[[file:array-katas.org][array-katas]]] :: Init. [2019-01-19 Sat]: just a few basic operations
+  on vanilla Java arrays.
+
+- [[[file:java-binary-search.org][java-binary-search]]] :: Init. [2019-02-02 Sat]: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][binary search]] in
+  Java.
+
+- [[[file:java-find-duplicates.org][java-find-duplicates]]] :: Init. [2019-02-02 Sat]: finding duplicates
+  in Java.
+
+- [[[file:java-sort.org][java-sort]]] :: Init. [2019-02-02 Sat]: sorting in Java.
+
+- [[[file:java-time.org][java-time]]] :: Init. [2019-02-26 Tue]: a first dive into the
+  =java.time= API.
+
+- [[[file:jpa-simple-dao.org][jpa-simple-dao]]] :: Init. [2019-03-05 Tue]: a DAO using JPA.
+
+- [[[file:jdbc.org][jdbc]]] :: Init. [2019-03-06 Wed]: using JDBC directly to access a
+  database.
+
+- [[[file:java-singleton.org][java-singleton]]] :: Init. [2019-03-27 Wed]: a first dive into the
+  [[https://en.wikipedia.org/wiki/Singleton_pattern][Singleton design pattern]] in Java.
+
+- [[[file:bloch-builder.org][bloch-builder]]] :: Init. [2019-03-27 Wed]: joshua Bloch's Builder
+  design pattern and alternatives.
+
+- [[[file:strategy.org][strategy]]] :: Init. [2019-03-27 Wed]: a simple example of the
+  strategy pattern.
+
+- [[[file:spring-di-java-config.org][spring-di-java-config]]] :: Init. [2019-03-27 Wed]: spring dependency
+  injection using a Java-based configuration.
+
+- [[[file:spring-di-xml-config.org][spring-di-xml-config]]] :: Init. [2019-03-27 Wed]: spring dependency
+  injection using a XML-based configuration.
+
+- [[[file:java-optional-basics.org][java-optional-basics]]] :: Init. [2019-05-28 Tue]: basics of Java's
+  [[https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html][Optional]].
+
+- [[[file:python-binary-search.org][python-binary-search]]] :: Init. [2019-06-17 Mon]: [[https://en.wikipedia.org/wiki/Binary_search_algorithm][binary search]] in
+  Python.
+
+- [[[file:feign-cat-facts.org][feign-cat-facts]]] :: Init. [2019-12-05 Thu]: a very simple kata
+  (retrieving [[https://github.com/alexwohlbruck/cat-facts][cat facts]]) introducing Feign.
+
+- [[[file:spring-webmvc-resttemplate.org][spring-webmvc-resttemplate]]] :: Init. [2020-02-08 Sat]: a very
+  simple kata introducing Spring MVC's [[https://docs.spring.io/spring-framework/docs/4.3.x/spring-framework-reference/html/remoting.html#rest-client-access][RestTemplate]]. Deprecated in
+  Spring 5 - see [[https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-client][WebClient]] instead.
+
+- [[[file:cat-facts-spring-boot.org][cat-facts-spring-boot]]] :: Init. [2020-03-30 Mon]: just a few tests
+  in a Spring Boot project using [[https://spring.io/projects/spring-cloud-openfeign][Spring Boot OpenFeign]]. Inspired from
+  [[http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][this blog article]] ([[https://web.archive.org/web/20210218105617/http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][archive]]).
+
+- [[[file:apress-junit5.org][apress-junit5]]] :: Init. [2020-05-31 Sun]: work on the book [[file:../sources/books.org::*Java Unit Testing with JUnit 5][Java
+  Unit Testing with JUnit 5]] (Apress).
+
+- [[[file:crud-with-vaadin.org][crud-with-vaadin]]] :: Init. [2021-03-02 Tue]: the tutorial "[[https://spring.io/guides/gs/crud-with-vaadin/][Creating
+  CRUD UI with Vaadin]]" from the Spring website.
+
+- [[[file:spring-lifecycle.org][spring-lifecycle]]] :: Init. [2021-04-22 Thu]: highlighting different
+  steps of a Spring bean lifecycle.
+
+- [[[file:leetcode-two-sum.org][leetcode-two-sum]]] :: Init. [2021-04-24 Sat]: LeetCode problem #1:
+  [[https://leetcode.com/problems/two-sum/][Two Sum]].
+
+- [[[file:spring-di-xml-annotations.org][spring-di-xml-annotations]]] :: Init. [2021-08-28 Sat]: Using
+  Spring's annotations for DI and bean definition along with an XML
+  file.
+
+- [[[file:java-jaxb.org][java-jaxb]]] :: Init. [2021-09-03 Fri]: Marshalling and unmarshalling
+  using JAXB.

@@ -1,0 +1,83 @@
+#+TITLE: =spring-boot-minimal=
+
+[[file:../../code/spring-boot-minimal/][Project]] created on [2018-10-17 Wed].
+
+My first contact with Spring Boot, through a very simple Spring Boot
+project initialized with [[https://start.spring.io/][Spring Initializr]].
+
+* Project initialization
+
+1. Enter the group and artefact on [[https://start.spring.io/][Spring Initializr]].
+
+2. Enter the dependencies. For a [[https://github.com/alecigne/ProxiBanqueSI_v4_cs_slm_alc][ProxiBanqueSI]]-like application, that
+   would probably mean:
+
+   - JPA
+   - Aspects
+   - Web
+   - DevTools
+   - H2
+   - Security
+
+3. Generate and import the project.
+
+4. Optional: replace the parent XML section by a
+   =dependencyManagement= section if you want to project to have a
+   custom parent (as in the [[file:angular-spring-maven.org][=angular-spring-maven=]] and
+   [[file:frontend-maven-plugin.org][=frontend-maven-plugin=]] projects):
+
+   #+BEGIN_SRC xml
+     <properties>
+       <!-- Build properties -->
+       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       <java.version>1.8</java.version>
+       <!-- Dependency versions -->
+       <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
+     </properties>
+
+     <dependencyManagement>
+       <dependencies>
+         <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-dependencies</artifactId>
+           <type>pom</type>
+           <version>${spring-boot.version}</version>
+           <scope>import</scope>
+         </dependency>
+       </dependencies>
+     </dependencyManagement>
+   #+END_SRC
+
+* Accessing the database
+
+Spring Security is allowing access to the H2 database console (for
+development only!) - take a look at
+=net.lecigne.codingkatas.ck0007.config.SecurityConfig=. You can access
+the H2 console at =http://localhost:8080/h2-console/= after starting
+the server with =mvn clean spring-boot:run=.
+
++ JDBC URL: =jdbc:h2:mem:testdb=
++ Username: sa
+
+The default entity (User) should have a corresponding table in the H2
+database.
+
+* Notes
+
+The bootstrapping package is named:
+
+=net.lecigne.codingkatas.ck0007=
+
+Other packages in the application can have an additional level and
+they will be detected by Spring, e.g.:
+
+=net.lecigne.codingkatas.ck0007.domain=
+
+However, if the bootstrapping package is at the same-level
+(e.g. =net.lecigne.codingkatas.ck0007.bootstrap=), then annotate your
+bootstrapping class with:
+
+=@EntityScan("net.lecigne.codingkatas.ck0007.domain")=.
+
+Otherwise your domain classes won't be found and the tables won't
+be created in the database. See [[https://dzone.com/articles/spring-boot-entity-scan][this link]].

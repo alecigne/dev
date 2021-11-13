@@ -1,7 +1,0 @@
-#+TITLE: [CK0014] =java-binary-search=
-
-[[file:../../code/java-binary-search][Project]] created on [2019-02-02 Sat].
-
-* Resources
-
-- https://www.baeldung.com/java-binary-search

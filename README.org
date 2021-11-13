@@ -1,58 +1,13 @@
-#+TITLE: Coding Katas
+#+begin_example
+      __                      _
+     / /__  ____ __________  (_)___  ____ _
+    / / _ \/ __ `/ ___/ __ \/ / __ \/ __ `/
+   / /  __/ /_/ / /  / / / / / / / / /_/ /
+  /_/\___/\__,_/_/  /_/ /_/_/_/ /_/\__, /
+                                  /____/
+#+end_example
 
-* About
-:PROPERTIES:
-:CREATED:  [2021-08-28 Sat 15:14]
-:END:
+Code written and notes taken along my learning journey as a software
+developer.
 
-A /coding kata/ is a practice session focused on a specific objective.
-
-It can be a chapter from a book, an online tutorial, an exercice from
-LeetCode/HackerRank/etc., or simply a personal reference project
-illustrating a particular point of software development.
-
-This repository is the result of these practice sessions.
-
-* Organization
-:PROPERTIES:
-:CREATED:  [2021-08-28 Sat 15:14]
-:END:
-
-The repo's organization was chosen so with every new kata, I could
-choose an entirely different subject, even a different language,
-without having to think about how to categorize things. Thus I can
-start learning immediately.
-
-- The [[file:wiki/][wiki]] directory contains a [[https://github.com/alecigne/coding-katas/tree/master/wiki#index][chronological index]] of all katas, by
-  starting date. Every kata:
-
-  + ...has a codename starting with =CK=, such as [[file:wiki/katas/ck0035_leetcode-two-sum.org][CK0035]]
-    (=leetcode-two-sum=, [[https://leetcode.com/][LeetCode]] problem #1 with multiple Java
-    implementations).
-
-  + ...is linked to a single software project. For example, kata
-    =CK0035= above is linked to the [[file:code/leetcode/][leetcode]] project, a collection of
-    Leetcode exercises in Java.
-
-  + ...is linked to a single kata branch. In the example above, this
-    would be the [[https://github.com/alecigne/coding-katas/commits/ck0035][ck0035]] branch.
-
-    These branches are kept alive and contain the detailed commit
-    history of its corresponding kata. When necessary, there is an
-    explicit reference to individual commits in the documentation, to
-    illustrate every intermediate steps involved in the kata. See
-    again kata [[file:wiki/katas/ck0035_leetcode-two-sum.org][CK0035]] for an example.
-
-    At the end of a kata, the branch is merge-squash'd onto =master=.
-
-  The wiki also contains different "[[https://github.com/alecigne/coding-katas/tree/master/wiki#perspectives][perspectives]]" on these katas:
-  these are ways to organize them according to different criteria that
-  can emerge long after the kata was written.
-
-- The [[file:code/][code]] directory contains the software projects born from the
-  katas, in no particular order other than alphabetical.
-
-A new kata can be created with this quick-and-dirty [[file:new-kata.bash][Bash script]].
-
-If you think katas are a good idea and would like to make your own
-repo, check the [[file:wiki/about.org][about page]] for inspiration.
+#+html: <p align="center"><a href="notes/katas/index.org">browse by project</a> | <a href="notes/themes/index.org">browse by theme</a> | <a href="notes/sources/index.org">browse by source</a></p>

@@ -1,5 +1,0 @@
-#+TITLE: Websites
-
-* [[https://leetcode.com/][LeetCode]]
-
-- LeetCode [[https://leetcode.com/problemset/all/][problem]] #1: [[file:../katas/ck0035_leetcode-two-sum.org][CK0035]]

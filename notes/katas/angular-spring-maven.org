@@ -1,0 +1,247 @@
+#+TITLE: =angular-spring-maven=
+
+[[file:../../code/angular-spring-maven/][Project]] created on [2018-09-14 Fri].
+
+The goal here is to document the creation of a very simple
+multi-module Maven project, with an Angular front-end and a Java
+back-end (ideally for Spring, hence the name).
+
+This project uses [[https://github.com/takari/maven-wrapper][Maven wrapper]] and [[https://www.mojohaus.org/exec-maven-plugin/][=exec-maven-plugin=]] in order to
+manage the build process (using a system-wide install of NodeJS and
+npm).
+
+* Project organization
+
+To my knowledge at the moment, there seems to be 2 schools:
+
+- The "JHipster" school (one top-level =src= directory with a
+  =main/java= and a =main/webapp= subdirectory;
+
+- The "multi-module" school, with two distinct sub-projects, each
+  having their =src= directory.
+
+Here I will opt for the second option.
+
+* Project initialization
+
+1. Create a parent Maven project with a =pom= packaging using an IDE.
+
+2. Add =maven-wrapper= to the project:
+
+   - If behind a proxy, create a =./.mvn/jvm.config= file with the
+     following content:
+
+     #+BEGIN_EXAMPLE
+       -Dhttp.proxyHost=[host]
+       -Dhttp.proxyPort=[port]
+       -Dhttps.proxyHost=[host]
+       -Dhttps.proxyPort=[port]
+     #+END_EXAMPLE
+
+   - Enter the following command at the root of the project:
+
+     #+BEGIN_SRC sh
+       mvn -N io.takari:maven:wrapper
+     #+END_SRC
+
+     The =mvnw= utility should appear in the root directory.
+
+   - Ignore the =jvm.config= file in the global =.gitignore=.
+
+3. Add two modules in the =pom.xml=:
+
+   #+BEGIN_SRC xml
+     <modules>
+       <module>front</module>
+       <module>back</module>
+     </modules>
+   #+END_SRC
+
+4. Create the corresponding projects with Angular CLI and Maven:
+
+   - =front=: =ng new front=
+
+     Leave the =.gitignore= file but remove the =.git= directory - in
+     this project we will use a project-level Git repo.
+
+     Optional: in =package.json=, change the =build= command to: =ng
+     build --base-href ./=. This is important for deploying a =war=
+     afterwards. The alternative (used here) is to tweak
+     =exec-maven-plugin= in the front project's =pom.xml= to do this -
+     see below.
+
+   - =back=: use an IDE to create this Maven project. If needed,
+     generate a =web.xml= file - Maven might need it later. Don't
+     forget to =.keep= the empty directories if necessary.
+
+5. Change or add the =pom.xml= in both projects. The section relative
+   to the parent is important:
+
+   - In the back:
+
+     #+BEGIN_SRC xml
+       <project xmlns="http://maven.apache.org/POM/4.0.0"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         <modelVersion>4.0.0</modelVersion>
+
+         <groupId>net.lecigne.ab_angular-spring-maven</groupId>
+         <artifactId>back</artifactId>
+         <version>0.0.1-SNAPSHOT</version>
+         <packaging>war</packaging>
+
+         <parent>
+           <groupId>net.lecigne</groupId>
+           <artifactId>ab_angular-spring-maven</artifactId>
+           <version>0.0.1-SNAPSHOT</version>
+           <relativePath>../pom.xml</relativePath>
+         </parent>
+       </project>
+     #+END_SRC
+
+   - In the front:
+
+     #+BEGIN_SRC xml
+       <project xmlns="http://maven.apache.org/POM/4.0.0"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         <modelVersion>4.0.0</modelVersion>
+
+         <groupId>net.lecigne.ab_angular-spring-maven</groupId>
+         <artifactId>front</artifactId>
+         <version>0.0.1-SNAPSHOT</version>
+
+         <parent>
+           <groupId>net.lecigne</groupId>
+           <artifactId>ab_angular-spring-maven</artifactId>
+           <version>0.0.1-SNAPSHOT</version>
+           <relativePath>../pom.xml</relativePath>
+         </parent>
+       </project>
+     #+END_SRC
+
+   =mvn clean= should now find all the projects, but it won't clean
+   the front-end project - see below.
+
+6. Add the ability to clean the front-end project with Maven, and the
+   =exec-maven-plugin= to manage the front-end project with Maven.
+
+   #+BEGIN_SRC xml
+     <properties>
+       <!-- Plugin versions -->
+       <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
+       <exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
+     </properties>
+   #+END_SRC
+
+   ...and...
+
+   #+BEGIN_SRC xml
+     <build>
+       <plugins>
+         <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-clean-plugin</artifactId>
+           <version>${maven-clean-plugin.version}</version>
+           <configuration>
+             <failOnError>false</failOnError>
+             <filesets>
+               <fileset>
+                 <directory>.</directory>
+                 <includes>
+                   <include>dist/**/*.*</include>
+                 </includes>
+                 <followSymlinks>false</followSymlinks>
+               </fileset>
+             </filesets>
+           </configuration>
+         </plugin>
+         <plugin>
+           <groupId>org.codehaus.mojo</groupId>
+           <artifactId>exec-maven-plugin</artifactId>
+           <version>${exec-maven-plugin.version}</version>
+           <executions>
+             <execution>
+               <id>angular-cli build</id>
+               <configuration>
+                 <workingDirectory>.</workingDirectory>
+                 <executable>ng.cmd</executable>
+                 <arguments>
+                   <argument>build</argument>
+                   <argument>--base-href</argument>
+                   <argument>./</argument>
+                 </arguments>
+               </configuration>
+               <phase>generate-resources</phase>
+               <goals>
+                 <goal>exec</goal>
+               </goals>
+             </execution>
+           </executions>
+         </plugin>
+       </plugins>
+     </build>
+   #+END_SRC
+
+   Take a look at [[https://github.com/eirslett/frontend-maven-plugin][frontend-maven-plugin]] to remove the need for a
+   system-wide Node/npm system dependency - this will be the topic of
+   a later project.
+
+   Test the config in the =front= project (go in the directory):
+
+   - Execute =ng build=; this should populate =./dist/=.
+
+   - Execute =mvn clean=: everything should be cleared in =./dist/=.
+
+   - Execute =mvn package=: it should populate the =dist=
+     directory. *Warning*: here I used the linux command (=ng=), this
+     might not work on Windows.
+
+7. Configure the back's =pom.xml=, especially by including the
+   "connection" of the front to the back (through =maven-war-plugin=),
+   in =back/pom.xml=. *Be careful since the front-end directory is
+   relative!* In doubt, take a look at what =ng build= does.
+
+   #+BEGIN_SRC xml
+     <properties>
+       <!-- Build properties -->
+       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       <java.version>1.8</java.version>
+       <maven.compiler.source>${java.version}</maven.compiler.source>
+       <maven.compiler.target>${java.version}</maven.compiler.target>
+       <!-- Plugin versions -->
+       <maven-war-plugin.version>2.6</maven-war-plugin.version>
+     </properties>
+   #+END_SRC
+
+   ...and...
+
+   #+BEGIN_SRC xml
+     <build>
+       <plugins>
+         <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-war-plugin</artifactId>
+           <version>${maven-war-plugin.version}</version>
+           <configuration>
+             <webResources>
+               <resource>
+                 <!-- this is relative to the pom.xml directory -->
+                 <directory>../front/dist/front/</directory>
+               </resource>
+             </webResources>
+           </configuration>
+         </plugin>
+       </plugins>
+     </build>
+   #+END_SRC
+
+8. In the project's root directory, run =mvn clean package=. This
+   should generate a =war= file in =back/target/=. In
+   particular, take a look at the corresponding directory
+   (=back-0.0.1-SNAPSHOT=). It should have included the front
+   files *at the root of the directory*.
+
+9. Deploy the =war= in your application server and you should see the
+   Angular default app at (this is an example)
+   =http://localhost:8080/back-0.0.1-SNAPSHOT/=.

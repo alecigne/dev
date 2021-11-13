@@ -1,0 +1,9 @@
+#+TITLE: =spring-di-java-config=
+
+[[file:../../code/spring-di-java-config/][Project]] created on [2019-03-27 Wed].
+
+Check the [[file:../themes/spring.org][Spring theme]] for a more detailed view of dependency
+injection.
+
+The goal here is to showcase the "JavaConfig" style of configuration
+(~@Configuration~) for DI, without annotation-based injection.

@@ -1,0 +1,48 @@
+#+TITLE: =array-katas=
+
+[[file:../../code/array-katas][Project]] created on [2019-01-19 Sat.].
+
+Just a few basic operations on vanilla Java arrays. It was part of my
+old =coding-katas= repo where I had started to explore Java SE in a
+quite "systematic" way.
+
+* Notes
+
+** ~hasToString~                                                      :anki:
+
+You can use AssertJ's ~hasToString~ to compare an object string
+representation with a string. Instead of:
+
+#+begin_src java
+  assertThat(array[0].toString()).isEqualTo("hel");
+#+end_src
+
+...do :
+
+#+begin_src java
+  assertThat(array[0]).hasToString(expected);
+#+end_src
+
+** About ~ArrayToListTest~
+
+#+begin_src java
+  // This works
+  int[] array1a = {0, 1, 2};
+  int[] array1b = {0, 1, 2};
+  List<int[]> list1 = Arrays.asList(array1a, array1b);
+
+  // This also
+  int[] array2 = {0, 1, 2};
+  List<int[]> list2 = Arrays.asList(array2);
+
+  // This works
+  Integer[] array3a = new Integer[]{0, 1, 2};
+  Integer[] array3b = new Integer[]{0, 1, 2};
+  List<Integer[]> list3 = Arrays.asList(array3a, array3b);
+
+  // ...but this doesn't!
+  Integer[] array4 = new Integer[] { 0, 1, 2 };
+  List<Integer[]> list4 = Arrays.asList(array4);
+
+  // -> A single array of a reference type is "sliced" automatically (?)
+#+end_src

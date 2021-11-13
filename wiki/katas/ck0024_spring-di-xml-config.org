@@ -1,9 +1,0 @@
-#+TITLE: [CK0024] =spring-di-xml-config=
-
-[[file:../../code/spring-di-xml-config/][Project]] created on [2019-03-27 Wed].
-
-Check the [[file:../themes/spring.org][Spring theme]] for a more detailed view of dependency
-injection.
-
-The goal here is to showcase the "XML" style of configuration, without
-annotation-based injection.
