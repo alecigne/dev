@@ -8,7 +8,7 @@
 - Content :: Udemy's MOOC: [[https://www.udemy.com/course/apache-kafka/][Apache Kafka Series - Learn Apache Kafka
   for Beginners v2]]
 
-- Code :: [[file:../../code/udemy-kafka/][udemy-kafka]]
+- Code :: [[file:../../../code/udemy-kafka/][udemy-kafka]]
 
   A reference project is available [[https://github.com/simplesteph/kafka-beginners-course][here]].
 
@@ -346,7 +346,7 @@ Check the commands [[file:commands/][here]] (downloaded from [[https://courses.d
 
 - Describe a topic
 
-  #+begin_src sh
+  #+begin_src sh :exports both
     kafka-topics.sh \
         --bootstrap-server localhost:9092 \
         --topic first_topic \
@@ -519,7 +519,7 @@ Check the commands [[file:commands/][here]] (downloaded from [[https://courses.d
 
 - List consumer groups
 
-  #+begin_src sh
+  #+begin_src sh :exports both
     kafka-consumer-groups.sh \
         --bootstrap-server localhost:9092 \
         --list
@@ -532,7 +532,7 @@ Check the commands [[file:commands/][here]] (downloaded from [[https://courses.d
 - Describe a consumer group
 
   #+name: describe-consumer-group
-  #+begin_src sh
+  #+begin_src sh :exports both
     kafka-consumer-groups.sh \
             --bootstrap-server localhost:9092 \
             --describe \
@@ -840,7 +840,7 @@ See the [[file:../src/kafka-beginners-course/][project]]
 
 - Let's describe the group:
 
-  #+begin_src sh
+  #+begin_src sh :exports both
     kafka-consumer-groups.sh \
         --bootstrap-server localhost:9092 \
         --group my-java-app \
