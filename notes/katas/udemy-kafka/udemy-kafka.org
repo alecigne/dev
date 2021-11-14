@@ -1,0 +1,1020 @@
+-*- org-image-actual-width: nil; -*-
+#+TITLE: =udemy-kafka=
+
+* Project
+
+- Start date :: [2021-10-07 Thu]
+
+- Content :: Udemy's MOOC: [[https://www.udemy.com/course/apache-kafka/][Apache Kafka Series - Learn Apache Kafka
+  for Beginners v2]]
+
+- Code :: [[file:../../code/udemy-kafka/][udemy-kafka]]
+
+  A reference project is available [[https://github.com/simplesteph/kafka-beginners-course][here]].
+
+* Notes
+
+** Introduction
+:PROPERTIES:
+:CREATED:  [2021-11-14 Sun 16:46]
+:END:
+
+Check the commands [[file:commands/][here]] (downloaded from [[https://courses.datacumulus.com/downloads/kafka-beginners-bu5/][here]]).
+
+** Kafka fundamentals
+:PROPERTIES:
+:CREATED:  [2021-10-07 jeu. 20:37]
+:END:
+
+*** Kafka theory
+:PROPERTIES:
+:CREATED:  [2021-10-08 ven. 21:59]
+:END:
+
+**** Topics, partitions and offsets
+:PROPERTIES:
+:CREATED:  [2021-10-07 jeu. 20:37]
+:END:
+
+- Topic = a particular stream of data
+
+- Split in partitions
+
+- Each partition is ordered
+
+- Each message within a partition gets an incremental id, called
+  offset (infinite)
+
+- Independant number of messages in each partition
+
+- Example: the =trucks_gps= topic
+
+- Gotchas
+
+  + An offset only has a meaning for a specific partition
+  + Order is guaranteed only within a partition
+  + Data is kept for a limited time (default is one week)
+  + Partitions are immutable
+  + Data is assigned randomly to a partition unless a key is provided
+
+**** Brokers
+:PROPERTIES:
+:CREATED:  [2021-10-07 jeu. 20:48]
+:END:
+
+- Topics are inside brokers
+
+- A Kafka cluster is made of brokers (servers)
+
+- Each broker is identified by an ID (integer)
+
+- Kafka is distributed: each broker contains certain topic partitions
+
+- After connecting to any broker, you are connected to the entire
+  cluster (the access broker is called bootstrap broker)
+
+- Let's start with 3 brokers
+
+- Topic A with 3 partitions: topics will be spread across brokers
+
+- Topic B with 2 partitions: same, and one broker won't have data from
+  topic B
+
+**** Topic replication
+:PROPERTIES:
+:CREATED:  [2021-10-07 jeu. 21:07]
+:END:
+
+- Topic replication factor: 3 is standard
+
+- 3 copies for each partition (so 3 copies of the topic)
+
+- This way we can lose brokers
+
+- Concept of leader for a partition
+
+  + *At any time, only one broker can be a leader for a given
+    partition*
+  + Only that leader can receive and serve data for a partition
+
+  -> Each partition has one leader and multiple ISR (in-sync replicas)
+
+- Zookeeper decides who is leader and who is ISR
+
+- If a broker is lost, an ISR can become leader. If the broker comes
+  back, the original leader will try to become a leader again.
+
+**** Producers and message keys
+:PROPERTIES:
+:CREATED:  [2021-10-07 jeu. 21:42]
+:END:
+
+- Producers write data to topics
+
+- They *automatically* know to which broker and partition to write
+
+- In case of broker failures, producers will automatically recover
+
+- Without a key, data is sent "round-robin" style ("tourniquet") -
+  load balancing
+
+- Producers can choose to receive acknowledgement of data writes
+
+  + acks=0 :: the producer doesn't wait for the ack (possible data
+    loss)
+  + acks=1 (default) :: the producer waits for the leader to ack
+    (limited data loss)
+  + acks=all :: the leader and all the ISRs have to ack (no data loss)
+
+- Producers can choose to send a key with the message (string, number,
+  etc.): if a key is sent, all the messages for that key will always
+  go to the same partition
+
+- A key is basically sent if you need message ordering for a specific
+  field of your data: in the truck example, we could use =truck_id= as
+  the key so all messages corresponding to a particular truck will go
+  to the same partition every time (hence guaranteeing order)
+
+- This is done through key hashing (advanced)
+
+**** Consumers and consumer groups
+:PROPERTIES:
+:CREATED:  [2021-10-07 jeu. 22:01]
+:END:
+
+- Consumers read data from a topic
+
+- They automatically know which broker to read from
+
+- In case of broker failures, consumers will automatically recover
+  (just like producers)
+
+- Data is read in order *within each partition*; if a consumer reads
+  multiple partitions in parallel, order is not predictable across
+  partitions
+
+- Consumers read data in consumer groups
+
+- Each consumer within a group will read from exclusive partitions
+
+- If you have more consumers than partitions, some consumers will be
+  inactive
+
+- For example:
+
+  #+ATTR_ORG: :width 700
+  [[file:../../.files/udemy-kafka/consumer-groups.png]]
+
+**** Consumer offsets & delivery semantics
+:PROPERTIES:
+:CREATED:  [2021-10-08 ven. 21:27]
+:END:
+
+- Kafka stores the offsets at which a consumer group has been reading
+
+- They are committed live in a Kafka topic named =__consumer_offsets=
+
+- When a consumer in a group has processed data, it should be
+  committing the offsets (writing them to the topic above)
+
+- Why? If a consumer dies, it will be able to read back from where it
+  left off
+
+- Concept of delivery semantics
+
+- Consumers choose when to commit offsets
+
+- 3 delivery semantics
+
+  + At most once :: offsets are committed as soon as the message is
+    received
+  + At least once :: offsets are committed only after the message has
+    been processed. This can result in duplicate processing of
+    messages (idempotence is important here)
+  + Exactly once :: can be achieved for "Kafka to Kafka" workflows
+    using Kafka Streams API. For "Kafka to External System" workflows,
+    use an idempotent consumer.
+
+**** Kafka Broker discovery
+:PROPERTIES:
+:CREATED:  [2021-10-08 ven. 21:45]
+:END:
+
+- Every Kafka broker is also a "bootstrap server" - can be used to
+  connect to a Kafka cluster
+
+- Each broker *knows* about all brokers, topics and partitions
+  (metadata, doesn't of course *hold* the data). It knows which broker
+  has which partitions.
+
+- A client (consumer/producer) will make a metadata request to any
+  broker when connecting. Then it will connect to the right brokers.
+
+**** Zookeeper
+:PROPERTIES:
+:CREATED:  [2021-10-08 ven. 21:50]
+:END:
+
+- Zookeeper manages the brokers by keeping a list of them
+
+- Helps in performing leader election for partitions
+
+- Sends notifications to Kafka in case of changes (new topic, broker
+  dies, broker comes up, topic deleted...)
+
+- *Kafka can't work without Zookeeper*
+
+- Operates with an odd number of servers
+
+- Zookeeper also has a concept of leader/follower: leader handles
+  writes, follower handles reads
+
+- Zookeeper does NOT store consumer offsets with Kafka anymore
+
+**** Kafka guarantees
+:PROPERTIES:
+:CREATED:  [2021-10-08 ven. 21:56]
+:END:
+
+- Messages are appended to a topic-partition in the order they are
+  sent
+
+- Consumers read messages in the order stored in a topic-partition
+
+- With a replication factor of N, producers and consumers can tolerate
+  up to N-1 brokers being down
+
+- Same key will always go to the same partition (as long as the number
+  of partitions remains constant for a topic)
+
+**** Theory roundup
+:PROPERTIES:
+:CREATED:  [2021-10-08 ven. 22:00]
+:END:
+
+#+ATTR_ORG: :width 700
+[[file:../../.files/udemy-kafka/theory_roundup.png]]
+
+*** Starting Kafka
+:PROPERTIES:
+:CREATED:  [2021-10-08 ven. 21:59]
+:END:
+
+**** Linux - Download and setup Kafka in PATH
+:PROPERTIES:
+:CREATED:  [2021-10-31 Sun 14:12]
+:END:
+
+- Download Kafka [[https://kafka.apache.org/downloads][here]]
+- Add Kafka's =bin= directory to the path (=.zprofile=)
+- Test it with:
+
+  #+begin_src sh
+    kafka-topics.sh
+  #+end_src
+
+**** Linux - Start Zookeeper and Kafka
+:PROPERTIES:
+:CREATED:  [2021-10-31 Sun 14:12]
+:END:
+
+- Create the Zookeeper =data= dir:
+
+  #+begin_src sh :results none
+    mkdir -p $HOME/bin/kafka_2.13-3.0.0/data/zookeeper
+  #+end_src
+
+- Edit [[file:../../../bin/kafka_2.13-3.0.0/config/zookeeper.properties][zookeeper.properties]] to set =dataDir= to the directory above.
+
+- Start Zookeeper:
+
+  #+begin_src sh
+    zookeeper-server-start.sh ~/bin/kafka_2.13-3.0.0/config/zookeeper.properties
+  #+end_src
+
+- Create the Kafka =data= dir:
+
+  #+begin_src sh :results none
+    mkdir -p $HOME/bin/kafka_2.13-3.0.0/data/kafka
+  #+end_src
+
+- Edit [[file:../../../bin/kafka_2.13-3.0.0/config/server.properties][server.properties]] to set =log.dirs= the the directory above.
+
+- Start Kafka:
+
+  #+begin_src sh
+    kafka-server-start.sh ~/bin/kafka_2.13-3.0.0/config/server.properties
+  #+end_src
+
+*** CLI 101
+:PROPERTIES:
+:CREATED:  [2021-10-09 sam. 20:48]
+:END:
+
+**** Kafka Topics CLI
+:PROPERTIES:
+:CREATED:  [2021-10-31 Sun 15:20]
+:END:
+
+- =kafka-topics= command
+
+- Create a topic
+
+  #+begin_src sh
+    kafka-topics.sh \
+        --bootstrap-server localhost:9092 \
+        --topic first_topic \
+        --create \
+        --partitions 3 \
+        --replication-factor 1
+  #+end_src
+
+  You can't have a replication factor higher than the number of
+  brokers, of course. Here we have started only one broker so the RF
+  will be 1.
+
+- List all existing topics
+
+  #+begin_src sh
+    kafka-topics.sh \
+        --bootstrap-server localhost:9092 \
+        --list
+  #+end_src
+
+  #+RESULTS:
+  : first_topic
+
+- Describe a topic
+
+  #+begin_src sh
+    kafka-topics.sh \
+        --bootstrap-server localhost:9092 \
+        --topic first_topic \
+        --describe
+  #+end_src
+
+  #+RESULTS:
+  | Topic: first_topic | TopicId: bPnPJ9wBSMWYDix5aA4Ryg | PartitionCount: 3 | ReplicationFactor: 1 | Configs: segment.bytes=1073741824 |        |
+  |                    | Topic: first_topic              | Partition: 0      | Leader: 0            | Replicas: 0                       | Isr: 0 |
+  |                    | Topic: first_topic              | Partition: 1      | Leader: 0            | Replicas: 0                       | Isr: 0 |
+  |                    | Topic: first_topic              | Partition: 2      | Leader: 0            | Replicas: 0                       | Isr: 0 |
+
+  =Leader: 0= means that broker with ID 0 is the leader for that
+  partition.
+
+- Delete a topic (after creating it for that purpose)
+
+  #+begin_src sh
+    kafka-topics.sh \
+        --bootstrap-server localhost:9092 \
+        --topic second_topic \
+        --create \
+        --partitions 3 \
+        --replication-factor 1
+  #+end_src
+
+  #+begin_src sh
+    kafka-topics.sh \
+        --bootstrap-server localhost:9092 \
+        --topic second_topic \
+        --delete
+  #+end_src
+
+**** Kafka console producer CLI
+:PROPERTIES:
+:CREATED:  [2021-10-09 sam. 21:07]
+:END:
+
+- =kafka-consoler-producer= command
+
+- =bootstrap-server= and =topic= are required
+
+- First command
+
+  #+begin_src sh
+    kafka-console-producer.sh \
+        --bootstrap-server localhost:9092 \
+        --topic first_topic
+  #+end_src
+
+- Properties: alternative to the defaults
+
+  #+begin_src sh
+    kafka-console-producer.sh \
+        --bootstrap-server localhost:9092 \
+        --topic first_topic \
+        --producer-property acks=all
+  #+end_src
+
+- Sending a message to a non-existent topic =new_topic=: it is created
+  but there wasn't a leader election yet (hence a warning):
+
+  #+begin_example
+    [2021-10-09 21:19:03,648] WARN [Producer clientId=console-producer] Error while fetching metadata with correlation id 3 : {new_topic=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
+  #+end_example
+
+  Just a warning! Kafka recovers gracefully from this.
+
+- If we describe =new_topic=:
+
+  #+begin_example
+    Topic: new_topic        TopicId: FW8WI1zXTdmlKDNZQmqpDg PartitionCount: 1       ReplicationFactor: 1    Configs: segment.bytes=1073741824
+            Topic: new_topic        Partition: 0    Leader: 0       Replicas: 0     Isr: 0
+  #+end_example
+
+  These are the defaults. Always create a topic beforehand to choose
+  better parameters.
+
+- The defaults can be changed in =config/server.properties=
+  (=num.partitions=) (Kafka must be restarted).
+
+**** Kafka console consumer CLI
+:PROPERTIES:
+:CREATED:  [2021-10-09 sam. 21:24]
+:END:
+
+- =kafka-console-consumer= command
+
+- Let's read our =first_topic= topic:
+
+  #+begin_src sh
+    kafka-console-consumer.sh \
+        --bootstrap-server localhost:9092 \
+        --topic first_topic
+  #+end_src
+
+  Nothing happens! This command, by default, will read only messages
+  that will be sent *from now on*. Let's send messages from another
+  terminal:
+
+  #+begin_src sh
+    kafka-console-producer.sh \
+        --bootstrap-server localhost:9092 \
+        --topic first_topic
+  #+end_src
+
+- How do we read all the messages in the topic?
+
+  #+begin_src sh
+    kafka-console-producer.sh \
+        --bootstrap-server localhost:9092 \
+        --topic first_topic \
+        --from-beginning
+  #+end_src
+
+  Remember that the order is only guaranteed *by partition*. Since
+  there are 3 partitions here, the overall order won't be respected.
+
+**** Kafka consumers in group
+:PROPERTIES:
+:CREATED:  [2021-10-09 sam. 21:36]
+:END:
+
+- The =--group= parameter is used for this
+
+- Command:
+
+  #+begin_src sh
+    kafka-console-consumer.sh \
+        --bootstrap-server localhost:9092 \
+        --topic first_topic \
+        --group my-first-app
+  #+end_src
+
+  We can send messages to the topic, nothing new.
+
+- In a new terminal, open another consumer (same group). This time the
+  messages are read in one consumer, then another. One of the two
+  consumers is linked to 2 partitions so will receive more
+  messages. With 3 consumers, it is more distributed (one partition
+  per consumer) since Kafka rebalances and shares the load.
+
+- Let's read all messages from the beginning but from a new
+  consumer-group:
+
+  #+begin_src sh
+    kafka-console-consumer.sh \
+        --bootstrap-server localhost:9092 \
+        --topic first_topic \
+        --group my-second-app \
+        --from-beginning
+  #+end_src
+
+  If we then stop the consumer and launch it again, we won't see the
+  messages: since the *group* was specified, the offsets have been
+  committed to Kafka.
+
+- If we stop all consumers from a group and send messages, they will
+  be read if we launch it again.
+
+**** Kafka consumers groups CLI
+:PROPERTIES:
+:CREATED:  [2021-10-14 jeu. 20:40]
+:END:
+
+- Command =kafka-consumer-groups=
+
+- List all consumer groups, describe a consumer group, delete consumer
+  group info, reset consumer group offsets.
+
+- List consumer groups
+
+  #+begin_src sh
+    kafka-consumer-groups.sh \
+        --bootstrap-server localhost:9092 \
+        --list
+  #+end_src
+
+  #+RESULTS:
+  | my-first-app  |
+  | my-second-app |
+
+- Describe a consumer group
+
+  #+name: describe-consumer-group
+  #+begin_src sh
+    kafka-consumer-groups.sh \
+            --bootstrap-server localhost:9092 \
+            --describe \
+            --group my-first-app
+  #+end_src
+
+  #+RESULTS:
+  | GROUP        | TOPIC       | PARTITION | CURRENT-OFFSET | LOG-END-OFFSET | LAG | CONSUMER-ID | HOST | CLIENT-ID |
+  | my-first-app | first_topic |         0 |              2 |              2 |   0 | -           | -    | -         |
+  | my-first-app | first_topic |         1 |              1 |              1 |   0 | -           | -    | -         |
+  | my-first-app | first_topic |         2 |              3 |              3 |   0 | -           | -    | -         |
+
+  There is also a message in the CLI:
+
+  #+begin_quote
+  Consumer group 'my-first-app' has no active members.
+  #+end_quote
+
+  This is because we have stopped all console consumers.
+
+- We can create lag by sending messages without any active member in
+  the consumer group. Here I sent two message. Then, there will be a
+  lag when the describe the group:
+
+  #+call: describe-consumer-group()
+
+  #+RESULTS:
+  |              |             |           |                |                |     |             |      |           |
+  | GROUP        | TOPIC       | PARTITION | CURRENT-OFFSET | LOG-END-OFFSET | LAG | CONSUMER-ID | HOST | CLIENT-ID |
+  | my-first-app | first_topic |         0 |              2 |              3 |   1 | -           | -    | -         |
+  | my-first-app | first_topic |         1 |              1 |              1 |   0 | -           | -    | -         |
+  | my-first-app | first_topic |         2 |              3 |              4 |   1 | -           | -    | -         |
+
+  We can catch up by launching a consumer. Then:
+
+  #+call: describe-consumer-group()
+
+  #+RESULTS:
+  |              |             |           |                |                |     |             |      |           |
+  | GROUP        | TOPIC       | PARTITION | CURRENT-OFFSET | LOG-END-OFFSET | LAG | CONSUMER-ID | HOST | CLIENT-ID |
+  | my-first-app | first_topic |         0 |              3 |              3 |   0 | -           | -    | -         |
+  | my-first-app | first_topic |         1 |              1 |              1 |   0 | -           | -    | -         |
+  | my-first-app | first_topic |         2 |              4 |              4 |   0 | -           | -    | -         |
+
+- The description of group with an active consumer will yield IDs:
+
+  Let's start a consumer:
+
+  #+begin_src sh
+    kafka-console-consumer.sh \
+        --bootstrap-server localhost:9092 \
+        --topic first_topic \
+        --group my-first-app
+  #+end_src
+
+  Now if we describe its consumer group we obtain a consumer ID
+  associated to the group:
+
+  #+call: describe-consumer-group()
+
+  #+RESULTS:
+  |              |             |           |                |                |     |                                                              |            |                         |
+  | GROUP        | TOPIC       | PARTITION | CURRENT-OFFSET | LOG-END-OFFSET | LAG | CONSUMER-ID                                                  | HOST       | CLIENT-ID               |
+  | my-first-app | first_topic |         0 |              3 |              3 |   0 | consumer-my-first-app-1-a43b3b38-2f16-472b-836f-4fadf90b0260 | /127.0.0.1 | consumer-my-first-app-1 |
+  | my-first-app | first_topic |         1 |              1 |              1 |   0 | consumer-my-first-app-1-a43b3b38-2f16-472b-836f-4fadf90b0260 | /127.0.0.1 | consumer-my-first-app-1 |
+  | my-first-app | first_topic |         2 |              4 |              4 |   0 | consumer-my-first-app-1-a43b3b38-2f16-472b-836f-4fadf90b0260 | /127.0.0.1 | consumer-my-first-app-1 |
+
+**** Resetting offsets
+:PROPERTIES:
+:CREATED:  [2021-10-14 jeu. 21:07]
+:END:
+
+- How do I make a consumer group reread data?
+- Let's reset the offsets for our topic:
+
+  #+begin_src sh :results output
+    kafka-consumer-groups.sh \
+        --bootstrap-server localhost:9092 \
+        --group my-first-app \
+        --topic first_topic \
+        --reset-offsets \
+        --to-earliest \
+        --execute
+  #+end_src
+
+  #+RESULTS:
+  :
+  : GROUP                          TOPIC                          PARTITION  NEW-OFFSET
+  : my-first-app                   first_topic                    0          0
+  : my-first-app                   first_topic                    1          0
+  : my-first-app                   first_topic                    2          0
+
+- If we restart our consumer, we'll see all the data again.
+
+- We could also shift the offsets using the option =--shift-by=:
+  ==--shift-by -2= (to go backwards).
+
+**** CLI options that are good to know
+:PROPERTIES:
+:CREATED:  [2021-10-14 jeu. 21:19]
+:END:
+
+The CLI has many options, but here are the other that are most
+commonly used:
+
+- Producer with keys
+
+  #+begin_src sh
+    kafka-console-producer.sh \
+        --broker-list 127.0.0.1:9092 \
+        --topic first_topic \
+        --property parse.key=true \
+        --property key.separator=,
+  #+end_src
+
+  Result:
+
+  #+begin_example
+  key,value
+  another key,another value
+  #+end_example
+
+- Consumer with keys
+
+  #+begin_src sh
+    kafka-console-consumer.sh \
+        --bootstrap-server 127.0.0.1:9092 \
+        --topic first_topic \
+        --from-beginning \
+        --property print.key=true \
+        --property key.separator=,
+  #+end_src
+
+**** =kcat= as a replacement for Kafka CLI
+:PROPERTIES:
+:CREATED:  [2021-10-14 jeu. 21:34]
+:END:
+
+[[https://github.com/edenhill/kcat][kcat]] + an [[https://medium.com/@coderunner/debugging-with-kafkacat-df7851d21968][article]]
+
+*** Kafka UI
+:PROPERTIES:
+:CREATED:  [2021-10-31 Sun 16:17]
+:END:
+
+Shameless plug by the teacher for his product, [[https://www.conduktor.io/][Conduktor]].
+
+*** Kafka Java programming 101
+:PROPERTIES:
+:CREATED:  [2021-10-14 jeu. 21:44]
+:END:
+
+**** Creating Kafka project
+:PROPERTIES:
+:CREATED:  [2021-10-31 Sun 16:24]
+:END:
+
+See the [[file:../src/kafka-beginners-course/][project]]
+
+**** Java producer
+:PROPERTIES:
+:CREATED:  [2021-10-31 Sun 16:25]
+:END:
+
+- =ProducerDemo=
+
+- Check the [[https://kafka.apache.org/documentation/#producerconfigs][producer configs]]
+
+- The Kafka client will convert whatever we send to Kafka into bytes.
+
+- The =send= method is async so if we don't close the producer
+  properly, the program will simply terminate and the message won't be
+  sent.
+
+- Start a consumer and start the application: the consumer should
+  receive the message.
+
+**** Java producer callbacks
+:PROPERTIES:
+:CREATED:  [2021-10-31 Sun 16:25]
+:END:
+
+- =ProducerDemoWithCallback=
+
+- We can provide not only a record, but also a callback which has
+  access to the record metadata.
+
+- Start a consumer to see the result :)
+
+  #+begin_example
+    [kafka-producer-network-thread | producer-1] INFO net.lecigne.kafka.tutorial1.ProducerDemoWithCallback - Received new metadata
+    Topic: first_topic
+    Partition: 1
+    Offset: 2
+    Timestamp: 1635695031169
+  #+end_example
+
+- With a loop:
+
+  #+begin_example
+    [kafka-producer-network-thread | producer-1] INFO net.lecigne.kafka.tutorial1.ProducerDemoWithCallback - Received new metadata
+    Topic: first_topic
+    Partition: 2
+    Offset: 4
+    Timestamp: 1635695361201
+    [...]
+    [kafka-producer-network-thread | producer-1] INFO net.lecigne.kafka.tutorial1.ProducerDemoWithCallback - Received new metadata
+    Topic: first_topic
+    Partition: 2
+    Offset: 13
+    Timestamp: 1635695361212
+  #+end_example
+
+  #+begin_example
+    hello world from Java #1
+    hello world from Java #2
+    hello world from Java #3
+    hello world from Java #4
+    hello world from Java #5
+    hello world from Java #6
+    hello world from Java #7
+    hello world from Java #8
+    hello world from Java #9
+    hello world from Java #10
+  #+end_example
+
+  Note that in my version of Kafka, all messages are sent to the same
+  partitions. This is not the case in the course:
+
+  #+begin_quote
+  From version 2.4 and later of Apache Kafka, the default partitioning
+  strategy has been changed for records with a null key whereby sticky
+  partitioning is the default behavior.
+
+  The previous round robin strategy meant that records with a null key
+  would be split across partitions, the new sticky partitioning
+  strategy sends records to the same partition until a partition's
+  batch is "complete" (this is defined by batch.size or linger.ms)
+
+  Check out this article for more info: [[https://www.confluent.io/blog/apache-kafka-producer-improvements-sticky-partitioner/][Improvements with Sticky
+  Partitioner]]
+  #+end_quote
+
+  ([[https://stackoverflow.com/a/68361631][source]])
+
+**** Java producer with keys
+:PROPERTIES:
+:CREATED:  [2021-10-31 Sun 17:37]
+:END:
+
+- =ProducerDemoWithKeys=
+
+- If you rerun the code, a given ID always go to the same partition.
+
+  |-------+------------+-------------|
+  | ID    | First time | Second time |
+  |-------+------------+-------------|
+  | id_1  |          0 |           0 |
+  | id_2  |          2 |           2 |
+  | id_3  |          0 |           0 |
+  | id_4  |          2 |           2 |
+  | id_5  |          2 |           2 |
+  | id_6  |          0 |           0 |
+  | id_7  |          2 |           2 |
+  | id_8  |          1 |           1 |
+  | id_9  |          2 |           2 |
+  | id_10 |          2 |           2 |
+  |-------+------------+-------------|
+
+  Note that the (id -> partition) mapping will be exactly the same for
+  anyone with 3 partitions, like the course teacher.
+
+**** Java consumer
+:PROPERTIES:
+:CREATED:  [2021-10-31 Sun 18:14]
+:END:
+
+- =ConsumerDemo=
+
+- Check the [[https://kafka.apache.org/documentation/#consumerconfigs][consumer configs]]
+
+- We need a deserializer to convert the bytes to a string in the
+  consumer.
+
+  Producer -> String serialization (bytes) -> Kafka -> Serialized
+  String (bytes) -> Consumer -> Deserialization
+
+- =AUTO_OFFSET_RESET_CONFIG=
+  + =earliest= :: From the beginning
+  + =latest= :: New messages
+  + =none= :: Will throw an error if there is no offset being saved
+    (?)
+
+- =KafkaConsumer#poll(long)= is deprecated, we now use a duration.
+
+- Messages are read by partition: 0, 1 and 2. However if we start the
+  producer and send messages, they will be read as they arrive.
+
+**** Java consumer inside consumer group
+:PROPERTIES:
+:CREATED:  [2021-11-02 Tue 19:10]
+:END:
+
+- =ConsumerDemoGroups=
+
+- Let's describe the group:
+
+  #+begin_src sh
+    kafka-consumer-groups.sh \
+        --bootstrap-server localhost:9092 \
+        --group my-java-app \
+        --describe
+  #+end_src
+
+  #+RESULTS:
+  |             |             |           |                |                |     |             |      |           |
+  | GROUP       | TOPIC       | PARTITION | CURRENT-OFFSET | LOG-END-OFFSET | LAG | CONSUMER-ID | HOST | CLIENT-ID |
+  | my-java-app | first_topic |         0 |             15 |             15 |   0 | -           | -    | -         |
+  | my-java-app | first_topic |         1 |             18 |             18 |   0 | -           | -    | -         |
+  | my-java-app | first_topic |         2 |             37 |             37 |   0 | -           | -    | -         |
+
+  -> 0 lag.
+
+- Changing the groupId would consume everything again (since
+  =AUTO_OFFSET_RESET_CONFIG= is =earliest=)
+
+- When starting multiple consumers in the same group, Kafka do some
+  rebalancing. This also happens with a Java program. If we launch
+  another Java consumer in the group, in the first consumer's logs we
+  see this:
+
+  #+begin_example
+    [main] INFO Attempt to heartbeat failed since group is rebalancing
+    [main] INFO Revoke previously assigned partitions first_topic-0, first_topic-1, first_topic-2
+    [main] INFO (Re-)joining group
+    [...]
+    [main] INFO Notifying assignor about the new Assignment(partitions=[first_topic-0, first_topic-1])
+    [main] INFO Adding newly assigned partitions: first_topic-0, first_topic-1
+  #+end_example
+
+  And in the second consumer log's:
+
+  #+begin_example
+    [main] INFO Subscribed to topic(s): first_topic
+    [main] INFO Cluster ID: cn--pJwYR_ej1zXOdmmELg
+    [main] INFO Discovered group coordinator debian.debian:9092 (id: 2147483647 rack: null)
+    [main] INFO (Re-)joining group
+    [main] INFO (Re-)joining group
+    [...]
+    [main] INFO Notifying assignor about the new Assignment(partitions=[first_topic-2])
+    [main] INFO Adding newly assigned partitions: first_topic-2
+  #+end_example
+
+  So the first consumer is now assigned partitions =first_topic-0= and
+  =first_topic-1=, and the second one, partition =first_topic-2=.
+
+- We can test this with the producer (=ProducerDemoWithKeys=).
+
+  In the first consumer (partitions 0 and 1):
+
+  #+begin_example
+    [main] INFO Partition: 0, offset: 15
+    Key: id_1, value: hello world from Java #1
+    [main] INFO Partition: 0, offset: 16
+    Key: id_3, value: hello world from Java #3
+    [main] INFO Partition: 0, offset: 17
+    Key: id_6, value: hello world from Java #6
+    [main] INFO Partition: 1, offset: 18
+    Key: id_8, value: hello world from Java #8
+  #+end_example
+
+  In the second one (partition 2):
+
+  #+begin_example
+    [main] INFO Partition: 2, offset: 37
+    Key: id_2, value: hello world from Java #2
+    [main] INFO Partition: 2, offset: 38
+    Key: id_4, value: hello world from Java #4
+    [main] INFO Partition: 2, offset: 39
+    Key: id_5, value: hello world from Java #5
+    [main] INFO Partition: 2, offset: 40
+    Key: id_7, value: hello world from Java #7
+    [main] INFO Partition: 2, offset: 41
+    Key: id_9, value: hello world from Java #9
+    [main] INFO Partition: 2, offset: 42
+    Key: id_10, value: hello world from Java #10
+  #+end_example
+
+- The same would happen with a third consumer: each consumer would be
+  assigned a partition.
+
+- When the second consumer is stopped, the first consumer's logs
+  output these lines:
+
+  #+begin_example
+    [main] INFO Attempt to heartbeat failed since group is rebalancing
+    [main] INFO Revoke previously assigned partitions first_topic-0, first_topic-1
+    [main] INFO (Re-)joining group
+    [...]
+    [main] INFO Notifying assignor about the new Assignment(partitions=[first_topic-0, first_topic-1, first_topic-2])
+    [main] INFO Adding newly assigned partitions: first_topic-0, first_topic-1, first_topic-2
+  #+end_example
+
+**** Java consumer seek and assign
+:PROPERTIES:
+:CREATED:  [2021-11-04 Thu 21:26]
+:END:
+
+- =ConsumerDemoAssignAndSeek=
+
+- We don't use a group ID and we don't subscribe to any topic.
+
+- A&S is mostly used to replay data or fetch a specific message.
+
+- Result:
+
+  #+begin_example
+    [main] INFO Subscribed to partition(s): first_topic-0
+    [main] INFO Seeking to offset 15 for partition first_topic-0
+    [main] INFO Cluster ID: cn--pJwYR_ej1zXOdmmELg
+    [main] INFO Partition: 0, offset: 15
+    Key: id_1, value: hello world from Java #1
+    [main] INFO Partition: 0, offset: 16
+    Key: id_3, value: hello world from Java #3
+    [main] INFO Partition: 0, offset: 17
+    Key: id_6, value: hello world from Java #6
+  #+end_example
+
+**** Client bi-directional compatibility
+:PROPERTIES:
+:CREATED:  [2021-11-04 Thu 22:17]
+:END:
+
+- As of Kafka 0.10.2:
+  + an older client can talk to a newer broker
+  + a newer client can talk to an older broker
+
+- Always use a recent client version if you can!
+
+- [[https://www.confluent.io/blog/upgrading-apache-kafka-clients-just-got-easier/][Link to Confluent article]]
+
+**** Configuring producers and consumers
+:PROPERTIES:
+:CREATED:  [2021-11-04 Thu 22:23]
+:END:
+
+- There exist a lot of options to:
+  + [[https://kafka.apache.org/documentation/#producerconfigs][Configure producer]]
+  + [[https://kafka.apache.org/documentation/#consumerconfigs][Configure consumers]]
+
+- The most important options are discussed in the real-world project
+  section, coming next. Happy learning!
+
+** Kafka real-world project
+:PROPERTIES:
+:CREATED:  [2021-10-14 jeu. 22:58]
+:END:
+
+*** Real-world project overview
+:PROPERTIES:
+:CREATED:  [2021-11-04 Thu 22:27]
+:END:
+
+#+ATTR_ORG: :width 600
+[[file:../../.files/udemy-kafka/real_world_project.png]]
+
+*** Real-world exercise
+:PROPERTIES:
+:CREATED:  [2021-11-04 Thu 22:33]
+:END:
+
+Before jumping to the next section for the solution, here are some
+pointers for some exercises:
+
+- Twitter Producer :: The Twitter Producer gets data from Twitter
+  based on some keywords and put them in a Kafka topic of your choice
+
+  + [[https://github.com/twitter/hbc][Twitter Java Client]]
+  + [[https://developer.twitter.com/][Twitter API Credentials]]
+
+- ElasticSearch Consumer :: The ElasticSearch Consumer gets data from
+  your twitter topic and inserts it into ElasticSearch
+
+  + [[https://www.elastic.co/guide/en/elasticsearch/client/java-rest/6.4/java-rest-high.html][ElasticSearch Java Client]]
+  + [[https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html][ElasticSearch setup]]
