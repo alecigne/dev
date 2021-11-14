@@ -110,3 +110,6 @@
 
 - [[[file:java-jaxb.org][java-jaxb]]] :: Init. [2021-09-03 Fri]: Marshalling and unmarshalling
   using JAXB.
+
+- [[[file:udemy-kafka/udemy-kafka.org][udemy-kafka]]] :: Init. [2021-10-07 Thu]: Udemy's MOOC: [[https://www.udemy.com/course/apache-kafka/][Apache Kafka
+  Series - Learn Apache Kafka for Beginners v2]]
