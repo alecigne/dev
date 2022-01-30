@@ -1,4 +1,4 @@
-#+TITLE: Projects
+#+title: Projects
 
 - [[[file:spring-jdbc.org][spring-jdbc]]] :: Init. [2018-09-05 Wed]: a few common cases
   encountered while using Spring JDBC.
@@ -92,8 +92,8 @@
   in a Spring Boot project using [[https://spring.io/projects/spring-cloud-openfeign][Spring Boot OpenFeign]]. Inspired from
   [[http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][this blog article]] ([[https://web.archive.org/web/20210218105617/http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][archive]]).
 
-- [[[file:apress-junit5.org][apress-junit5]]] :: Init. [2020-05-31 Sun]: work on the book [[file:../sources/books.org::*Java Unit Testing with JUnit 5][Java
-  Unit Testing with JUnit 5]] (Apress).
+- [[[file:apress-junit5.org][apress-junit5]]] :: Init. [2020-05-31 Sun]: work on the book [[id:d543b61c-b9ef-4f3e-b05f-62da6b8c03a4][Java
+  Unit Testing with JUnit 5]].
 
 - [[[file:crud-with-vaadin.org][crud-with-vaadin]]] :: Init. [2021-03-02 Tue]: the tutorial "[[https://spring.io/guides/gs/crud-with-vaadin/][Creating
   CRUD UI with Vaadin]]" from the Spring website.

@@ -1,5 +1,10 @@
+:PROPERTIES:
+:ID:       c9cfda46-3f12-439e-8537-19b919079fc7
+:END:
 -*- org-image-actual-width: nil; -*-
-#+TITLE: =udemy-kafka=
+#+title: udemy-kafka
+
+- related :: [[id:a2209753-40e5-42ae-b93c-f0d1b6ec333f][Kafka]], [[id:fac2bff1-64e6-48e8-9044-4db5621d27c9][Udemy]]
 
 * Project
 
@@ -25,6 +30,8 @@ Check the commands [[file:commands/][here]] (downloaded from [[https://courses.d
 :PROPERTIES:
 :CREATED:  [2021-10-07 jeu. 20:37]
 :END:
+
+See also [[id:0159fab6-625a-4e2e-8d03-74b950644220][Apache Kafka: the Definitive Guide]] for the fundamentals.
 
 *** Kafka theory
 :PROPERTIES:

@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       b5f6eabf-622e-4b8c-9ce6-45207850d301
+:CREATED:  [2022-01-24 Mon 22:28]
+:END:
+#+title: Clojure
+
+- related :: [[id:e7285d88-7c78-4bbe-a5ee-ff4bd31ad85a][Lisp]]

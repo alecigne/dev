@@ -1,0 +1,10 @@
+#+title: Tasks
+
+* TODO Rework notes on [[id:64d55a97-8bc8-4ba5-81c2-c9f89110bc94][Lisp Koans]]                                      :task:
+:PROPERTIES:
+:CREATED:  [2022-01-27 Thu 23:48]
+:ID:       e053e102-3316-481b-882b-633eff39d10f
+:END:
+:LOGBOOK:
+- State "TODO"       from              [2022-01-27 Thu 23:48]
+:END:

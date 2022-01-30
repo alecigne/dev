@@ -1,4 +1,10 @@
-#+TITLE: Spring
+:PROPERTIES:
+:ID:       1ef4c08e-f028-42a9-89fb-74138976e198
+:CREATED:  [2022-01-23 Sun 13:03]
+:END:
+#+title: Spring
+
+- related :: [[id:54a6f94d-9321-4158-88f4-4b4d797ee8c6][Java]]
 
 /!\ Work in progress /!\
 

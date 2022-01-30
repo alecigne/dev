@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       ead878af-228a-4638-ad73-5db5ffee4c07
+:CREATED:  [2022-01-23 Sun 13:11]
+:END:
+#+title: JUnit
+
+- related :: [[id:54a6f94d-9321-4158-88f4-4b4d797ee8c6][Java]]

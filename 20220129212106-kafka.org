@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       a2209753-40e5-42ae-b93c-f0d1b6ec333f
+:CREATED:  [2022-01-29 Sat 21:21]
+:END:
+#+title: Apache Kafka
+#+filetags: :technology:

@@ -1,12 +1,21 @@
-#+TITLE: =spring-jdbc=
+:PROPERTIES:
+:ID:       938ea679-b976-4b10-93a6-563f03f8eb27
+:END:
+#+title: spring-jdbc
+#+filetags: :project:
+
+- related :: [[id:f3323cd5-435a-45b2-bb3c-cf1bb37e2b59][Spring JDBC]]
 
 [[file:../../code/spring-jdbc/][Project]] created on [2018-09-05 Wed].
 
 The most interesting classes are:
 
 - ~JdbcTemplate~
+
 - ~NamedParameterJdbcTemplate~
+
 - ~SimpleJdbcInsert~
+
 - ~SimpleJdbcCall~
 
 Let's start with the obvious stuff: executing SQL 1. without
@@ -16,39 +25,58 @@ is mostly ~JdbcTemplate#execute~ and ~JdbcTemplate#update~ territory.
 - ~execute~ just executes SQL. It is mainly used for DDL statements,
   but it would also work for DML such as an insertion. However, it
   doesn't return any result. I use it here to truncate the =Person=
-  table - see ~PersonDao#truncateTable~.
+  table - see ~PersonDao#truncateTable~:
+
+  #+transclude: [[file:../../code/spring-jdbc/src/main/java/net/lecigne/springjdbc/dao/PersonDao.java::truncateTable][personDao.java]] :lines 1-3 :src java
 
 - ~update~ issues a single SQL update. It returns the number of rows
   affected by the SQL statement. See ~createMyself~.
+
+  #+transclude: [[file:../../code/spring-jdbc/src/main/java/net/lecigne/springjdbc/dao/PersonDao.java::createMyself][personDao.java]] :lines 1-4 :src java
 
 For SQL that will return something, we have multiple solutions that we
 will illustrate with either ~JdbcTemplate#queryForObject~ (for a
 single object) and ~JdbcTemplate#query~ (for multiple objects).
 
-- Providing the type itself: see ~countAllPersons~.
+- Providing the type itself: see ~countAllPersons~:
+
+  #+transclude: [[file:../../code/spring-jdbc/src/main/java/net/lecigne/springjdbc/dao/PersonDao.java::countAllPersons][personDao.java]] :lines 1-4 :src java
 
 - Using an implementation of ~RowMapper~ (full class or through a
-  lambda): see ~findAll~ and ~findAllLambda~.
+  lambda): see ~findAll~ and ~findAllLambda~:
 
-- Using ~BeanPropertyRowMapper~: see ~findAllBeanPropertyRowMapper~.
+  #+transclude: [[file:../../code/spring-jdbc/src/main/java/net/lecigne/springjdbc/dao/PersonDao.java::findAll][personDao.java]] :lines 1-9 :src java
+
+- Using ~BeanPropertyRowMapper~: see ~findAllBeanPropertyRowMapper~:
+
+  #+transclude: [[file:../../code/spring-jdbc/src/main/java/net/lecigne/springjdbc/dao/PersonDao.java::findAllBeanPropertyRowMapper][personDao.java]] :lines 1-4 :src java
 
 For providing parameters, we also have multiple solutions:
 
 - Creating an array of parameters (or use the varargs in the
-  signature): see ~createSomeone~ and ~findById~.
+  signature): see ~createSomeone~ and ~findById~:
+
+  #+transclude: [[file:../../code/spring-jdbc/src/main/java/net/lecigne/springjdbc/dao/PersonDao.java::createSomeone][personDao.java]] :lines 1-9 :src java
 
 - Using ~NamedParameterJdbcTemplate~ with the ~MapSqlParameterSource~
   class: see ~createSomeoneWithNamedParameters~. In that case you're
-  the one doing the correspondance between the property and the value.
+  the one doing the correspondance between the property and the value:
+
+  #+transclude: [[file:../../code/spring-jdbc/src/main/java/net/lecigne/springjdbc/dao/PersonDao.java::createSomeoneWithNamedParameters][personDao.java]] :lines 1-6 :src java
 
 - Using ~NamedParameterJdbcTemplate~ with the
   ~BeanPropertySqlParameterSource~ class: see
-  ~createSomeoneWithNamedParametersAndBeanProperties~. The matching
-  between property and value is done automatically from a Java
-  bean. From the docs:
+  ~createSomeoneWithNamedParametersAndBeanProperties~:
+
+  #+transclude: [[file:../../code/spring-jdbc/src/main/java/net/lecigne/springjdbc/dao/PersonDao.java::createSomeoneWithNamedParametersAndBeanProperties][personDao.java]] :lines 1-5 :src java
+
+  The matching between property and value is done automatically from a
+  Java bean. From the docs:
 
   #+begin_quote
   The names of the bean properties have to match the parameter names.
   #+end_quote
 
-  See ~createSomeoneWithNamedParametersAndBeanPropertiesIncorrect~.
+  See ~createSomeoneWithNamedParametersAndBeanPropertiesIncorrect~:
+
+  #+transclude: [[file:../../code/spring-jdbc/src/main/java/net/lecigne/springjdbc/dao/PersonDao.java::createSomeoneWithNamedParametersAndBeanPropertiesIncorrect][personDao.java]] :lines 1-5 :src java

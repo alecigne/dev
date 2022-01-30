@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       e38c7ace-b8b5-4e3a-9dbb-16af229d93b7
+:CREATED:  [2022-01-23 Sun 13:31]
+:END:
+#+title: Common Lisp: A Gentle Introduction To Symbolic Computation
+#+filetags: :book:
+
+- related :: [[id:d30f3dfd-da41-46f8-ae6e-a242fdb73be2][Common Lisp]]
+
+Book by [[id:30f669f1-0805-4091-84e8-af77188f1a4d][David S. Touretsky]]. Website [[https://www.cs.cmu.edu/~dst/LispBook/][here]].

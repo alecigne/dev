@@ -1,0 +1,358 @@
+:PROPERTIES:
+:ID:       5c19e8cd-da2b-4c0b-8bf7-5d5f6288b49a
+:CREATED:  [2022-01-24 Mon 22:27]
+:END:
+#+title: Clojure for the Brave and True
+#+filetags: :book:
+
+- related :: [[id:b5f6eabf-622e-4b8c-9ce6-45207850d301][Clojure]]
+
+Book written by [[id:c8b453e8-f36a-4b1a-a751-7815c8571855][Daniel Higginbotham]]. The book is [[https://www.braveclojure.com/][available online]].
+
+* Building, Running, and the REPL
+:PROPERTIES:
+:CREATED:  [2022-01-27 Thu 23:26]
+:END:
+
+To create a new Clojure project, use [[https://leiningen.org/][Leiningen]] (available both on
+Windows and Linux):
+
+#+begin_src sh
+  lein new app cftbat
+#+end_src
+
+* How to Use Emacs, an Excellent Clojure Editor
+:PROPERTIES:
+:CREATED:  [2022-01-27 Thu 23:34]
+:END:
+
+Yep, I think I'm set here :D I installed the necessary packages in my
+[[https://github.com/alecigne/.emacs.d][Emacs config]]: see [[https://github.com/alecigne/.emacs.d/commit/d9ed07c5da0286251f34e2d70d3dcdfc0053406a][this commit]].
+
+* Do Things: A Clojure Crash Course
+:PROPERTIES:
+:CREATED:  [2022-01-27 Thu 23:23]
+:END:
+
+See the final content of Chapter 3 at the end of this section, or in
+[[file:code/cftbat/src/cftbat/chapter3.clj][this file]] (the content is [[https://github.com/nobiot/org-transclusion][transcluded]] :muscle:).
+
+The most difficult function to write in this chapter is
+~symmetrize-body-parts~. I like to do a little warm-up before I arrive
+at the final definition, with some inspiration from the book.
+
+** Warm-up: ~loop~ and ~recur~
+:PROPERTIES:
+:CREATED:  [2022-01-30 Sun 19:12]
+:END:
+
+A basic recursive function can be written like this:
+
+#+begin_src clojure
+  (defn loop-then-goodbye
+    [iteration]
+    (if (> iteration 3)
+      (println "Bye")
+      (do (println iteration)
+          (loop-then-goodbye (inc iteration)))))
+
+  (loop-then-goodbye 0)
+#+end_src
+
+Recursion is asking for trouble on the JVM since a =StackOverflow= is
+easy to get. Here is one (without printing the iteration 10000 times):
+
+#+begin_src clojure
+  (defn loop-then-goodbye
+    [iteration]
+    (if (> iteration 10000)
+      (println "Bye")
+      (loop-then-goodbye (inc iteration))))
+
+  (loop-then-goodbye 0)
+#+end_src
+
+#+begin_example
+  Execution error (StackOverflowError) at cftbat.chapter3/loop-then-goodbye
+#+end_example
+
+We can use ~recur~ instead to avoid this problem:
+
+#+begin_src clojure
+  (defn loop-then-goodbye
+    [iteration]
+    (if (> iteration 10000)
+      (println "Bye")
+      (recur (inc iteration))))
+
+  (loop-then-goodbye 0)
+#+end_src
+
+No =StackOverflow= this time since ~recur~ will do self-recursion
+without adding to the stack. Here is our fixed version:
+
+#+begin_src clojure
+  (defn loop-then-goodbye
+    [iteration]
+    (if (> iteration 3)
+      (println "Bye")
+      (do (println iteration)
+          (recur (inc iteration)))))
+
+  (loop-then-goodbye 0)
+#+end_src
+
+With arity overloading, we can avoid passing an argument:
+
+#+begin_src clojure
+  (defn loop-then-goodbye
+    ([]
+     (loop-then-goodbye 0))
+    ([iteration]
+     (if (> iteration 3)
+       (println "Bye")
+       (do (println iteration)
+           (recur (inc iteration))))))
+
+  (loop-then-goodbye)
+#+end_src
+
+The call without argument is just here to bootstrap things. It turns
+out we can't use ~recur~ in this position although I would have
+thought that possible :thinking:
+
+Of course all of this can be replaced by ~loop~. As the book states:
+
+#+begin_quote
+It’s as if loop creates an anonymous function with a parameter named
+iteration
+#+end_quote
+
+So let's say ~loop~ does that, and also call the anonymous function
+with an initial parameter. Our previous code becomes:
+
+#+begin_src clojure
+  (loop [iteration 0]
+    (if (> iteration 3)
+      (println "Bye")
+      (do (println iteration)
+          (recur (inc iteration)))))
+#+end_src
+
+We can still wrap our ~loop~-based form in a function, although it
+doesn't play a role anymore in the recursion:
+
+#+begin_src clojure
+  (defn loop-then-goodbye
+    []
+    (loop [iteration 0]
+      (if (> iteration 3)
+        (println "Bye")
+        (do (println iteration)
+            (recur (inc iteration))))))
+
+  (loop-then-goodbye)
+#+end_src
+
+** Warm-up: ~let~
+:PROPERTIES:
+:CREATED:  [2022-01-30 Sun 20:51]
+:END:
+
+I know ~let~ quite well from Emacs Lisp and Common Lisp. However, in
+Clojure, there is a syntactic sugar to destructure a sequence (see
+[[https://clojure.org/guides/destructuring#_sequential_destructuring][sequential destructuring]]):
+
+#+begin_src clojure
+  (let [[a & b] '[a b c]]
+    (println a)
+    (println b))
+#+end_src
+
+This will print:
+
+#+begin_example
+  a
+  (b c)
+#+end_example
+
+This looks a lot like ~destructuring-bind~ in Common Lisp:
+
+#+begin_src common-lisp
+  (destructuring-bind (first &rest rest) (list 1 2 3 4)
+    (print first)
+    (print rest))
+#+end_src
+
+#+begin_example
+  1
+  (2 3 4)
+#+end_example
+
+** Warm-up: ~into~
+:PROPERTIES:
+:CREATED:  [2022-01-30 Sun 21:17]
+:END:
+
+Definition from [[https://clojuredocs.org/clojure.core/into][Clojure's documentation]]:
+
+#+begin_quote
+(into) (into to) (into to from) (into to xform from)
+
+Returns a new coll consisting of to-coll with all of the items of
+from-coll conjoined.
+#+end_quote
+
+This:
+
+#+name: into
+#+begin_src clojure :results value verbatim :exports both
+  (into [1 2 3] [4 5 6])
+#+end_src
+
+...will result in:
+
+#+results: into
+: [1 2 3 4 5 6]
+
+** First implementation
+:PROPERTIES:
+:CREATED:  [2022-01-30 Sun 21:29]
+:END:
+
+We are finally ready for the first implementation. This quote from the
+book might help:
+
+#+begin_quote
+The symmetrize-body-parts function [...] employs a general strategy
+that is common in functional programming. Given a sequence (in this
+case, a vector of body parts and their sizes), the function
+continuously splits the sequence into a head and a tail. Then it
+processes the head, adds it to some result, and uses recursion to
+continue the process with the tail.
+#+end_quote
+
+Here it is:
+
+#+begin_src clojure :results value verbatim :exports both
+  (defn symmetrize-body-parts
+    [asym-body-parts]
+    (loop [final-body-parts []
+           remaining-body-parts asym-body-parts]
+      (if (empty? remaining-body-parts)
+        final-body-parts
+        (let [[part & remaining] remaining-body-parts]
+          (recur (into final-body-parts (set [part (match-part part)]))
+                 remaining)))))
+#+end_src
+
+The core logic can be explained with an anonymous function:
+
+#+begin_src clojure
+  (fn [acc curr] (into acc (set [curr (match-part curr)])))
+#+end_src
+
+The rest is here to take care of the recursion. We could maybe use
+applicative programming here with ~reduce~.
+
+** Second implementation with ~reduce~
+:PROPERTIES:
+:CREATED:  [2022-01-30 Sun 21:51]
+:END:
+
+Let's do it:
+
+#+begin_src clojure
+  (defn symmetrize-body-parts
+    [asym-body-parts]
+    (reduce (fn [acc curr]
+              (into acc (set [curr (match-part curr)])))
+            []
+            asym-body-parts))
+#+end_src
+
+*** Our own ~reduce~: ~my-reduce~
+:PROPERTIES:
+:CREATED:  [2022-01-30 Sun 22:35]
+:END:
+
+Since we can implement ~symmetrize-body-parts~ both ways, maybe we
+could, for fun, implement our own version of ~reduce~ in the recursive
+style above.
+
+Let's start by a simple ~loop~ construct with hard-coded values:
+
+#+begin_src clojure :results value verbatim :exports both
+  (loop [acc 0
+         coll '(1 2 3 4)]
+    (if (empty? coll)
+      acc
+      (let [[curr & rest] coll]
+        (recur (+ acc curr) rest))))
+#+end_src
+
+#+RESULTS:
+: 10
+
+We could pass these values by using a function:
+
+#+begin_src clojure :results value verbatim :exports both
+  (defn my-reduce
+    [f initial collection]
+    (loop [acc initial
+           coll collection]
+      (if (empty? coll)
+        acc
+        (let [[curr & rest] coll]
+          (recur (f acc curr) rest)))))
+#+end_src
+
+#+begin_src clojure :results value verbatim :exports both
+  (my-reduce + 0 [1 2 3 4])
+#+end_src
+
+#+results:
+: 10
+
+And then to obtain the 2-arg ~reduce~ version:
+
+#+begin_src clojure
+  (defn my-reduce
+    ([f initial collection]
+     (loop [acc initial
+            coll collection]
+       (if (empty? coll)
+         acc
+         (let [[curr & rest] coll]
+           (recur (f acc curr) rest)))))
+    ([f [curr & rest]]
+     (recur f curr rest)))
+#+end_src
+
+#+begin_src clojure  :results value verbatim :exports both
+  (my-reduce + [1 2 3 4])
+#+end_src
+
+#+results:
+: 10
+
+Cool!
+
+** TODO The ~hit~ function
+:PROPERTIES:
+:CREATED:  [2022-01-30 Sun 23:07]
+:END:
+
+** Final file
+:PROPERTIES:
+:CREATED:  [2022-01-30 Sun 19:12]
+:END:
+
+Here is the transclusion from [[file:code/cftbat/src/cftbat/chapter3.clj][Chapter's 3 Clojure file]].
+
+#+transclude: [[file:code/cftbat/src/cftbat/chapter3.clj][chapter3.clj]]  :src clojure
+
+** TODO Exercises
+:PROPERTIES:
+:CREATED:  [2022-01-30 Sun 23:07]
+:END:

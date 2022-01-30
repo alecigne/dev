@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       d30f3dfd-da41-46f8-ae6e-a242fdb73be2
+:CREATED:  [2022-01-23 Sun 13:31]
+:END:
+#+title: Common Lisp
+
+- related :: [[id:e7285d88-7c78-4bbe-a5ee-ff4bd31ad85a][Lisp]]
+
+* Setting up a Common Lisp environment
+:PROPERTIES:
+:CREATED:  [2022-01-23 Sun 13:36]
+:END:
+
+See [[http://anthony.lecigne.net/notes/common-lisp.html][this page]] on my website.

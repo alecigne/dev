@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       eb6c7399-e9cb-409d-857f-a6258cb8ab51
+:CREATED:  [2022-01-24 Mon 22:30]
+:END:
+#+title: Project Euler
+#+filetags: :website:

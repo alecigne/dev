@@ -1,0 +1,54 @@
+:PROPERTIES:
+:ID:       64d55a97-8bc8-4ba5-81c2-c9f89110bc94
+:END:
+#+title: Lisp Koans
+#+filetags: :website:
+
+- related :: [[id:d30f3dfd-da41-46f8-ae6e-a242fdb73be2][Common Lisp]]
+- source :: https://github.com/google/lisp-koans
+
+To contemplate the koans:
+
+#+BEGIN_SRC sh
+  sbcl --script contemplate.lsp
+#+END_SRC
+
+The tests are:
+
+- =assert-true= :: write something true
+- =assert-false= :: write something false
+- =assert-equal= :: write something equal
+- =true-or-false?= :: write the correct boolean
+
+* =asserts=
+
+=t= is true, =nil= is false. Nothing more to know here!
+
+* =nil-false-empty=
+
+- =not= is a function which returns the boolean opposite of its
+  argument
+- =nil= and the empty list are the same thing
+- Every value, other than nil, is boolean true: an empty string,
+  ='(nil)=, an empty array, =0=, etc.
+- =and= and =or= can take multiple arguments
+  + =and= returns =nil= if there is at least a =nil=; otherwise it
+    returns the last value.
+  + =or= returns =nil= if all values are =nil=; otherwise it returns
+    the first non nil value.
+
+* =evaluation=
+
+- In lisp, the function name and arguments are all part of the same
+  list, with the function name the first element of that list.
+- A boolean function is called a predicate.
+- =>= and === are the "greater-than" and "equal to" predicates.
+- =numberp= is a predicate which returns true if the argument is a
+  number
+- Arguments to functions are evaluated before the function.
+- Preceding a list with a quote (') will tell lisp not to evaluate a
+  list. The quote special form suppresses normal evaluation, and
+  instead returns the literal list.
+- =listp= is a predicate which returns true if the argument is a list".
+- =equalp= is an equality predicate.
+- ='(xyz ghi)= is syntactic sugar for =(quote (xyz ghi))=.

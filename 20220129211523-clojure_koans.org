@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       e61c5777-decf-4179-8ab8-65567c7169a0
+:CREATED:  [2022-01-29 Sat 21:15]
+:END:
+#+title: Clojure Koans
+#+filetags: :website:
+
+- related :: [[id:b5f6eabf-622e-4b8c-9ce6-45207850d301][Clojure]]
+
+Similaire aux [[id:64d55a97-8bc8-4ba5-81c2-c9f89110bc94][Lisp Koans]] de Google pour Common Lisp, mais pour
+[[id:b5f6eabf-622e-4b8c-9ce6-45207850d301][Clojure]].

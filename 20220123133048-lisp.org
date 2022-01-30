@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       e7285d88-7c78-4bbe-a5ee-ff4bd31ad85a
+:CREATED:  [2022-01-23 Sun 13:30]
+:END:
+#+title: Lisp

@@ -1,4 +1,8 @@
-#+TITLE: Java
+:PROPERTIES:
+:ID:       54a6f94d-9321-4158-88f4-4b4d797ee8c6
+:CREATED:  [2022-01-23 Sun 13:04]
+:END:
+#+title: Java
 
 * Plan
 :PROPERTIES:

@@ -1,13 +1,20 @@
 #+begin_example
-      __                      _
-     / /__  ____ __________  (_)___  ____ _
-    / / _ \/ __ `/ ___/ __ \/ / __ \/ __ `/
-   / /  __/ /_/ / /  / / / / / / / / /_/ /
-  /_/\___/\__,_/_/  /_/ /_/_/_/ /_/\__, /
-                                  /____/
+     __            __          _            __
+    / /____  _____/ /_  ____  (_)________ _/ /
+   / __/ _ \/ ___/ __ \/ __ \/ / ___/ __ `/ /
+  / /_/  __/ /__/ / / / / / / / /__/ /_/ / /
+  \__/\___/\___/_/ /_/_/ /_/_/\___/\__,_/_/
+      __                       __         __
+     / /______  ____ _      __/ /__  ____/ /___ ____
+    / //_/ __ \/ __ \ | /| / / / _ \/ __  / __ `/ _ \
+   / ,< / / / / /_/ / |/ |/ / /  __/ /_/ / /_/ /  __/
+  /_/|_/_/ /_/\____/|__/|__/_/\___/\__,_/\__, /\___/
+                                        /____/
 #+end_example
 
 Code written and notes taken along my learning journey as a software
 developer.
 
-#+html: <p align="center"><a href="notes/katas/index.org">browse by project</a> | <a href="notes/themes/index.org">browse by theme</a> | <a href="notes/sources/index.org">browse by source</a></p>
+This repository makes heavy use of [[https://www.gnu.org/software/emacs/][Emacs]], [[https://www.orgmode.org/fr/][Org-mode]], [[https://www.orgroam.com/][Org-roam]] and
+[[https://github.com/nobiot/org-transclusion][Org-transclusion]]. As such, it is /not/ meant to be browsed on GitHub,
+although Org markup is understood by GitHub.

@@ -1,8 +1,0 @@
-#+TITLE: Books
-
-This page is a list of books I studied, organized by title.
-
-* Java Unit Testing with JUnit 5
-
-- [[https://isbnsearch.org/isbn/9781484230152][ISBN]]
-- See project [[file:../katas/apress-junit5.org][apress-junit5]]

@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       30f669f1-0805-4091-84e8-af77188f1a4d
+:CREATED:  [2022-01-23 Sun 13:31]
+:END:
+#+title: David S. Touretsky
+#+filetags: :person:

@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       f3323cd5-435a-45b2-bb3c-cf1bb37e2b59
+:CREATED:  [2022-01-28 Fri 21:09]
+:END:
+#+title: Spring JDBC
+
+- related :: [[id:1ef4c08e-f028-42a9-89fb-74138976e198][Spring]]
+
+The documentation can be found [[https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#jdbc][here]].

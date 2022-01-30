@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       53f3944c-1495-4ef7-9a65-8dba5f9e9b65
+:END:
+#+title: 2022-01-30
+#+filetags: :day:
+
+Work on Chapter 3 from [[id:5c19e8cd-da2b-4c0b-8bf7-5d5f6288b49a][Clojure for the Brave and True]].

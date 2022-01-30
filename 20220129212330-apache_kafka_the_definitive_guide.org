@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       0159fab6-625a-4e2e-8d03-74b950644220
+:CREATED:  [2022-01-29 Sat 21:23]
+:END:
+#+title: Apache Kafka: the Definitive Guide
+#+filetags: :book:
+
+- related :: [[id:a2209753-40e5-42ae-b93c-f0d1b6ec333f][Apache Kafka]]
+
+Book by Neha Narkhede, Gwen Shapira, Todd Palino.

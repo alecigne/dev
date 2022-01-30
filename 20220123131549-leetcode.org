@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       49f8067b-896b-4ed7-b318-74adebdda362
+:CREATED:  [2022-01-23 Sun 13:15]
+:END:
+#+title: Leetcode
+#+filetags: :website:
