@@ -34,6 +34,17 @@
           []
           asym-body-parts))
 
+(defn hit
+  [asym-body-parts]
+  (let [sym-parts (symmetrize-body-parts asym-body-parts)
+        total-size (reduce + (map :size sym-parts))
+        target (rand total-size)]
+    (loop [[curr & rest] sym-parts
+           acc (:size curr)]
+      (if (> acc target)
+        curr
+        (recur rest (+ acc (:size (first rest))))))))
+
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]

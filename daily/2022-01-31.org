@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       c8400a50-469c-48c2-91f2-bec80f7c5521
+:END:
+#+title: 2022-01-31
+#+filetags: :day:
+
+Work on Chapter 3 from [[id:5c19e8cd-da2b-4c0b-8bf7-5d5f6288b49a][Clojure for the Brave and True]]:
+
+- [[id:c03d1b1b-fb77-4e6e-bd44-e7ada575869f][The ~hit~ function]]
+- [[id:8b31fc0b-dfda-488a-acb7-9fb816ade68a][Exercises]]

@@ -7,7 +7,10 @@
 
 - related :: [[id:b5f6eabf-622e-4b8c-9ce6-45207850d301][Clojure]]
 
-Book written by [[id:c8b453e8-f36a-4b1a-a751-7815c8571855][Daniel Higginbotham]]. The book is [[https://www.braveclojure.com/][available online]].
+Book written by [[id:c8b453e8-f36a-4b1a-a751-7815c8571855][Daniel Higginbotham]]. The book is [[https://www.braveclojure.com/][available online]] and
+there is a repo [[https://github.com/braveclojure/cftbat-code][here]] for the code.
+
+There are solutions to exercises online that could be useful: [[https://github.com/madmax96/brave-clojure-solutions][here]].
 
 * Building, Running, and the REPL
 :PROPERTIES:
@@ -329,7 +332,7 @@ And then to obtain the 2-arg ~reduce~ version:
      (recur f curr rest)))
 #+end_src
 
-#+begin_src clojure  :results value verbatim :exports both
+#+begin_src clojure :results value verbatim :exports both
   (my-reduce + [1 2 3 4])
 #+end_src
 
@@ -338,10 +341,82 @@ And then to obtain the 2-arg ~reduce~ version:
 
 Cool!
 
-** TODO The ~hit~ function
+** The ~hit~ function
 :PROPERTIES:
 :CREATED:  [2022-01-30 Sun 23:07]
+:ID:       c03d1b1b-fb77-4e6e-bd44-e7ada575869f
+:ROAM_EXCLUDE: t
 :END:
+
+The goal of the ~hit~ function is to return a body part that was hit
+randomly. Of course the probability to hit the body part should be a
+function of its size.
+
+Here is a proposal:
+
+- Choose a number between 0 and the total size of the body parts (a
+  "limit")
+
+- "Line up" all body parts, little by little
+
+- Check which body part is the first to go beyond this limit: this
+  body part will be hit.
+
+Let's do things step by step by using hard-coded values. We first need
+the real total size of the body parts to not go over it:
+
+#+begin_src clojure :results value verbatim :exports both
+  (reduce + (map :size (symmetrize-body-parts asym-hobbit-body-parts)))
+#+end_src
+
+#+RESULTS:
+: 85
+
+We might of course use this method in the final implementation. So the
+total size is 85, and let's say we hit at 23: how could we find the
+part using ~loop~?
+
+Let's use basic recursion with ~loop~:
+
+#+begin_src clojure :results value verbatim :exports both
+  (loop [[curr & rest] (symmetrize-body-parts asym-hobbit-body-parts)
+         acc (:size curr)]
+    (if (> acc 3)
+      curr
+      (recur rest (+ acc (:size (first rest))))))
+#+end_src
+
+#+RESULTS:
+: {:name "left-eye", :size 1}
+
+The chest is hit!
+
+Let's write the entire function:
+
+#+begin_src clojure :results value verbatim :exports both
+  (defn hit
+    [asym-body-parts]
+    (let [sym-parts (symmetrize-body-parts asym-body-parts)
+          total-size (reduce + (map :size sym-parts))
+          target (rand total-size)]
+      (loop [[curr & rest] sym-parts
+             acc (:size curr)]
+        (if (> acc target)
+          curr
+          (recur rest (+ acc (:size (first rest))))))))
+#+end_src
+
+#+RESULTS:
+: #'cftbat.chapter3/hit
+
+And call (h)it ;):
+
+#+begin_src clojure :results value verbatim :exports both
+  (hit asym-hobbit-body-parts)
+#+end_src
+
+#+RESULTS:
+: {:name "right-forearm", :size 3}
 
 ** Final file
 :PROPERTIES:
@@ -352,7 +427,13 @@ Here is the transclusion from [[file:code/cftbat/src/cftbat/chapter3.clj][Chapte
 
 #+transclude: [[file:code/cftbat/src/cftbat/chapter3.clj][chapter3.clj]]  :src clojure
 
-** TODO Exercises
+** Exercises
 :PROPERTIES:
 :CREATED:  [2022-01-30 Sun 23:07]
+:ID:       8b31fc0b-dfda-488a-acb7-9fb816ade68a
+:ROAM_EXCLUDE: t
 :END:
+
+Check [[file:code/cftbat/src/cftbat/chapter3_ex.clj][chapter3_ex.clj]]. Here is the transclusion:
+
+#+transclude: [[file:code/cftbat/src/cftbat/chapter3_ex.clj][chapter3_ex.clj]]  :src clojure
