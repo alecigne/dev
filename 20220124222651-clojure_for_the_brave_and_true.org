@@ -40,11 +40,41 @@ Yep, I think I'm set here :D I installed the necessary packages in my
 See the final content of Chapter 3 at the end of this section, or in
 [[file:code/cftbat/src/cftbat/chapter3.clj][this file]] (the content is [[https://github.com/nobiot/org-transclusion][transcluded]] :muscle:).
 
+Just a memo for my typical chapter 3 kata:
+
+- Basic recursive function
+- Producing a =StackOverflowError=
+- Fixing it and correcting the function + fixing arity
+- Using ~loop~
+- Destructuring with ~let~
+- ~into~
+- First implementation, recursive style
+- Second implementation, applicative style
+- Writing our own version of reduce using the recursive style
+- The ~hit~ function
+- ~symmetrize-alien-parts~ for radial symmetry :space-invader:
+
+** Syntax, data structures and functions
+:PROPERTIES:
+:CREATED:  [2022-02-01 Tue 21:02]
+:END:
+
+Just reread the chapter, everything is quite straightforward coming
+from other Lisps.
+
+I won't list the differences between dialects; I can check it [[http://hyperpolyglot.wikidot.com/lisp][here]]
+later.
+
+** Pulling It All Together
+:PROPERTIES:
+:CREATED:  [2022-02-01 Tue 21:02]
+:END:
+
 The most difficult function to write in this chapter is
 ~symmetrize-body-parts~. I like to do a little warm-up before I arrive
 at the final definition, with some inspiration from the book.
 
-** Warm-up: ~loop~ and ~recur~
+*** Warm-up: ~loop~ and ~recur~
 :PROPERTIES:
 :CREATED:  [2022-01-30 Sun 19:12]
 :END:
@@ -157,7 +187,7 @@ doesn't play a role anymore in the recursion:
   (loop-then-goodbye)
 #+end_src
 
-** Warm-up: ~let~
+*** Warm-up: ~let~
 :PROPERTIES:
 :CREATED:  [2022-01-30 Sun 20:51]
 :END:
@@ -192,7 +222,7 @@ This looks a lot like ~destructuring-bind~ in Common Lisp:
   (2 3 4)
 #+end_example
 
-** Warm-up: ~into~
+*** Warm-up: ~into~
 :PROPERTIES:
 :CREATED:  [2022-01-30 Sun 21:17]
 :END:
@@ -218,7 +248,7 @@ This:
 #+results: into
 : [1 2 3 4 5 6]
 
-** First implementation
+*** First implementation
 :PROPERTIES:
 :CREATED:  [2022-01-30 Sun 21:29]
 :END:
@@ -258,7 +288,7 @@ The core logic can be explained with an anonymous function:
 The rest is here to take care of the recursion. We could maybe use
 applicative programming here with ~reduce~.
 
-** Second implementation with ~reduce~
+*** Second implementation with ~reduce~
 :PROPERTIES:
 :CREATED:  [2022-01-30 Sun 21:51]
 :END:
@@ -274,7 +304,7 @@ Let's do it:
             asym-body-parts))
 #+end_src
 
-*** Our own ~reduce~: ~my-reduce~
+**** Our own ~reduce~: ~my-reduce~
 :PROPERTIES:
 :CREATED:  [2022-01-30 Sun 22:35]
 :END:
@@ -341,7 +371,7 @@ And then to obtain the 2-arg ~reduce~ version:
 
 Cool!
 
-** The ~hit~ function
+*** The ~hit~ function
 :PROPERTIES:
 :CREATED:  [2022-01-30 Sun 23:07]
 :ID:       c03d1b1b-fb77-4e6e-bd44-e7ada575869f

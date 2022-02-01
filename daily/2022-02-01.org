@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       010620fd-37c0-4d52-a243-dd99109c7ee6
+:END:
+#+title: 2022-02-01
+#+filetags: :day:
+
+Just rereading my notes on [[id:5c19e8cd-da2b-4c0b-8bf7-5d5f6288b49a][Clojure for the Brave and True]] a little bit
+and practicing a little bit. As usual, I'm thinking again about
+studying more "fundamental" books:
+
+- [[https://htdp.org/2021-11-15/Book/index.html][How to Design Programs]] (HtDP)
+
+- [[https://www.plai.org/][Programming Languages: Application and Interpretation]] (PLAI)
+
+- [[https://papl.cs.brown.edu/][Programming and Programming Languages]] (PAPL)
+
+- Structure and Interpretation of Computer Programs (SICP)
+
+- [[https://dcic-world.org/][A Data-Centric Introduction to Computing]] (DCIC)
