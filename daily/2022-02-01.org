@@ -8,7 +8,7 @@ Just rereading my notes on [[id:5c19e8cd-da2b-4c0b-8bf7-5d5f6288b49a][Clojure fo
 and practicing a little bit. As usual, I'm thinking again about
 studying more "fundamental" books:
 
-- [[https://htdp.org/2021-11-15/Book/index.html][How to Design Programs]] (HtDP)
+- [[id:7a8ad25f-cd7f-492a-8c8e-2ffc28f38b49][How to Design Programs]] (HtDP)
 
 - [[https://www.plai.org/][Programming Languages: Application and Interpretation]] (PLAI)
 

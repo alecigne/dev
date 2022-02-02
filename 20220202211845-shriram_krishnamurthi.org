@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       c6f800ab-2950-4e79-a32c-cdbec3bfeb56
+:CREATED:  [2022-02-02 Wed 21:18]
+:END:
+#+title: Shriram Krishnamurthi
+#+filetags: :person:
+
+- [[https://cs.brown.edu/~sk/][Professional page]]

@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       7a2da89f-697d-4c36-ac9e-a5f284a24d40
+:CREATED:  [2022-02-02 Wed 21:18]
+:END:
+#+title: Matthias Felleisen
+#+filetags: :person:
+
+- [[https://felleisen.org/matthias/][Personal page]]
