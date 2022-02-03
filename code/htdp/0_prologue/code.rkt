@@ -1,3 +1,6 @@
+;; HtDP2e v8.3.0.5 - https://htdp.org/2021-11-15/Book/index.html
+;; Prologue: How to Program
+
 #lang htdp/bsl
 
 (require 2htdp/image)
@@ -49,11 +52,11 @@
 
 ;; Control the aircraft's altitude over time.
 (define (aircraft-control t)
-  (cond                                 ; if not introduced yet
+  (cond                                 ; `if' not introduced yet
     [(> (altitude t) 0)
      (place-aircraft (altitude t))]
     [(<= (altitude t) 0)
-     (place-aircraft 0)]))              ; else not introduced in cond
+     (place-aircraft 0)]))              ; `else' not introduced in cond
 
 ;; Main
 

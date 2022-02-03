@@ -1,7 +1,9 @@
 :PROPERTIES:
-:ID:       5137724e-a0c8-4260-af91-0aa720bf2223
+:ID:       19c9bfe1-9d2a-48ae-b956-1a563c3aca43
 :END:
 #+title: 2022-02-03
 #+filetags: :day:
 
-[[id:7a8ad25f-cd7f-492a-8c8e-2ffc28f38b49][HtDP]]: prologue, again ;)
+[[id:7a8ad25f-cd7f-492a-8c8e-2ffc28f38b49][HtDP]]: ex. 1 to 26.
+
+26/528 exercises done - 4.92% :smiley:
