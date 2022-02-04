@@ -1,6 +1,6 @@
 ;; HtDP2e v8.3.0.5 - https://htdp.org/2021-11-15/Book/index.html
 ;; I.2 Fixed-Size Data / Functions and Programs
-;; Exercises 11-26
+;; Exercises 11-28
 
 #lang htdp/bsl
 
@@ -96,14 +96,14 @@
 
 ;; * Exercise 23
 
-(define (string-first-ex23 s)
+(define (string-first s)
   (substring s 0 1))
 
 ;; substring just takes the first character ¯\_(ツ)_/¯
 
 ;; * Exercise 24
 
-(define (==>-ex24 x y)
+(define (==> x y)
   (or (not x) y))
 
 ;; (==> #true #false)
@@ -140,10 +140,61 @@
 
 ;; * Exercise 26
 
-(define (string-insert-ex26 s i)
+(define (string-insert s i)
   (string-append (substring s 0 i)
                  "_"
                  (substring s i)))
 
 ;; This should insert "_" at the position: :white-check-mark:
-(string-insert-ex26 "helloworld" 6)
+(string-insert "helloworld" 6)
+
+;; * Exercise 27 & 28
+
+(define STANDARD-ATTENDANCE 120)
+(define STANDARD-PRICE 5.0)
+(define PRICE-STEP 0.1)
+(define ATTENDANCE-STEP 15)
+(define FIXED-COST 180.00)
+(define PRICE-PER-ATTENDEE 0.04)
+
+(define (attendees ticket-price)
+  (- STANDARD-ATTENDANCE
+     (* (/ (- ticket-price STANDARD-PRICE) PRICE-STEP)
+        ATTENDANCE-STEP)))
+
+(define (revenue ticket-price)
+  (* ticket-price (attendees ticket-price)))
+
+(define (cost ticket-price)
+  (+ FIXED-COST (* PRICE-PER-ATTENDEE (attendees ticket-price))))
+
+(define (profit ticket-price)
+  (- (revenue ticket-price)
+     (cost ticket-price)))
+
+(define (profit-ugly ticket-price)
+  (- (* (- 120
+           (* (/ (- ticket-price 5.0)
+                 0.1)
+              15))
+        ticket-price)
+     (+ 180
+        (* 0.04
+           (- 120
+              (* (/ (- ticket-price 5.0)
+                    0.1)
+                 15))))))
+
+(profit 1)
+(profit-ugly 1)
+(profit 2)
+(profit-ugly 2)
+(profit 3)
+(profit-ugly 3)
+(profit 4)
+(profit-ugly 4)
+(profit 5)
+(profit-ugly 5)
+
+(profit 2.9)
+(profit-ugly 2.9)

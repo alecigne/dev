@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       5dd1e387-4905-4814-98b7-dab9e67fd757
+:END:
+#+title: 2022-02-04
+#+filetags: :day:
+
+[[id:7a8ad25f-cd7f-492a-8c8e-2ffc28f38b49][HtDP]]: ex. 27 to 31.
+
+Lost some time trying to configure [[https://github.com/greghendershott/racket-mode][racket-mode]]. Finally settled on a
+"one-file per exercise" organization. It's way simpler to run
+=racket-run= on these small files than on one big file with
+conflicting definitions.
+
+31/528 exercises done - 5.87% :smiley:
