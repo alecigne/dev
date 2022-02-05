@@ -1,25 +1,25 @@
 ;; HtDP2e v8.3.0.5 - https://htdp.org/2021-11-15/Book/index.html
-;; I.2 Fixed-Size Data / Functions and Programs
+;; I.2.3 Fixed-Size Data / Functions and Programs / Composing Functions
 ;; Exercise 29
 
 #lang htdp/bsl
 
-(define STANDARD-ATTENDANCE 120)
-(define STANDARD-PRICE 5.0)
+(define BASE-ATTENDANCE 120)
+(define BASE-PRICE 5.0)
 (define PRICE-STEP 0.1)
 (define ATTENDANCE-STEP 15)
-(define PRICE-PER-ATTENDEE 1.50)
+(define COST-PER-ATTENDEE 1.50)
 
 (define (attendees ticket-price)
-  (- STANDARD-ATTENDANCE
-     (* (/ (- ticket-price STANDARD-PRICE) PRICE-STEP)
-        ATTENDANCE-STEP)))
+  (- BASE-ATTENDANCE
+     (* (- ticket-price BASE-PRICE)
+        (/ ATTENDANCE-STEP PRICE-STEP))))
 
 (define (revenue ticket-price)
   (* ticket-price (attendees ticket-price)))
 
 (define (cost ticket-price)
-  (* PRICE-PER-ATTENDEE (attendees ticket-price)))
+  (* COST-PER-ATTENDEE (attendees ticket-price)))
 
 (define (profit ticket-price)
   (- (revenue ticket-price)
@@ -38,8 +38,5 @@
               15)))))
 
 (profit 3)
-(profit-ugly 3)
 (profit 4)
-(profit-ugly 4)
 (profit 5)
-(profit-ugly 5)

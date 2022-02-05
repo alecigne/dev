@@ -1,5 +1,5 @@
 ;; HtDP2e v8.3.0.5 - https://htdp.org/2021-11-15/Book/index.html
-;; I.2 Fixed-Size Data / Functions and Programs
+;; I.2.5 Fixed-Size Data / Functions and Programs / Programs
 ;; Exercise 31
 
 #lang htdp/bsl
@@ -31,9 +31,6 @@
    "\n"))
 
 (write-file 'stdout (letter "Anthony" "Le Cigne" "The President"))
-
-;;Here is a letter-writing batch program that reads names from three files and
-;;writes a letter to one:
 
 (define (main in-fst in-lst in-signature out)
   (write-file out

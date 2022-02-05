@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       777e9afc-b6bd-44d2-bfee-1b6e7b444065
+:END:
+#+title: 2022-02-05
+#+filetags: :day:
+
+[[id:7a8ad25f-cd7f-492a-8c8e-2ffc28f38b49][HtDP]]: ex. 32 to 42.
+
+Also finished refactoring Racket files on a one-file-per-exercise
+basis.
+
+42/528 exercises done - 7.95% :smiley:

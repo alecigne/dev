@@ -10,6 +10,13 @@ Book by [[id:7a2da89f-697d-4c36-ac9e-a5f284a24d40][Matthias Felleisen]], Robert 
 [[id:c6f800ab-2950-4e79-a32c-cdbec3bfeb56][Shriram Krishnamurthi]]. Available [[https://htdp.org/2021-11-15/Book/index.html][online]]. There are also solutions to
 the exercises here and there, for example, [[https://github.com/eareese/htdp-exercises][here]].
 
+Check the code [[file:code/htdp/][here]].
+
+* =lang=
+:PROPERTIES:
+:CREATED:  [2022-02-05 Sat 15:00]
+:END:
+
 Just a temporary memo for the =#lang= syntax:
 
 #+begin_example
@@ -19,3 +26,152 @@ Just a temporary memo for the =#lang= syntax:
   #lang htdp/isl+
   #lang htdp/asl
 #+end_example
+
+* Design recipe
+:PROPERTIES:
+:CREATED:  [2022-02-05 Sat 14:59]
+:END:
+
+Design recipe as of ex. 41. It mainly focuses on an interactive
+program but it also applies to a batch program.
+
+** Function
+:PROPERTIES:
+:CREATED:  [2022-02-05 Sat 15:00]
+:END:
+
+1. Express how you wish to represent information as data.
+
+   #+begin_src racket
+     ;; A CarPosition is a Number.
+     ;; Interpretation: number of pixels from the left border of the scene and the
+     ;; center of the car.
+   #+end_src
+
+   This step might be optional if information /is/ data. Example:
+   function acting on the structure of a string.
+
+   Of course this is done only /once/ but it has to be done as soon as
+   a function involves this information.
+
+ 2. Write down a signature, a statement of purpose, and a function
+    header.
+
+    #+begin_src racket
+      ;; tock: CarPosition -> CarPosition
+      ;; Move the car by 3 pixels for every clock tick.
+      (define (tock car-position)
+        0)
+    #+end_src
+
+3. Illustrate the signature and the purpose statement with some
+   functional examples. To construct a functional example, pick one
+   piece of data from each input class from the signature and
+   determine what you expect back.
+
+   #+begin_src racket
+     ;; tock: CarPosition -> CarPosition
+     ;; Move the car by 3 pixels for every clock tick.
+     ;; Expectations:
+     ;;   given: 20, expect: 23
+     ;;   given: 78, expect: 81
+     (define (tock car-position)
+       0)
+   #+end_src
+
+   Better alternative: executable expectations.
+
+   #+begin_src racket
+     ;; tock: CarPosition -> CarPosition
+     ;; Move the car by 3 pixels for every clock tick.
+     ;; Expectations:
+     (check-expect (tock 20) 23)
+     (check-expect (tock 78) 81)
+     (define (tock car-position)
+       0)
+   #+end_src
+
+4. Take inventory. Not very interesting so far, but this step will be
+   useful in the rest of the book.
+
+   #+begin_src racket
+     ;; tock: CarPosition -> CarPosition
+     ;; Move the car by 3 pixels for every clock tick.
+     ;; Expectations:
+     (check-expect (tock 20) 23)
+     (check-expect (tock 78) 81)
+     (define (tock car-position)
+       ... car-position ...)
+   #+end_src
+
+5. Code.
+
+   #+begin_src racket
+     ;; tock: CarPosition -> CarPosition
+     ;; Move the car by 3 pixels for every clock tick.
+     ;; Expectations:
+     (check-expect (tock 20) 23)
+     (check-expect (tock 78) 81)
+     (define (tock car-position)
+       (+ car-position 3))
+   #+end_src
+
+ 6. Test the function on the examples.
+
+    #+begin_src racket
+      ;; tock: CarPosition -> CarPosition
+      ;; Move the car by 3 pixels for every clock tick.
+      ;; Expectations:
+      ;; Expectations:
+      ;;   given: 20, expect: 23
+      ;;   given: 78, expect: 81
+      (define (tock car-position)
+        (+ car-position 3))
+
+      (tock 20)
+      (tock 78)
+   #+end_src
+
+   Or better, just run the tests.
+
+** Program
+:PROPERTIES:
+:CREATED:  [2022-02-05 Sat 15:20]
+:END:
+
+*** World program
+:PROPERTIES:
+:CREATED:  [2022-02-05 Sat 15:30]
+:END:
+
+1. Define constants:
+
+   - Physical constants
+
+   - Graphical constants
+
+2. Express how you wish to represent information as data.
+
+   #+begin_src racket
+     ;; A CarPosition is a Number.
+     ;; Interpretation: number of pixels from the left border of the scene and the
+     ;; center of the car.
+   #+end_src
+
+   Same step as step 1 in the function section. I put it here again
+   since most of the time, this step will be carried out during
+   general program design.
+
+   In the case of world programs, the goal is to develop a data
+   representation for all possible states of the world.
+
+3. Create the wish-list.
+
+   Each entry on a wish list should consist of three things: a
+   meaningful name for the function, a signature, and a purpose
+   statement. So mostly a list of functions in the "step 2" state from
+   above.
+
+   In the case of world programs, there is a "typical" wish-list.
+
+4. Main function.
