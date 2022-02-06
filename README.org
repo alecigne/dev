@@ -15,6 +15,11 @@
 Code written and notes taken along my learning journey as a software
 developer.
 
+You might be interested in:
+
+- [wip] My [[file:code/htdp/][answers to the exercises]] from the book [[https://htdp.org/][How to Design
+  Programs]].
+
 This repository makes heavy use of [[https://www.gnu.org/software/emacs/][Emacs]], [[https://www.orgmode.org/fr/][Org-mode]], [[https://www.orgroam.com/][Org-roam]] and
-[[https://github.com/nobiot/org-transclusion][Org-transclusion]]. As such, it is /not/ meant to be browsed on GitHub,
-although Org markup is understood by GitHub.
+[[https://github.com/nobiot/org-transclusion][Org-transclusion]]. As such, it is not meant to be browsed comfortably
+on GitHub, although Org markup is understood by GitHub.
