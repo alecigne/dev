@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       12236910-b624-49ba-90db-be9381e525d4
+:END:
+#+title: 2022-02-07
+#+filetags: :day:
+
+[[id:7a8ad25f-cd7f-492a-8c8e-2ffc28f38b49][HtDP]]: ex. 51 and 52 plus some activities related to section I.4.4
+(Fixed-Size Data / Intervals, Enumerations, and Itemizations /
+Intervals).
+
+52/528 exercises done - 9.85% :smiley:
