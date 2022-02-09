@@ -8,7 +8,10 @@
 
 Book by [[id:7a2da89f-697d-4c36-ac9e-a5f284a24d40][Matthias Felleisen]], Robert Bruce Findler, Matthew Flatt and
 [[id:c6f800ab-2950-4e79-a32c-cdbec3bfeb56][Shriram Krishnamurthi]]. Available [[https://htdp.org/2021-11-15/Book/index.html][online]]. There are also solutions to
-the exercises here and there, for example, [[https://github.com/eareese/htdp-exercises][here]].
+the exercises here and there, for example, [[https://github.com/eareese/htdp-exercises][here]]. There are
+supplemental materials [[https://felleisen.org/matthias/htdp-plus.html][here]].
+
+See also [[https://world.cs.brown.edu/][How to Design Worlds]].
 
 Check the code [[file:code/htdp/][here]].
 
@@ -32,146 +35,68 @@ Just a temporary memo for the =#lang= syntax:
 :CREATED:  [2022-02-05 Sat 14:59]
 :END:
 
-Design recipe as of ex. 41. It mainly focuses on an interactive
-program but it also applies to a batch program.
-
-** Function
-:PROPERTIES:
-:CREATED:  [2022-02-05 Sat 15:00]
-:END:
+I prefer to define constants when I feel like it during the design
+recipe.
 
 1. Express how you wish to represent information as data.
 
-   #+begin_src racket
-     ;; A CarPosition is a Number.
-     ;; Interpretation: number of pixels from the left border of the scene and the
-     ;; center of the car.
-   #+end_src
+   When the problem statement distinguishes different classes of input
+   information, you need carefully formulated data definitions.
+
+   A data definition must use distinct clauses for each sub-class of data
+   or in some cases just individual pieces of data. Each clause specifies
+   a data representation for a particular sub-class of information. The
+   key is that each sub-class of data is distinct from every other class,
+   so that our function can proceed by analyzing disjoint cases.
 
    This step might be optional if information /is/ data. Example:
    function acting on the structure of a string.
 
-   Of course this is done only /once/ but it has to be done as soon as
-   a function involves this information.
+   Symbolic definitions are better (see ex. 61).
 
- 2. Write down a signature, a statement of purpose, and a function
-    header.
+2. Create the wish-list of functions.
 
-    #+begin_src racket
-      ;; tock: CarPosition -> CarPosition
-      ;; Move the car by 3 pixels for every clock tick.
-      (define (tock car-position)
-        0)
-    #+end_src
+   Write down a name, a signature, a statement of purpose, and a
+   function header. The header should return an obvious instance of
+   the target type.
+
+   In the case of world programs, I like to write the main function at
+   this moment.
+
+   Then I run the definitions just to check everything is in order.
 
 3. Illustrate the signature and the purpose statement with some
-   functional examples. To construct a functional example, pick one
-   piece of data from each input class from the signature and
-   determine what you expect back.
+   functional examples in the form of tests. To construct a functional
+   example, pick one piece of data from each input class from the
+   signature and determine what you expect back. Pick at least one
+   example from each sub-class in the data definition. Also, if a
+   sub-class is a finite range, be sure to pick examples from the
+   boundaries of the range and from its interior.
 
-   #+begin_src racket
-     ;; tock: CarPosition -> CarPosition
-     ;; Move the car by 3 pixels for every clock tick.
-     ;; Expectations:
-     ;;   given: 20, expect: 23
-     ;;   given: 78, expect: 81
-     (define (tock car-position)
-       0)
-   #+end_src
+   I personally prefer to write the tests right next to the function
+   and them move them in a test section for readability.
 
-   Better alternative: executable expectations.
+4. Take inventory.
 
-   #+begin_src racket
-     ;; tock: CarPosition -> CarPosition
-     ;; Move the car by 3 pixels for every clock tick.
-     ;; Expectations:
-     (check-expect (tock 20) 23)
-     (check-expect (tock 78) 81)
-     (define (tock car-position)
-       0)
-   #+end_src
+   This is particularly interesting in the case of the /conditional
+   template/. This template mirrors the organization of sub-classes
+   with a cond.
 
-4. Take inventory. Not very interesting so far, but this step will be
-   useful in the rest of the book.
-
-   #+begin_src racket
-     ;; tock: CarPosition -> CarPosition
-     ;; Move the car by 3 pixels for every clock tick.
-     ;; Expectations:
-     (check-expect (tock 20) 23)
-     (check-expect (tock 78) 81)
-     (define (tock car-position)
-       ... car-position ...)
-   #+end_src
+   The function’s body must be a conditional expression with as many
+   clauses as there are distinct sub-classes in the data
+   definition. If the data definition mentions three distinct
+   sub-classes of input data, you need three cond clauses; if it has
+   seventeen sub-classes, the cond expression contains seventeen
+   clauses. Second, you must formulate one condition expression per
+   cond clause. Each expression involves the function parameter and
+   identifies one of the sub-classes of data in the data definition:
 
 5. Code.
 
-   #+begin_src racket
-     ;; tock: CarPosition -> CarPosition
-     ;; Move the car by 3 pixels for every clock tick.
-     ;; Expectations:
-     (check-expect (tock 20) 23)
-     (check-expect (tock 78) 81)
-     (define (tock car-position)
-       (+ car-position 3))
-   #+end_src
+   Start from the various cond lines. Assume that the input parameter
+   meets the condition and so you exploit the corresponding test
+   cases. To formulate the corresponding result expression, you write
+   down the computation for this example as an expression that
+   involves the function parameter.
 
- 6. Test the function on the examples.
-
-    #+begin_src racket
-      ;; tock: CarPosition -> CarPosition
-      ;; Move the car by 3 pixels for every clock tick.
-      ;; Expectations:
-      ;; Expectations:
-      ;;   given: 20, expect: 23
-      ;;   given: 78, expect: 81
-      (define (tock car-position)
-        (+ car-position 3))
-
-      (tock 20)
-      (tock 78)
-   #+end_src
-
-   Or better, just run the tests.
-
-** Program
-:PROPERTIES:
-:CREATED:  [2022-02-05 Sat 15:20]
-:END:
-
-*** World program
-:PROPERTIES:
-:CREATED:  [2022-02-05 Sat 15:30]
-:END:
-
-1. Define constants:
-
-   - Physical constants
-
-   - Graphical constants
-
-2. Express how you wish to represent information as data.
-
-   #+begin_src racket
-     ;; A CarPosition is a Number.
-     ;; Interpretation: number of pixels from the left border of the scene and the
-     ;; center of the car.
-   #+end_src
-
-   Same step as step 1 in the function section. I put it here again
-   since most of the time, this step will be carried out during
-   general program design.
-
-   In the case of world programs, the goal is to develop a data
-   representation for all possible states of the world.
-
-3. Create the wish-list.
-
-   Each entry on a wish list should consist of three things: a
-   meaningful name for the function, a signature, and a purpose
-   statement. So mostly a list of functions in the "step 2" state from
-   above.
-
-   In the case of world programs, there is a "typical" wish-list.
-
-4. Main function.
+6. Run the tests.
