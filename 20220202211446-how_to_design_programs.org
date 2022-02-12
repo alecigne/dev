@@ -7,13 +7,18 @@
 #+filetags: :book:
 
 Book by [[id:7a2da89f-697d-4c36-ac9e-a5f284a24d40][Matthias Felleisen]], Robert Bruce Findler, Matthew Flatt and
-[[id:c6f800ab-2950-4e79-a32c-cdbec3bfeb56][Shriram Krishnamurthi]]. Available [[https://htdp.org/2021-11-15/Book/index.html][online]]. There are also solutions to
-the exercises here and there, for example, [[https://github.com/eareese/htdp-exercises][here]]. There are
-supplemental materials [[https://felleisen.org/matthias/htdp-plus.html][here]].
+[[id:c6f800ab-2950-4e79-a32c-cdbec3bfeb56][Shriram Krishnamurthi]]. Available [[https://htdp.org/2021-11-15/Book/index.html][online]].
 
-See also [[https://world.cs.brown.edu/][How to Design Worlds]].
+There are solutions to the exercises from the community:
 
-Check the code [[file:code/htdp/][here]].
+- [[https://github.com/eareese/htdp-exercises]] (partial)
+- https://github.com/adaliu-gh/htdp
+- Check my own solutions [[file:code/htdp/][here]].
+
+Related:
+
+- [[https://felleisen.org/matthias/htdp-plus.html][Supplemental materials]]
+- [[https://world.cs.brown.edu/][How to Design Worlds]]
 
 * =lang=
 :PROPERTIES:
