@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       070a6dd2-117c-4e60-89c9-7fcc9a7c9f37
+:END:
+#+title: 2022-02-20
+#+filetags: :day:
+
+[[id:7a8ad25f-cd7f-492a-8c8e-2ffc28f38b49][HtDP]]: ex. 87 to 90.
+
+90/528 exercises done - 17.04% :smiley:
