@@ -1,2 +1,2 @@
-((nil . ((org-roam-directory . "/home/alecigne/src/alecigne/technical-knowledge/")
-         (org-roam-db-location . "/home/alecigne/src/alecigne/technical-knowledge/org-roam.db"))))
+((nil . ((org-roam-directory . "C:\\Users\\Anthony Le Cigne\\data-perso\\src\\learning")
+         (org-roam-db-location . "C:\\Users\\Anthony Le Cigne\\data-perso\\src\\learning\\org-roam.db"))))

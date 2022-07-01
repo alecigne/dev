@@ -1,0 +1,55 @@
+:PROPERTIES:
+:ID:       742f0e9a-8663-40d3-aeb4-f4b3e34d7a3c
+:END:
+#+title: micronaut-first-application
+#+filetags: :project:
+
+- tag :: [[id:fa89ad61-0958-429d-af4b-441e134f1284][Micronaut]]
+
+[[file:../../code/micronautguide/][Project]] created on [2022-07-01 Fri].
+
+The source for this project can be found [[https://guides.micronaut.io/latest/creating-your-first-micronaut-app-maven-java.html][here]].
+
+I used [[https://micronaut.io/launch][Micronaut Launch]] to create the project and I also tried the
+[[https://docs.micronaut.io/latest/guide/#cli][Micronaut CLI]].
+
+* Installing Micronaut on Windows
+:PROPERTIES:
+:CREATED:  [2022-07-01 Fri 11:10]
+:END:
+
+I prefer to use a binary.
+
+- Extract the binary to appropriate location (For example:
+  =C:\micronaut=)
+
+- Create an environment variable =MICRONAUT_HOME= which points to the
+  installation directory i.e. C:\micronaut
+
+- Update the PATH environment variable, append %MICRONAUT_HOME%\bin.
+
+* Creating a Micronaut Java/Maven project with the CLI
+:PROPERTIES:
+:CREATED:  [2022-07-01 Fri 11:16]
+:END:
+
+#+begin_src sh
+  mn create-app net.lecigne.micronaut.micronautguide --build=maven --lang=java
+#+end_src
+
+* Running tests and the application
+:PROPERTIES:
+:CREATED:  [2022-07-01 Fri 12:04]
+:END:
+
+#+begin_src sh
+  ./mvnw clean test
+  ./mvnw mn:run
+#+end_src
+
+* Installing GraalVM
+:PROPERTIES:
+:CREATED:  [2022-07-01 Fri 12:20]
+:END:
+
+See [[https://www.graalvm.org/22.0/docs/getting-started/windows/][here]].

@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       fa89ad61-0958-429d-af4b-441e134f1284
+:CREATED:  [2022-07-01 Fri 11:02]
+:END:
+#+title: Micronaut
+#+filetags: :technology:
