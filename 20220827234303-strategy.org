@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       41f7251c-b73d-4c08-ae40-89d8fbef870d
+:CREATED:  [2022-08-27 Sat 23:43]
+:END:
+#+title: strategy
+#+filetags: :project:
+
+- tags :: [[id:54a6f94d-9321-4158-88f4-4b4d797ee8c6][Java]], [[id:2cad2ad2-fe8c-47a8-9599-03cf71cc6dfc][Design Patterns]]
+
+Just a simple (boring) implementation of the [[https://en.wikipedia.org/wiki/Strategy_pattern][strategy pattern]].
+
+- [[file:code/strategy/][Project]] created on [2019-03-27 Wed]
+
+- Modified on [2020-11-28 Sat] for the new version of the kata
+  repository, but the idea is the same.

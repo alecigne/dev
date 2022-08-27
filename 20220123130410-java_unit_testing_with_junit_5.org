@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       d543b61c-b9ef-4f3e-b05f-62da6b8c03a4
+:END:
+#+title: Java Unit Testing with JUnit 5
+#+filetags: :book:
+
+- related :: [[id:ead878af-228a-4638-ad73-5db5ffee4c07][JUnit]]
+
+- [[https://isbnsearch.org/isbn/9781484230152][ISBN]]
+
+See the project [[id:7faa0287-00dc-4626-83b4-59a403f59ef9][apress-junit5]].

@@ -1,8 +1,15 @@
-#+TITLE: =bloch-builder=
+:PROPERTIES:
+:ID:       783e0a38-c610-46fa-b0f5-2ae1cbd63b0c
+:CREATED:  [2022-08-27 Sat 23:40]
+:END:
+#+title: bloch-builder
+#+filetags: :project:
 
-[[file:../../code/bloch-builder/][Project]] created on [2019-03-27 Wed].
+- tags :: [[id:54a6f94d-9321-4158-88f4-4b4d797ee8c6][Java]], [[id:2cad2ad2-fe8c-47a8-9599-03cf71cc6dfc][Design Patterns]]
 
-Bloch's Builder pattern, found in the Effective Java book (see [[https://web.archive.org/web/20201125213714/https://www.informit.com/articles/article.aspx?p=1216151&seqNum=2][this
+[[file:code/bloch-builder/][Project]] created on [2019-03-27 Wed].
+
+Bloch's Builder pattern, found in the [[id:a598a4fc-a193-4937-b52e-7aa7f2a2ac7c][Effective Java]] book (see [[https://web.archive.org/web/20201125213714/https://www.informit.com/articles/article.aspx?p=1216151&seqNum=2][this
 link]]). It is not to be confused with GoF's Builder, although there are
 some similarities. It is an alternative to the Telescoping Constructor
 and JavaBeans patterns.

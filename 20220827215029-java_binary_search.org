@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       3568062a-9a90-402a-a97d-85e49b0893d3
+:END:
+#+title: java-binary-search
+#+filetags: :project:
+
+- tags :: [[id:54a6f94d-9321-4158-88f4-4b4d797ee8c6][Java]], [[id:c099bd44-d1e0-4f3a-aec9-a5a0269a2acc][Algorithms]]
+
+[[file:code/java-binary-search/][Project]] created on [2019-02-02 Sat].
+
+[[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Java.
+
+* Resources
+:PROPERTIES:
+:CREATED:  [2022-08-27 Sat 21:51]
+:END:
+
+- https://www.baeldung.com/java-binary-search

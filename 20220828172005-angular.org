@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       f242b92c-3a91-4d78-8708-a1528c56959f
+:CREATED:  [2022-08-28 Sun 17:20]
+:END:
+#+title: Angular
+#+filetags: :technology:

@@ -1,6 +1,7 @@
 #+title: Tasks
+#+filetags: task
 
-* TODO Rework notes on [[id:64d55a97-8bc8-4ba5-81c2-c9f89110bc94][Lisp Koans]]                                      :task:
+* TODO Rework notes on [[id:64d55a97-8bc8-4ba5-81c2-c9f89110bc94][Lisp Koans]]
 :PROPERTIES:
 :CREATED:  [2022-01-27 Thu 23:48]
 :ID:       e053e102-3316-481b-882b-633eff39d10f
@@ -8,3 +9,24 @@
 :LOGBOOK:
 - State "TODO"       from              [2022-01-27 Thu 23:48]
 :END:
+
+* TODO Add websites [4/10]
+:PROPERTIES:
+:CREATED:  [2022-08-28 dim. 17:01]
+:ID:       e5fbc50f-4975-476a-99d9-f18e8ded9af2
+:END:
+:LOGBOOK:
+- State "TODO"       from              [2022-08-28 dim. 17:01]
+:END:
+
+Coché = inscrit
+
+- [ ] Advent of Code
+- [ ] Codecademy
+- [ ] CodeWars
+- [X] CodinGame
+- [ ] Exercism
+- [ ] FreeCodeCamp
+- [X] HackerRank
+- [X] Hyperskill
+- [ ] TopCoder

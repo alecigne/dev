@@ -1,12 +1,10 @@
 :PROPERTIES:
-:ID:       d543b61c-b9ef-4f3e-b05f-62da6b8c03a4
+:ID:       7faa0287-00dc-4626-83b4-59a403f59ef9
 :END:
-#+title: Java Unit Testing with JUnit 5
-#+filetags: :book:
+#+title: apress-junit5
+#+filetags: :project:
 
-- related :: [[id:ead878af-228a-4638-ad73-5db5ffee4c07][JUnit]]
-
-- [[https://isbnsearch.org/isbn/9781484230152][ISBN]]
+Chapter 1 and 2 from the book [[id:d543b61c-b9ef-4f3e-b05f-62da6b8c03a4][Java Unit Testing with JUnit 5]].
 
 * Chapter 1 and 2
 
@@ -80,16 +78,19 @@ As a user, I want to add multiple books to my bookshelf so that I can
 read them later.
 #+end_quote
 
-- [[https://github.com/alecigne/learning/commit/87160f][87160f]] :: Implementation of the feature.
-- [[https://github.com/alecigne/learning/commit/202d35][202d35]] :: Refactoring: adding multiple books at once with a
+- [[orgit-rev:./::87160f][87160f]] :: Implementation of the feature.
+
+- [[orgit-rev:./::202d35][202d35]] :: Refactoring: adding multiple books at once with a
   vararg. I didn't use an iteration here like in the book since
   ~List.addAll~ works. \\
   Remember: test behavior, and not some internal state, otherwise the
   tests might fail after a refactoring.
-- [[https://github.com/alecigne/learning/commit/d9f920][d9f920]] :: More tests for exceptional situations: no books provided
+
+- [[orgit-rev:./::d9f920][d9f920]] :: More tests for exceptional situations: no books provided
   and check if the datastructure in the ~BookShelf~ is immutable
   (~Collections.unmodifiableList~).
-- [[https://github.com/alecigne/learning/commit/1fd6cb][1fd6cb]] :: Move bookshelf instantiation to ~@BeforeEach~.
+
+- [[orgit-rev:./::1fd6cb][1fd6cb]] :: Move bookshelf instantiation to ~@BeforeEach~.
 
 ** Second feature
 
@@ -98,7 +99,7 @@ As a user, I should be able to arrange my bookshelf based on certain
 criteria.
 #+end_quote
 
-- [[https://github.com/alecigne/learning/commit/4208b1][4208b1]] :: We want to sort by book name, author name, publication
+- [[orgit-rev:./::4208b1][4208b1]] :: We want to sort by book name, author name, publication
   date or a combination. To sort by book name, we'll use
   ~Comparator.naturalOrder~ (since we're still using strings). The
   implementation is voluntarily bad here since we're changing the
@@ -111,10 +112,10 @@ criteria.
     }
   #+end_src
 
-- [[https://github.com/alecigne/learning/commit/b4e9c0][b4e9c0]] :: Fix the bug by returning a new collection and check that
+- [[orgit-rev:./::b4e9c0][b4e9c0]] :: Fix the bug by returning a new collection and check that
   the underlying shelf is not sorted in place with a test.
 
-- [[https://github.com/alecigne/learning/commit/680df3][680df3]] :: We need a business class (~Book~) to manage the other
+- [[orgit-rev:./::680df3][680df3]] :: We need a business class (~Book~) to manage the other
   attributes. Let's refactor everything with a ~Book~ class. I prefer
   to use [[file:bloch-builder.org][Bloch's Builder pattern]]. Also, we enrich our ~@BeforeEach~
   code since we always use the same books.
@@ -129,7 +130,7 @@ criteria.
     }
   #+end_src
 
-- [[https://github.com/alecigne/learning/commit/6d52e1][6d52e1]] :: Change the bookshelf's API so a custom arrangement
+- [[orgit-rev:./::6d52e1][6d52e1]] :: Change the bookshelf's API so a custom arrangement
   criterion can be passed under the form of a ~Comparator~. I added
   two tests (reverse alphabetical order and chronological order).
 
@@ -137,11 +138,11 @@ criteria.
   test (or an entire test class). I don't use it since I don't see why
   they disable the specific test they are disabling.
 
-- [[https://github.com/alecigne/learning/commit/161cfc][161cfc]] :: Instead of comparing two lists, assert by comparator with
+- [[orgit-rev:./::161cfc][161cfc]] :: Instead of comparing two lists, assert by comparator with
   AssertJ's ~isSortedAccordingTo~. I like ~BDDAssertions.then~ so I
   use it here.
 
-- [[https://github.com/alecigne/learning/commit/10dc31][10dc31]] :: We add ~@DisplayName~ to tests. I also renamed the tests
+- [[orgit-rev:./::10dc31][10dc31]] :: We add ~@DisplayName~ to tests. I also renamed the tests
   to my liking. I am not convinced by ~@DisplayName~ so far since this
   a good method name will basically be repeated in the annotation.
 
@@ -152,15 +153,17 @@ As a user, I should be able to group books in my bookshelf based on
 certain criteria.
 #+end_quote
 
-- [[https://github.com/alecigne/learning/commit/4594ae][4594ae]] :: We implement the grouping of books by publication
+- [[orgit-rev:./::4594ae][4594ae]] :: We implement the grouping of books by publication
   year. Their test is weird since they don't really test if the
   correct books are mapped to the corresponding year; I use
   ~containsEntry~.
-- [[https://github.com/alecigne/learning/commit/0db728][0db728]] :: We add a generic method to the bookshelf to group books
+
+- [[orgit-rev:./::0db728][0db728]] :: We add a generic method to the bookshelf to group books
   by a custom criterion. We use this method in the
   ~groupByPublicationYear~ method. Again, I use ~containsEntry~ in the
   test.
-- [[https://github.com/alecigne/learning/commit/717b1b][717b1b]] :: We group test cases by feature using the ~@Nested~
+
+- [[orgit-rev:./::717b1b][717b1b]] :: We group test cases by feature using the ~@Nested~
   annotation. I don't follow the books recommendation, I used my own
   grouping:
 
@@ -180,12 +183,14 @@ Red-Green-Refactor cycle:
 
 1. *Think* about your implementation and possible bugs. Make a
    mental/physical note of these possible bugs.
+
 2. Make it work:
    - Add a basic test.
    - Make it compile.
    - Make it red.
    - Make it green.
    - Repeat until the basic cases of the feature are covered.
+
 3. Make it correct:
    - Cover the possible bugs you thought about earlier with
      tests. They might be red if you were not careful during
@@ -193,8 +198,10 @@ Red-Green-Refactor cycle:
    - Now that you can look at your implementation, take a step back
      and *think again*: for every angle of attack you see in your
      code, add a test. It might be red; make it green.
+
 4. Make it readable: now that we have very good tests, we can be quite
    confident about our refactoring.
+
 5. Make it fast: early optimizations only - leave the
    micro-optimizations for later. Again, the tests will bring us
    serenity. Maybe we should write performance tests before doing
@@ -206,7 +213,7 @@ Red-Green-Refactor cycle:
 
 ** Dependency Injection
 
-- [[https://github.com/alecigne/learning/commit/61208d][61208d]] :: dependency injection (DI) is also important for test data:
+- [[orgit-rev:./::61208d][61208d]] :: dependency injection (DI) is also important for test data:
   by injecting it, we can reuse the data and change what is injected
   in the tests. It also improves readability.
 
@@ -236,15 +243,15 @@ books:
 
 Let's start.
 
-- [[https://github.com/alecigne/learning/commit/47abea][47abea]] :: In this commit we add a new test spec for this feature,
+- [[orgit-rev:./::47abea][47abea]] :: In this commit we add a new test spec for this feature,
   ~BookShelfProgressSpec~, and a basic test case to check that when no
   book has been started, progress should be at 0%.
 
-- [[https://github.com/alecigne/learning/commit/8df00b][8df00b]] :: Other test cases, with a few books finished and a few
+- [[orgit-rev:./::8df00b][8df00b]] :: Other test cases, with a few books finished and a few
   books in progress. I used ~Math.toIntExact~ this time in the
   ~progress~ method.
 
-- [[https://github.com/alecigne/learning/commit/519914][519914]] :: Use ~ExtensionContext.Store~ to inject the same map in the
+- [[orgit-rev:./::519914][519914]] :: Use ~ExtensionContext.Store~ to inject the same map in the
   ~setUp~ method and the test methods. I struggled to understand since
   this section is terse.
 
@@ -324,11 +331,11 @@ Let's start.
 As a user, I want to search my bookshelf.
 #+end_quote
 
-- [[https://github.com/alecigne/learning/commit/f834f2][f834f2]] :: Let's start by a basic search feature. I opted for an
+- [[orgit-rev:./::f834f2][f834f2]] :: Let's start by a basic search feature. I opted for an
   external test class. The book uses a nested class. Here we implement
   the search by title and the search by title and "hint" (filter).
 
-- [[https://github.com/alecigne/learning/commit/abeedd][abeedd]] :: The goal here is to fix the "primitive obsession" in the
+- [[orgit-rev:./::abeedd][abeedd]] :: The goal here is to fix the "primitive obsession" in the
   ~findBooksByTitle~ method. The API is too low-level and we should
   make things more abstract.
 
@@ -345,7 +352,7 @@ As a user, I want to search my bookshelf.
   adds some tests for it. I tried to follow the same architecture with
   my preferences.
 
-- [[https://github.com/alecigne/learning/commit/1a5f35][1a5f35]] :: The authors add a ~CompositeFilter~ class. This is useless
+- [[orgit-rev:./::1a5f35][1a5f35]] :: The authors add a ~CompositeFilter~ class. This is useless
   with my filters implementing the ~Predicate~ interface: I could just
   use ~and~. However I'll go with the flow here to not deviate from
   the book too much. I don't go through the steps using a map and a
@@ -353,7 +360,7 @@ As a user, I want to search my bookshelf.
   doesn't execute every filter since I use ~allMatch~, which is
   better.
 
-- [[https://github.com/alecigne/learning/commit/c6e87f][c6e87f]] :: "Testing traits" - testing common behaviour such as
+- [[orgit-rev:./::c6e87f][c6e87f]] :: "Testing traits" - testing common behaviour such as
   passing a ~null~ book to a filter. Here we're just going to create
   an interface with a default test. The implementation will be
   provided by an abstract method, to be implemented by the class under
@@ -361,7 +368,7 @@ As a user, I want to search my bookshelf.
   (~before~ and ~after~). To illustrate the point of the book I'll
   just follow the example with the ~after~ filter.
 
-- [[https://github.com/alecigne/learning/commit/0af0fe][0af0fe]] :: Grouping tests by tags. Examples in the book: slow/fast
+- [[orgit-rev:./::0af0fe][0af0fe]] :: Grouping tests by tags. Examples in the book: slow/fast
   tests, environment-specific tests, nightly tests. Tags are
   ~java.lang.annotation.Repeatable~ annotations so we can add them
   multiple times to a test method/class.

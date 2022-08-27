@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       c431201e-8d57-46f9-b101-db72fd6b1416
+:CREATED:  [2022-08-27 Sat 23:48]
+:END:
+#+title: python-argparse
+#+filetags: :project:
+
+- tags :: [[id:adc73296-688d-4dd8-b002-51a978364bf1][Python]]
+
+[[file:code/python-argparse/][Project]] created on [2018-09-18 Tue].
+
+#+begin_example
+  > python main.py 2 2 -v 0
+  4
+  > python main.py 2 2 -v 1
+  2^2 == 4
+  > python main.py 2 2 -v 2
+  2 to the power 2 equals 4
+#+end_example

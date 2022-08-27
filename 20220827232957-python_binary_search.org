@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       eab77f82-56c9-4678-9b39-842b80886a5b
+:CREATED:  [2022-08-27 Sat 23:30]
+:END:
+#+title: python-binary-search
+#+filetags: :project:
+
+- tags :: [[id:adc73296-688d-4dd8-b002-51a978364bf1][Python]], [[id:c099bd44-d1e0-4f3a-aec9-a5a0269a2acc][Algorithms]]
+
+[[file:code/python-binary-search/][Project]] created on [2019-06-17 Mon].
+
+[[https://en.wikipedia.org/wiki/Binary_search_algorithm][Binary search]] in Python.

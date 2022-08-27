@@ -1,10 +1,17 @@
-#+TITLE: =java-singleton=
+:PROPERTIES:
+:ID:       86b61b08-73c0-41bf-aa34-60e514a4fe40
+:CREATED:  [2022-08-27 Sat 23:38]
+:END:
+#+title: java-singleton
+#+filetags: :project:
+
+- tags :: [[id:54a6f94d-9321-4158-88f4-4b4d797ee8c6][Java]], [[id:2cad2ad2-fe8c-47a8-9599-03cf71cc6dfc][Design Patterns]]
 
 A first dive into the [[https://en.wikipedia.org/wiki/Singleton_pattern][Singleton]] design pattern (or [[https://stackoverflow.com/questions/12755539/why-is-singleton-considered-an-anti-pattern][antipattern]]!).
 
 * Timeline
 
-[[file:../../code/java-singleton/][Project]] created on [2019-03-27 Wed].
+[[file:code/java-singleton/][Project]] created on [2019-03-27 Wed].
 
 * Notes
 

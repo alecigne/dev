@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       a598a4fc-a193-4937-b52e-7aa7f2a2ac7c
+:CREATED:  [2022-08-27 Sat 23:40]
+:END:
+#+title: Effective Java
+#+filetags: :book:

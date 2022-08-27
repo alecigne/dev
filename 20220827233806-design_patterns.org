@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       2cad2ad2-fe8c-47a8-9599-03cf71cc6dfc
+:CREATED:  [2022-08-27 Sat 23:38]
+:END:
+#+title: Design Patterns
+#+filetags: :theme:

@@ -1,6 +1,12 @@
-#+TITLE: =angular-spring-maven=
+:PROPERTIES:
+:ID:       e6e739d5-044d-4366-9fd2-2281fd876eb6
+:END:
+#+title: angular-spring-maven
+#+filetags: :project:
 
-[[file:../../code/angular-spring-maven/][Project]] created on [2018-09-14 Fri].
+- tags :: [[id:f242b92c-3a91-4d78-8708-a1528c56959f][Angular]], [[id:1ef4c08e-f028-42a9-89fb-74138976e198][Spring]]
+
+[[file:code/angular-spring-maven/][Project]] created on [2018-09-14 Fri].
 
 The goal here is to document the creation of a very simple
 multi-module Maven project, with an Angular front-end and a Java
@@ -23,6 +29,9 @@ To my knowledge at the moment, there seems to be 2 schools:
 Here I will opt for the second option.
 
 * Project initialization
+:PROPERTIES:
+:CREATED:  [2022-08-28 Sun 17:21]
+:END:
 
 1. Create a parent Maven project with a =pom= packaging using an IDE.
 

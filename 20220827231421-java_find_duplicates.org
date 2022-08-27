@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       f8f57806-c201-4882-a722-6365a780ea44
+:CREATED:  [2022-08-27 Sat 23:14]
+:END:
+#+title: java-find-duplicates
+#+filetags: :project:
+
+- tags :: [[id:54a6f94d-9321-4158-88f4-4b4d797ee8c6][Java]], [[id:c099bd44-d1e0-4f3a-aec9-a5a0269a2acc][Algorithms]]
+
+Finding duplicates in Java.
+
+[[file:code/java-find-duplicates/][Project]] created on [2019-02-02 Sat].
+
+* Resources
+
+https://stackoverflow.com/q/3951547

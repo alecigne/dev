@@ -3,6 +3,7 @@
 :CREATED:  [2022-01-23 Sun 13:03]
 :END:
 #+title: Spring
+#+filetags: :technology:
 
 - related :: [[id:54a6f94d-9321-4158-88f4-4b4d797ee8c6][Java]]
 

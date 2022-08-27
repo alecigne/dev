@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       2264c517-6987-4757-99c2-098c371728a2
+:CREATED:  [2022-08-27 Sat 23:47]
+:END:
+#+title: python-sqlalchemy
+#+filetags: :project:
+
+- tags :: [[id:adc73296-688d-4dd8-b002-51a978364bf1][Python]]
+
+[[file:code/python-sqlalchemy/][Project]] created on [2018-09-11 Tue].
+
+A Python ORM project inspired by [[https://auth0.com/blog/sqlalchemy-orm-tutorial-for-python-developers/][this tutorial]].

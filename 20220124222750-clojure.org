@@ -3,5 +3,6 @@
 :CREATED:  [2022-01-24 Mon 22:28]
 :END:
 #+title: Clojure
+#+filetags: :technology:
 
 - related :: [[id:e7285d88-7c78-4bbe-a5ee-ff4bd31ad85a][Lisp]]

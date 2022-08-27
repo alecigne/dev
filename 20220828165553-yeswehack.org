@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       31684a1a-5d13-4156-9ffd-5a7d6c210e71
+:CREATED:  [2022-08-28 dim. 16:55]
+:END:
+#+title: YesWeHack
+#+filetags: :website:
+
+- tags :: [[id:86a33084-b6e2-4495-a55c-61d8783d40ca][Security]]
+
+https://www.yeswehack.com/
+
+Plateforme de /bug bounty/.

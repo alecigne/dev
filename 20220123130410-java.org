@@ -3,6 +3,7 @@
 :CREATED:  [2022-01-23 Sun 13:04]
 :END:
 #+title: Java
+#+filetags: :technology:
 
 * Plan
 :PROPERTIES:

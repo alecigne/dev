@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       94a92e6c-a1ab-45a1-a0a3-27e6d310c0da
+:CREATED:  [2022-08-27 Sat 23:45]
+:END:
+#+title: python-pymysql
+#+filetags: :project:
+
+- tags :: [[id:adc73296-688d-4dd8-b002-51a978364bf1][Python]]
+
+[[file:code/python-pymysql/][Project]] created on [2018-09-06 Thu].
+
+How to do basic CRUD with Python and PyMySQL (MySQL database provided
+by Docker).
+
+Run =docker-compose up= in order to prepare the MySQL database.

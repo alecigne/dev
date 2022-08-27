@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       ef124d21-0de2-4a43-b1ac-686e83afff07
+:CREATED:  [2022-08-27 Sat 23:15]
+:END:
+#+title: java-sort
+#+filetags: :project:
+
+- tags :: [[id:54a6f94d-9321-4158-88f4-4b4d797ee8c6][Java]], [[id:c099bd44-d1e0-4f3a-aec9-a5a0269a2acc][Algorithms]]
+
+Sorting algorithms. So far, the implementations will sort an array of
+strings.
+
+* Timeline
+
+[[file:code/java-sort/][Project]] created on [2019-02-02 Sat].
+
+* Notes
+
+** AssertJ's ~doesNotThrowAnyException~                               :anki:
+
+Quite readable - transcluded from the ~SortTest~ interface:
+
+#+transclude: [[file:code/java-sort/src/test/java/net/lecigne/codingkatas/ck0016/SortTest.java]] :lines 22-25 :src java

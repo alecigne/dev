@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       a2c97ac9-1f4a-4061-b026-410bd3f5676f
+:CREATED:  [2022-08-28 Sun 17:24]
+:END:
+#+title: Spring Boot
+#+filetags: :technology:
+
+- tags :: [[id:1ef4c08e-f028-42a9-89fb-74138976e198][Spring]]

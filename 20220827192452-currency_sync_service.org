@@ -5,6 +5,8 @@
 #+title: currency-sync-service
 #+filetags: :project:
 
+- tags :: [[id:54a6f94d-9321-4158-88f4-4b4d797ee8c6][Java]]
+
 Project available [[file:code/currency-sync-service/][here]].
 
 Just a rewrite of an application written during my time at AT

@@ -3,6 +3,7 @@
 :CREATED:  [2022-01-28 Fri 21:09]
 :END:
 #+title: Spring JDBC
+#+filetags: :technology:
 
 - related :: [[id:1ef4c08e-f028-42a9-89fb-74138976e198][Spring]]
 

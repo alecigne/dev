@@ -1,6 +1,11 @@
-#+TITLE: =array-katas=
+:PROPERTIES:
+:ID:       ed203343-be02-45c9-baa0-732e830927b8
+:CREATED:  [2022-08-28 Sun 17:23]
+:END:
+#+title: array-katas
+#+filetags: :project:
 
-[[file:../../code/array-katas][Project]] created on [2019-01-19 Sat.].
+[[file:code/array-katas/][Project]] created on [2019-01-19 Sat.].
 
 Just a few basic operations on vanilla Java arrays. It was part of my
 old =coding-katas= repo where I had started to explore Java SE in a

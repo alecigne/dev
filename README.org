@@ -1,31 +1,25 @@
 #+begin_example
-     __            __          _            __
-    / /____  _____/ /_  ____  (_)________ _/ /
-   / __/ _ \/ ___/ __ \/ __ \/ / ___/ __ `/ /
-  / /_/  __/ /__/ / / / / / / / /__/ /_/ / /
-  \__/\___/\___/_/ /_/_/ /_/_/\___/\__,_/_/
-      __                       __         __
-     / /______  ____ _      __/ /__  ____/ /___ ____
-    / //_/ __ \/ __ \ | /| / / / _ \/ __  / __ `/ _ \
-   / ,< / / / / /_/ / |/ |/ / /  __/ /_/ / /_/ /  __/
-  /_/|_/_/ /_/\____/|__/|__/_/\___/\__,_/\__, /\___/
-                                        /____/
+       __
+  ____/ /__ _   __
+ / __  / _ \ | / /
+/ /_/ /  __/ |/ /
+\__,_/\___/|___/
 #+end_example
 
 Code written and notes taken along my learning journey as a software
-developer.
+developer. For my eyes only -- since some code is inspired from work.
 
-You might be interested in:
-
-- *[wip]* My [[file:code/htdp/][answers to the exercises]] from the book [[https://htdp.org/][How to Design
-  Programs]].
+Start by [[elisp:(org-roam-node-find)][browsing nodes]]!
 
 * Format
 :PROPERTIES:
 :CREATED:  [2022-02-12 Sat 13:39]
 :END:
 
-This repository makes heavy use of [[https://www.gnu.org/software/emacs/][Emacs]], [[https://www.orgmode.org/fr/][Org-mode]], [[https://www.orgroam.com/][Org-roam]] and
-[[https://github.com/nobiot/org-transclusion][Org-transclusion]]. As such, the documentation part is not meant to be
-/browsed/ comfortably on GitHub, although Org markup is rendered very
-well.
+This repository makes use of:
+
+- [[https://www.gnu.org/software/emacs/][Emacs]]
+- [[https://www.orgmode.org/fr/][Org-mode]]
+- [[https://www.orgroam.com/][Org-roam]]
+- [[https://github.com/nobiot/org-transclusion][Org-transclusion]]
+- [[https://magit.vc/][Magit]] (with [[https://github.com/magit/orgit][orgit]])

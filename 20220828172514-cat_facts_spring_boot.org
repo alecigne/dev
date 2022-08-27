@@ -1,6 +1,13 @@
-#+TITLE: =cat-facts-spring-boot=
+:PROPERTIES:
+:ID:       06032d08-9e5d-4618-9cbb-9bc61788855d
+:CREATED:  [2022-08-28 Sun 17:25]
+:END:
+#+title: cat-facts-spring-boot
+#+filetags: :project:
 
-[[file:../../code/cat-facts-spring-boot/][Project]] created on [2020-03-30 Mon].
+- tags :: [[id:a2c97ac9-1f4a-4061-b026-410bd3f5676f][Spring Boot]]
+
+[[file:code/cat-facts-spring-boot/][Project]] created on [2020-03-30 Mon].
 
 Just a few tests in a Spring Boot project using [[https://spring.io/projects/spring-cloud-openfeign][Spring Boot
 OpenFeign]]. Inspired from [[http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][this blog article]] ([[https://web.archive.org/web/20210218105617/http://www.matez.de/index.php/2017/04/12/exploring-feign-retrying/][archive]]).

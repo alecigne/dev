@@ -6,6 +6,8 @@
 #+title: How to Design Programs
 #+filetags: :book:
 
+- tags :: [[id:42540f16-3fd8-42cf-8957-f092b6bee2c8][Racket]]
+
 Book by [[id:7a2da89f-697d-4c36-ac9e-a5f284a24d40][Matthias Felleisen]], Robert Bruce Findler, Matthew Flatt and
 [[id:c6f800ab-2950-4e79-a32c-cdbec3bfeb56][Shriram Krishnamurthi]]. Available [[https://htdp.org/2021-11-15/Book/index.html][online]].
 

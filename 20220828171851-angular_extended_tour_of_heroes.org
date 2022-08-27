@@ -1,6 +1,13 @@
-#+TITLE: =angular-extended-tour-of-heroes=
+:PROPERTIES:
+:ID:       ce076f99-ffb1-416b-87da-2e77633f364f
+:CREATED:  [2022-08-28 Sun 17:19]
+:END:
+#+title: angular-extended-tour-of-heroes
+#+filetags: :project:
 
-[[file:../../code/angular-extended-tour-of-heroes/][Project]] created on [2018-10-19 Fri].
+- tags :: [[id:f242b92c-3a91-4d78-8708-a1528c56959f][Angular]]
+
+[[file:code/angular-extended-tour-of-heroes/][Project]] created on [2018-10-19 Fri].
 
 The goal of this project is to use the [[https://angular.io/tutorial][Tour of Heroes]] tutorial as a
 basis for documenting a few basic Angular good practices, such as an

@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       86a33084-b6e2-4495-a55c-61d8783d40ca
+:CREATED:  [2022-08-28 dim. 16:59]
+:END:
+#+title: Security
+#+filetags: :theme:

@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       c099bd44-d1e0-4f3a-aec9-a5a0269a2acc
+:CREATED:  [2022-08-27 Sat 21:52]
+:END:
+#+title: Algorithms
+#+filetags: :theme:
+
+A page dedicated to algorithms.

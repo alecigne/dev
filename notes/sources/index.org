@@ -1,5 +1,0 @@
-#+TITLE: Sources
-
-- [[file:books.org][Books]] :: Projects from books
-
-- [[file:websites.org][Websites]] :: Projects from coding websites (LeetCode, etc.)

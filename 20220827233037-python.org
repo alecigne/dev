@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       adc73296-688d-4dd8-b002-51a978364bf1
+:CREATED:  [2022-08-27 Sat 23:30]
+:END:
+#+title: Python
+#+filetags: :technology:

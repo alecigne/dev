@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       42540f16-3fd8-42cf-8957-f092b6bee2c8
+:CREATED:  [2022-08-28 Sun 00:19]
+:END:
+#+title: Racket
+#+filetags: :technology:
+
+- tags :: [[id:e7285d88-7c78-4bbe-a5ee-ff4bd31ad85a][Lisp]]
