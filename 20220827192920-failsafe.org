@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       50513e81-c5ba-4ce0-9597-a52b69e9daea
+:CREATED:  [2022-08-27 Sat 19:29]
+:END:
+#+title: Failsafe
+#+filetags: :technology:

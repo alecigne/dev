@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       813299e8-d4d3-40f5-95aa-919f2b818fb1
+:CREATED:  [2022-08-27 Sat 19:29]
+:END:
+#+title: currency-sync-service
+#+filetags: :project:
+
+Project available [[file:code/currency-sync-service/][here]].
+
+Just a rewrite of an application written during my time at AT
+Internet. It features:
+
+- [[id:8422ea6c-2bb2-40f5-b420-819dc9daef08][Testcontainers]]
+- [[id:9337d12e-3fe5-4e43-ba86-7122d1d1c66b][MockWebServer]]
+- [[id:26112e09-c4b6-46f2-a9e3-1ff472c66f83][Flyway]]
+- [[id:b2a186ed-5f6f-4618-b458-7c316ed4b13d][HikariCP]]
+- [[id:1ad02767-ddf4-438a-8635-a64ad9c6b0b3][Retrofit]]
+- [[id:50513e81-c5ba-4ce0-9597-a52b69e9daea][Failsafe]]
+- [[id:999ead65-13af-47e1-94f0-93f83ce6dab5][Typesafe Config]]

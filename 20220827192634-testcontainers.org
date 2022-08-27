@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       8422ea6c-2bb2-40f5-b420-819dc9daef08
+:CREATED:  [2022-08-27 Sat 19:26]
+:END:
+#+title: Testcontainers
+#+filetags: :technology:

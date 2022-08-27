@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       9337d12e-3fe5-4e43-ba86-7122d1d1c66b
+:CREATED:  [2022-08-27 Sat 19:27]
+:END:
+#+title: MockWebServer
+#+filetags: :technology:

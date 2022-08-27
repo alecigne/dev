@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       b2a186ed-5f6f-4618-b458-7c316ed4b13d
+:CREATED:  [2022-08-27 Sat 19:28]
+:END:
+#+title: HikariCP
+#+filetags: :technology:
