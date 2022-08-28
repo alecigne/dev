@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       daa1c3b4-3b35-464a-a2ef-44c4cb952d7b
+:CREATED:  [2022-08-28 Sun 20:48]
+:END:
+#+title: zenika-bootcamp
+#+filetags: :project:
+
+[[file:code/zenika-bootcamp/][Project]] created on [2022-08-20 Sat]. This is a submodule -- source
+repo is on [[https://github.com/alecigne/zenika-bootcamp][GitHub]].
+
+An illustration of [[id:996bde68-6a12-4eec-8c01-8e9baeb96fe2][mutation testing]] and [[id:a0e9f846-4567-4125-a0b8-8a0c6aeb6400][property-based testing]]
+prepared for the Zenika bootcamp that took place from [2022-08-24 Wed]
+to [2022-08-26 Fri] in Paris.
+
+Branches (local branches -- they need to be created locally in the
+submodule):
+
+- [[orgit-log:./code/zenika-bootcamp/::migration-to-property][migration-to-property]] :: The original "example-based test" is now
+  migrated to a property.
+
+- [[orgit-log:./code/zenika-bootcamp/::mutation-100][mutation-100]] :: Mutation coverage is now 100%.
+
+- [[orgit-log:./code/zenika-bootcamp/::mutation-with-property][migration-with-property]] :: Combining PBT with MT to decrease the
+  number of surviving mutants.

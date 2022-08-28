@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       a0e9f846-4567-4125-a0b8-8a0c6aeb6400
+:CREATED:  [2022-08-28 Sun 20:50]
+:ROAM_ALIASES: PBT
+:END:
+#+title: Property-based testing
+#+filetags: :concept:
