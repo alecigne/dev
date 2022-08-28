@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       996bde68-6a12-4eec-8c01-8e9baeb96fe2
+:CREATED:  [2022-08-28 Sun 20:50]
+:ROAM_ALIASES: MT
+:END:
+#+title: Mutation testing
+#+filetags: :concept:

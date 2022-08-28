@@ -1,0 +1,3 @@
+[submodule "code/zenika-bootcamp"]
+	path = code/zenika-bootcamp
+	url = git@github.com:alecigne/zenika-bootcamp.git
