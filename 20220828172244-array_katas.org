@@ -5,6 +5,8 @@
 #+title: array-katas
 #+filetags: :project:
 
+- tags :: [[id:54a6f94d-9321-4158-88f4-4b4d797ee8c6][Java]]
+
 [[file:code/array-katas/][Project]] created on [2019-01-19 Sat.].
 
 Just a few basic operations on vanilla Java arrays. It was part of my
