@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       b325df19-b22a-4c75-a6aa-68795eb9b816
+:CREATED:  [2022-09-11 Sun 15:04]
+:END:
+#+title: land-of-lisp
+#+filetags: :project:
+
+- tags :: [[id:d30f3dfd-da41-46f8-ae6e-a242fdb73be2][Common Lisp]]
+
+[[file:code/land-of-lisp/][Project]] created on [2022-09-11 Sun].
+
+Lisp code from [[id:c8739fa2-cea0-4e2e-958f-4ac2cb771451][Land of Lisp]].
+
+* Chapter 13
+:PROPERTIES:
+:CREATED:  [2022-09-11 Sun 15:07]
+:END:
+
+Check [[file:code/land-of-lisp/chapter13/chapter13.lisp][chapter13.lisp]].

@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       c8739fa2-cea0-4e2e-958f-4ac2cb771451
+:CREATED:  [2022-09-11 Sun 15:05]
+:END:
+#+title: Land of Lisp
+#+filetags: :book:
+
+- tags :: [[id:d30f3dfd-da41-46f8-ae6e-a242fdb73be2][Common Lisp]]

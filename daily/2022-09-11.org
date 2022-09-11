@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       588dc0b4-0bae-43d9-9fd8-064510b913ca
+:END:
+#+title: 2022-09-11
+#+filetags: :day:
+
+Work on chapter 13 from Land of Lisp.
