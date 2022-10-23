@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       7482771a-3628-41f0-a825-7aead564d820
+:CREATED:  [2022-10-22 Sat 18:38]
+:END:
+#+title: zenika-spring-course
+#+filetags: :project:
+
+- tags :: [[id:1ef4c08e-f028-42a9-89fb-74138976e198][Spring]], [[id:a2c97ac9-1f4a-4061-b026-410bd3f5676f][Spring Boot]]
+
+[[file:code/zenika-spring-course/][Project]] created on [2022-09-19 Mon]. This is a submodule -- source
+repo is on [[https://github.com/alecigne/zenika-spring-course][GitHub]].
+
+Source code for the Zenika Spring course followed from
+[2022-09-19 Mon] to [2022-09-22 Thu].
+
+Learning materials for this course can be found [[https://evantage.gilmoreglobal.com/reader/books/EDU-EN-SCT-SE-K][here]].

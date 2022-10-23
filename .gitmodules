@@ -1,3 +1,6 @@
 [submodule "code/zenika-bootcamp"]
 	path = code/zenika-bootcamp
 	url = git@github.com:alecigne/zenika-bootcamp.git
+[submodule "code/zenika-spring-course"]
+	path = code/zenika-spring-course
+	url = git@github.com:alecigne/zenika-spring-course.git
