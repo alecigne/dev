@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       9bebdf9e-d58d-4cda-80b4-b2be271fbe91
+:CREATED:  [2022-11-27 Sun 12:13]
+:END:
+#+title: Vaadin
+#+filetags: :technology:

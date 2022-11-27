@@ -1,11 +1,17 @@
-#+TITLE: =cordova-helloworld=
+:PROPERTIES:
+:ID:       5056ae84-92ff-4351-bda5-62d51d413bcb
+:END:
+#+title: cordova-helloworld
+#+filetags: :project:
 
-[[file:../../code/cordova-helloworld/][Project]] created on [2018-10-26 Fri].
+- roaming :: [[id:059e6c68-c431-4e3a-9cdd-0eebee1da145][Apache Cordova]]
+
+[[file:../code/cordova-helloworld/][Project]] created on [2018-10-26 Fri].
 
 #+HTML: <p align="center"><img src="../.files/cordova-helloworld.png" /></p>
 
 This is a minimal, preliminary project before building a deployable
-mobile application using Ionic (see [[file:ionic-crud.org][ionic-crud]] for an exemple using
+mobile application using Ionic (see [[id:f72e7002-b7d3-4abc-b2de-b3b4ab699421][ionic-crud]] for an exemple using
 =@ionic/lab=).
 
 * Startup

@@ -1,8 +1,12 @@
-#+TITLE: =ionic-crud=
+:PROPERTIES:
+:ID:       f72e7002-b7d3-4abc-b2de-b3b4ab699421
+:END:
+#+title: ionic-crud
+#+filetags: :project:
 
-[[file:../../code/ionic-crud/][Project]] created on [2018-10-24 Wed].
+[[file:../code/ionic-crud/][Project]] created on [2018-10-24 Wed].
 
-An Ionic version of the [[file:angular-extended-tour-of-heroes.org][angular-extended-tour-of-heroes]]
+An Ionic version of the [[id:ce076f99-ffb1-416b-87da-2e77633f364f][angular-extended-tour-of-heroes]]
 interface. Inspired by [[https://www.djamware.com/post/5b5cffaf80aca707dd4f65aa/building-crud-mobile-app-using-ionic-4-angular-6-and-cordova][this tutorial]] (or [[file:../.files/ionic-crud.pdf][see pdf backup]]).
 
 * Startup

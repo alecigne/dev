@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       c322facf-5f08-431f-863e-3d03da655046
+:CREATED:  [2022-11-27 Sun 12:11]
+:END:
+#+title: Feign
+#+filetags: :technology:

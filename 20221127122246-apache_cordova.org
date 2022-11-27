@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       059e6c68-c431-4e3a-9cdd-0eebee1da145
+:CREATED:  [2022-11-27 Sun 12:22]
+:END:
+#+title: Apache Cordova
+#+filetags: :technology:

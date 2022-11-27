@@ -1,6 +1,10 @@
-#+TITLE: =spring-boot-minimal=
+:PROPERTIES:
+:ID:       4afc2491-e59e-45be-90c0-96d063ecdbea
+:END:
+#+title: spring-boot-minimal
+#+filetags: :project:
 
-[[file:../../code/spring-boot-minimal/][Project]] created on [2018-10-17 Wed].
+[[file:../code/spring-boot-minimal/][Project]] created on [2018-10-17 Wed].
 
 My first contact with Spring Boot, through a very simple Spring Boot
 project initialized with [[https://start.spring.io/][Spring Initializr]].

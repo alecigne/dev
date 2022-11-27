@@ -167,7 +167,7 @@ certain criteria.
   annotation. I don't follow the books recommendation, I used my own
   grouping:
 
-  [[file:../.files/apress-junit-chapter3_1.png]]
+  [[file:.files/apress-junit-chapter3_1.png]]
 
   This [[https://www.petrikainulainen.net/programming/testing/junit-5-tutorial-writing-nested-tests/][article]] ([[https://web.archive.org/web/20201115001728/https://www.petrikainulainen.net/programming/testing/junit-5-tutorial-writing-nested-tests/][archive]]) group things by method and then
   conditions. That might be more useful (especially for nested

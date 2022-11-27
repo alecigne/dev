@@ -1,4 +1,10 @@
-#+TITLE: =spring-lifecycle=
+:PROPERTIES:
+:ID:       f1cb7ff4-f7bb-4e44-8b0d-f888d0fb4967
+:END:
+#+title: spring-lifecycle
+#+filetags: :project:
+
+- roaming :: [[id:1ef4c08e-f028-42a9-89fb-74138976e198][Spring]]
 
 * Kata
 
@@ -7,7 +13,7 @@
 - Content :: Highlighting different steps of a Spring bean
   lifecycle. Inspired by [[https://springframework.guru/spring-bean-lifecycle/][this tutorial]].
 
-- Project :: This kata created the [[file:../../code/spring-lifecycle/][spring-lifecycle]] project. Check a
+- Project :: This kata created the [[file:../code/spring-lifecycle/][spring-lifecycle]] project. Check a
   snapshot of the project's state at the end of the kata [[https://github.com/alecigne/learning/tree/ck0034/code/spring-lifecycle][here]].
 
 - Branch :: [[https://github.com/alecigne/learning/commits/ck0034][ck0034]]

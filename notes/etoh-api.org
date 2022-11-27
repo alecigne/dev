@@ -1,9 +1,13 @@
-#+TITLE: =etoh-api=
+:PROPERTIES:
+:ID:       3f9472b6-29ad-47c2-a101-8917a904d573
+:END:
+#+title: etoh-api
+#+filetags: :project:
 
-[[file:../../code/etoh-api/][Project]] created on [2018-10-22 Mon].
+[[file:../code/etoh-api/][Project]] created on [2018-10-22 Mon].
 
-This project capitalizes on [[file:spring-boot-minimal.org][=spring-boot-minimal=]] to build a very
-simple backend for the [[file:angular-extended-tour-of-heroes.org][Extended Tour of Heroes (ETOH) Angular
+This project capitalizes on [[id:4afc2491-e59e-45be-90c0-96d063ecdbea][spring-boot-minimal]] to build a very
+simple backend for the [[id:ce076f99-ffb1-416b-87da-2e77633f364f][Extended Tour of Heroes (ETOH) Angular
 frontend]].
 
 It uses an in-memory H2 database initialized automatically by Spring

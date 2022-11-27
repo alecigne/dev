@@ -1,4 +1,10 @@
-#+TITLE: =crud-with-vaadin=
+:PROPERTIES:
+:ID:       c284e77e-3815-4f95-834a-2c728462938e
+:END:
+#+title: crud-with-vaadin
+#+filetags: :project:
+
+- roaming :: [[id:9bebdf9e-d58d-4cda-80b4-b2be271fbe91][Vaadin]]
 
 * Kata
 
@@ -7,14 +13,14 @@
 - Content :: This kata is the tutorial "[[https://spring.io/guides/gs/crud-with-vaadin/][Creating CRUD UI with Vaadin]]"
   from the Spring website.
 
-- Project :: This kata created the [[https://github.com/alecigne/learning/tree/master/code/crud-with-vaadin][crud-with-vaadin]] project. Check a
+- Project :: This kata created the [[file:../code/crud-with-vaadin/][crud-with-vaadin]] project. Check a
   snapshot of the project's state at the end of the kata [[https://github.com/alecigne/learning/tree/ck0033/code/crud-with-vaadin][here]].
 
 - Branch :: [[https://github.com/alecigne/learning/commits/ck0033][ck0033]]
 
 * Notes
 
-- [[https://github.com/alecigne/learning/commit/acb4c38][acb4c38]] :: Initialization: Spring Boot, Vaadin, and a basic view
+- [[orgit-rev:./::acb4c38][acb4c38]] :: Initialization: Spring Boot, Vaadin, and a basic view
   with a button. From the [[https://vaadin.com/docs/v14/flow/v14-migration/v14-migration-guide.html#6-build-and-maintain-the-v14-project][Vaadin documentation]]:
 
   #+begin_quote
@@ -40,7 +46,7 @@
 
   I am changing my ~.gitignore~ file accordingly.
 
-- [[https://github.com/alecigne/learning/commit/e0ec525][e0ec525]] :: List entities in a data grid.
+- [[orgit-rev:./::e0ec525][e0ec525]] :: List entities in a data grid.
 
   #+begin_quote
   Although Vaadin Grid lazy loads the data from the server to the
@@ -50,7 +56,7 @@
   provider by using the setDataProvider(DataProvider) method.
   #+end_quote
 
-- [[https://github.com/alecigne/learning/commit/8bb8388][8bb8388]] :: Filtering the data.
+- [[orgit-rev:./::8bb8388][8bb8388]] :: Filtering the data.
 
   + ~listCustomers~ will take an argument to filter the customers
 
@@ -58,7 +64,7 @@
     the current value every time the user types
     (~ValueChangeMode.EAGER~).
 
-- [[https://github.com/alecigne/learning/commit/6afaed2][6afaed2]] :: Define a new editor component, step 1.
+- [[orgit-rev:./::6afaed2][6afaed2]] :: Define a new editor component, step 1.
 
   This editor will have the capability to create, edit or delete a
   customer. First we create a class ~CustomerEditor~. This will be a
@@ -85,9 +91,9 @@
   Let's link the proto-editor to the main view. Obviously it doesn't
   do anything yet:
 
-  [[file:../.files/crud-with-vaadin_1.png]]
+  [[file:.files/crud-with-vaadin_1.png]]
 
-- [[https://github.com/alecigne/learning/commit/31c6d42][31c6d42]] :: Define a new editor component, step 2.
+- [[orgit-rev:./::31c6d42][31c6d42]] :: Define a new editor component, step 2.
 
   We will now make the editor appear and disappar from the main view
   through buttons. We make it invisible initially and we create a
@@ -105,7 +111,7 @@
   ~delete~. This could be done directly from ~save~ and ~delete~ but
   later we will need to affect the view itself from the component.
 
-- [[https://github.com/alecigne/learning/commit/bd79aea][bd79aea]] :: Define a new editor component, step 3.
+- [[orgit-rev:./::bd79aea][bd79aea]] :: Define a new editor component, step 3.
 
   Now we will wire real actions into the editor. Check the commit: we
   pass a real customer to the ~editCustomer~ method (or a new

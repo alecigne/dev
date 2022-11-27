@@ -1,3 +1,0 @@
-#+TITLE: =feign-cat-facts=
-
-[[file:../../code/feign-cat-facts][Project]] created on [2019-12-05 Thu].
