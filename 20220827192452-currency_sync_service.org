@@ -9,8 +9,7 @@
 
 Project available [[file:code/currency-sync-service/][here]].
 
-Just a rewrite of an application written during my time at AT
-Internet. It features:
+It features:
 
 - [[id:8422ea6c-2bb2-40f5-b420-819dc9daef08][Testcontainers]]
 - [[id:9337d12e-3fe5-4e43-ba86-7122d1d1c66b][MockWebServer]]

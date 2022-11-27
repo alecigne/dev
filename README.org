@@ -7,19 +7,17 @@
 #+end_example
 
 Code written and notes taken along my learning journey as a software
-developer. For my eyes only -- since some code is inspired from work.
+developer.
 
-Start by [[elisp:(org-roam-node-find)][browsing nodes]]!
-
-* Format
-:PROPERTIES:
-:CREATED:  [2022-02-12 Sat 13:39]
-:END:
-
-This repository makes use of:
+This repository is an evergrowing, experimental "PKMS" -- [[https://en.wikipedia.org/wiki/Personal_knowledge_management][personal
+knowledge management]] system -- based on:
 
 - [[https://www.gnu.org/software/emacs/][Emacs]]
 - [[https://www.orgmode.org/fr/][Org-mode]]
 - [[https://www.orgroam.com/][Org-roam]]
 - [[https://github.com/nobiot/org-transclusion][Org-transclusion]]
 - [[https://magit.vc/][Magit]] (with [[https://github.com/magit/orgit][orgit]])
+- etc.
+
+As such, although Org markup is rendered quite nicely, it is not meant
+to be browsable "as-is" on GitHub.
