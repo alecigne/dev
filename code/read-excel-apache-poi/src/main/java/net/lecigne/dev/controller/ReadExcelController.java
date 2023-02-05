@@ -21,7 +21,7 @@ public class ReadExcelController {
   @Post(consumes = MediaType.MULTIPART_FORM_DATA)
   public HttpResponse<String> createMembersFromExcelFile(CompletedFileUpload file) {
     service.processFile(file);
-    return HttpResponse.ok();
+    return HttpResponse.accepted();
   }
 
 }

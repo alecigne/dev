@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       a2d08576-a6b2-423a-90bf-3db91c461bc2
+:CREATED:  [2023-02-05 Sun 14:22]
+:END:
+#+title: Apache POI
+#+filetags: :technology:

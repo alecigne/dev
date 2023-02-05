@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       b4415040-23a1-444e-baca-426dd10e13fb
+:CREATED:  [2023-02-05 Sun 14:21]
+:END:
+#+title: read-excel-apache-poi
+#+filetags: :project:
+
+- roam :: [[id:a2d08576-a6b2-423a-90bf-3db91c461bc2][Apache POI]]
+
+* Goals
+:PROPERTIES:
+:CREATED:  [2023-02-05 Sun 14:22]
+:END:
+
+- Read a single Excel file sent from a REST API: a list of members
+  with their membership ID, last name, first name and email adress.
+
+- Validate the file
+
+  + Columns are present
+  + ID is valid
+  + Email is valid
+
+  An unvalid file will trigger a 400 BAD REQUEST with a custom list of
+  validation errors (mentioning the Excel line when
+  applicable). Otherwise, the response will be a 202 ACCEPTED. The
+  processing will be asynchronous.
+
+- Process the data:
+
+  + Send the IDs in parallel, 3 by 3, to a dummy webservice that will
+    return a map (ID / age of the member).
+
+  + From this information, create the complete entity
+
+  + Persist these entities in a MySQL database
