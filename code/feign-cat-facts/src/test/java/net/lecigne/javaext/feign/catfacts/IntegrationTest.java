@@ -1,38 +1,36 @@
 package net.lecigne.javaext.feign.catfacts;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import feign.Feign;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
 import feign.okhttp.OkHttpClient;
+import java.util.List;
 import net.lecigne.javaext.feign.catfacts.client.FeignClient;
 import net.lecigne.javaext.feign.catfacts.model.AnimalFact;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+@DisplayName("The application")
 class IntegrationTest {
 
-    private static FeignClient client;
+  private static final FeignClient CLIENT = Feign.builder()
+      .client(new OkHttpClient())
+      .encoder(new GsonEncoder())
+      .decoder(new GsonDecoder())
+      .target(FeignClient.class, "https://cat-fact.herokuapp.com");
 
-    @BeforeAll
-    public static void setUp() {
-        client = Feign.builder()
-                .client(new OkHttpClient())
-                .encoder(new GsonEncoder())
-                .decoder(new GsonDecoder())
-                .target(FeignClient.class, "https://cat-fact.herokuapp.com");
-    }
+  @Test
+  void should_retrieve_cat_facts_from_third_party_api() {
+    // When
+    List<AnimalFact> facts = CLIENT.getFacts("dog", 5);
 
-    @Test
-    void simpleTest() {
-        List<AnimalFact> facts = client.getFacts("dog", 5);
-        facts.forEach(System.out::println);
-        assertEquals(5, facts.size());
-        assertTrue(facts.stream().allMatch(f -> "dog".equals(f.getAnimalType())));
-    }
+    // Then
+    assertThat(facts)
+        .hasSize(5)
+        .extracting(AnimalFact::getAnimalType)
+        .containsOnly("dog");
+  }
 
 }
